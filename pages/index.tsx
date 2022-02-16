@@ -1,22 +1,19 @@
+import React from 'react'
 import type { NextPage } from 'next'
-import Head from 'next/head'
-
+import Head from '../components/Head'
+import Sidebar from '../components/Sidebar'
 
 
 
 const Home: NextPage = () => {
+  const[dark,setDark]=React.useState(false)
+  const handleToggleTheme=()=>setDark(prev=>!prev)
   return (
-    <div >
-      <Head>
-        <title>Invoice</title>
-        <meta name="invoicing" content="invoicing app" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-   <div className="bg-blue-500 ml-8 dark rounded-md">
-       <h1 className='text-sm  ml-8'>helo</h1>
-   </div>
-   
-    </div>
+    <>
+      <Head title='invoices'/>
+      <Sidebar dark={dark} handleToggleTheme={handleToggleTheme} />
+     
+    </>
   )
 }
 
