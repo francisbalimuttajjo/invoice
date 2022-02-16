@@ -1,14 +1,25 @@
 module.exports = {
-  purge: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}'
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class', // or 'media' or 'class'
-  theme: {
-    extend: {},
-  },
+  darkTheme: "class",
   variants: {
     extend: {},
   },
+  theme: {
+    screens: {
+      xs: "475px",
+      sm: "650px",
+      // // => @media (min-width: 576px) { ... }
+
+      // md: "1020px",
+      // // => @media (min-width: 960px) { ... }
+
+      // lg: "1440px",
+      // => @media (min-width: 1440px) { ... }
+    },
+    extend: {},
+  },
   plugins: [],
-}
+};
