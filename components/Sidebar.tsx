@@ -8,21 +8,20 @@ type Props={
     dark:boolean
     handleToggleTheme:()=>void
 }
-// deletePost: (id: number) => void
-// type ToggleTheme={()=>void}
+
 const Sidebar:React.FC<Props>=(props)=>{
    
 
     return (
-        <div className='bg-slate-700 h-20 flex  '>
-            <div className='h-full bg-blue-500 flex   flex-col justify-center bg-gradient-to-t from-blue-300 to-blue-600 w-20 rounded-l-none rounded-2xl'>
+        <div className='bg-slate-800 h-20 flex sm:flex-col  sm:w-24   sm:h-screen sm:rounded-3xl sm:rounded-l-none'>
+            <div className='h-full sm:h-24 bg-blue-500 flex   flex-col justify-center bg-gradient-to-t from-blue-300 to-blue-600 w-20 sm:w-24 rounded-l-none rounded-2xl'>
                <FaPiedPiper className='text-white mx-auto   text-5xl ' />
             </div>
-            <div className='flex   my-6  right-2  absolute  '>
+            <div className='flex  sm:justify-center my-6  right-2  absolute  sm:bottom-6  sm:w-24 sm:left-0     sm:px-auto   '>
                 { props.dark &&<button 
                 onClick={props.handleToggleTheme}
                 >
-                  <BsBrightnessHighFill className='text-white text-2xl opacity-70' />
+                  <BsBrightnessHighFill className='text-white text-2xl  opacity-70' />
                 </button>}
                {!props.dark && <button
                 onClick={props.handleToggleTheme}
