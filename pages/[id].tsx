@@ -19,15 +19,9 @@ const DetailsPage: NextPage = () => {
         <div className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}>
           
           <Sidebar />
-          <InvoiceDetails status='paid' />
+          <InvoiceDetails street='19 Mobutu Roard' country='Uganda' block='411' city='Kampala' status='pending' title='Re-branding' number={665734} />
             
-          {/* <button onClick={()=>router.back()} >back</button>
-          <motion.div variants={fadeIn} >
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div> */}
-            
-        {/* </motion.div> */}
+        
         </div>
         
       </motion.div>  

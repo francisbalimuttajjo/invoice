@@ -7,6 +7,12 @@ import {useThemeContext} from '../context/context'
 import {handleBackgroundColor,handleColor,handleCircleColor} from '../utils/fns'
 type Props={
     status:string
+    title:string
+    street:string
+    country:string
+    block:string
+    city:string
+    number:number
     // darkTheme:boo()=>setDarkTheme:()=>void
 }
 
@@ -35,8 +41,35 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                  </div>
                 
                </div>
-               <div className= {`${darkTheme? 'bg-slate-800' : 'bg-white'}  w-11/12 mt-8 mx-auto rounded-md `}>
-                  hello
+               <div className= {`${darkTheme? 'bg-slate-800' : 'bg-white'} flex flex-col   w-11/12 mt-8 mx-auto rounded-md `}>
+                  <div className='flex flex-col px-4'>
+                    <h1 className='text-neutral-400 font-bold '>#<span
+                            className= {`${darkTheme ? "text-white":"text-black"} text-sm opacity-80`}
+                        
+                        >UG{props.number}</span></h1>
+                    <p className= {`${darkTheme ? "opacity-90":"opacity-50"} text-sm font-normal -mt-1 `}>{props.title}</p>    
+                  </div>
+                  <address className={`${darkTheme ? "opacity-90":"opacity-50"} text-xs mt-8 px-4 `}>
+                    {props.street} <br/>
+                    {props.city} <br/>
+                    {props.block} <br/>
+                    {props.country} 
+                  </address>
+                  <div className='px-4 mt-8'>
+                      <div >
+                         <p className={`${darkTheme ? "opacity-90":"opacity-50"}`} >Invoice Date</p>
+                         <time> <strong>21 Aug 2022 </strong></time>
+                      </div>
+                      <div className='mt-8' >
+                         <p className={`${darkTheme ? "opacity-90":"opacity-50"}`} >Payment Due</p>
+                         <time> <strong>21 Oct 2022 </strong></time>
+                      </div>
+                      <div>
+
+                      </div>
+                  </div>
+                     
+                  
                </div>
             </motion.div>
         </div>
