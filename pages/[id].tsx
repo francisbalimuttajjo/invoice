@@ -23,6 +23,8 @@ const DetailsPage: NextPage = () => {
           <button onClick={()=>router.back()} >back</button>
           <motion.div variants={fadeIn} >
             <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
             
         </motion.div>
         </div>
