@@ -15,7 +15,7 @@ type Props={
     // handleToggleTheme:()=>void
 }
 
-// type colorFn = () => string;
+// type colorFn = () => string;///
 
 //types
 
