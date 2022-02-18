@@ -64,7 +64,7 @@ const Invoice:React.FC<Props>=(props)=>{
                     <h1 className={`${!darkTheme? 'opacity-50':''} sm:hidden text-sm `}>{props.debtor}</h1>
                     <div className={`${handleBackgroundColor()} rounded-md py-2 px-4 flex`}>
                         <div className={`bg-${handleColor()}  h-2 w-2 rounded-full my-auto mr-2`}></div>
-                        <p className={`text-${handleColor()} text-orange-500   capitalize font-semibold`}>{props.status}</p> 
+                        <p className={`text-${handleColor()} text-green-500   capitalize font-semibold`}>{props.status}</p> 
             
                     </div>
                     
