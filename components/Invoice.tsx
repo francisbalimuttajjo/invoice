@@ -30,15 +30,15 @@ const Invoice:React.FC<Props>=(props)=>{
     if(props.status==='draft') return 'bg-gray-100'
     }
     function handleColor(){
-        if(props.status==='pending') return 'orange-500'
-        if(props.status==='paid') return 'green-500'
-        if(props.status==='draft') return 'black'
+        if(props.status==='pending') return 'text-orange-500'
+        if(props.status==='paid') return 'text-green-500'
+        if(props.status==='draft') return 'text-black'
         }
-        // function handleCircleColor(){
-        //     if(props.status==='pending') return 'bg-orange-500'
-        //     if(props.status==='paid') return 'bg-green-500'
-        //     if(props.status==='draft') return 'bg-black'
-        //     }
+        function handleCircleColor(){
+            if(props.status==='pending') return 'bg-orange-500'
+            if(props.status==='paid') return 'bg-green-500'
+            if(props.status==='draft') return 'bg-black'
+            }
     
     return(
   
@@ -63,8 +63,8 @@ const Invoice:React.FC<Props>=(props)=>{
                 <div className='flex justify-between flex-col sm:my-auto ' >
                     <h1 className={`${!darkTheme? 'opacity-50':''} sm:hidden text-sm `}>{props.debtor}</h1>
                     <div className={`${handleBackgroundColor()} rounded-md py-2 px-4 flex`}>
-                        <div className={`bg-${handleColor()}  h-2 w-2 rounded-full my-auto mr-2`}></div>
-                        <p className={`text-${handleColor()}   capitalize font-semibold`}>{props.status}</p> 
+                        <div className={`${handleCircleColor()}  h-2 w-2 rounded-full my-auto mr-2`}></div>
+                        <p className={`${handleColor()}   capitalize font-semibold`}>{props.status}</p> 
             
                     </div>
                     
