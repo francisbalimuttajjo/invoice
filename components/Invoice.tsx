@@ -1,8 +1,9 @@
 import React from 'react'
 import {useRouter} from 'next/router'
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {fadeIn} from '../animations/animation'
 import {useThemeContext} from '../context/context'
+import {handleBackgroundColor,handleColor,handleCircleColor} from '../utils/fns'
 //types
 
 type Props={
@@ -24,21 +25,6 @@ const Invoice:React.FC<Props>=(props)=>{
    const router =useRouter()
    const [darkTheme]=useThemeContext()
  
-    function handleBackgroundColor(){
-    if(props.status==='pending') return 'bg-orange-100'
-    if(props.status==='paid') return 'bg-green-100'
-    if(props.status==='draft') return 'bg-gray-100'
-    }
-    function handleColor(){
-        if(props.status==='pending') return 'text-orange-500'
-        if(props.status==='paid') return 'text-green-500'
-        if(props.status==='draft') return 'text-black'
-        }
-        function handleCircleColor(){
-            if(props.status==='pending') return 'bg-orange-500'
-            if(props.status==='paid') return 'bg-green-500'
-            if(props.status==='draft') return 'bg-black'
-            }
     
     return(
   
@@ -53,18 +39,19 @@ const Invoice:React.FC<Props>=(props)=>{
                         className= {`${darkTheme ? "text-white":"text-black"}`}
                     
                     >UG{props.number}</span></h1>
-                    <div>
+                    <div className='sm:flex '>
                         <p className='opacity-50 text-sm sm:ml-3 sm:pt-0.5 '>Due <span>27 Aug 2022</span></p>
-                        <p className='font-light sm:hidden'>UGX <span className=' font-bold'>{props.amount}</span></p>
+                        <h1 className={`${!darkTheme? 'opacity-50':''} mx-3 mt-0.5 hidden sm:block text-sm `}>{props.debtor}</h1>
+                        <p className='font-light  '>UGX <span className=' font-bold'>{props.amount}</span></p>
                         
                     </div>
                     
                 </div>
                 <div className='flex justify-between flex-col sm:my-auto ' >
                     <h1 className={`${!darkTheme? 'opacity-50':''} sm:hidden text-sm `}>{props.debtor}</h1>
-                    <div className={`${handleBackgroundColor()} rounded-md py-2 px-4 flex`}>
-                        <div className={`${handleCircleColor()}  h-2 w-2 rounded-full my-auto mr-2`}></div>
-                        <p className={`${handleColor()}   capitalize font-semibold`}>{props.status}</p> 
+                    <div className={`${handleBackgroundColor(props)} ${props.status==='pending' ? "px-3":"px-4"} rounded-md py-2  flex`}>
+                        <div className={`${handleCircleColor(props)}   h-2 w-2 rounded-full my-auto mr-2`}></div>
+                        <p className={`${handleColor(props)}   capitalize font-semibold`}>{props.status}</p> 
             
                     </div>
                     
