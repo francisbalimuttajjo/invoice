@@ -1,5 +1,6 @@
 // import '../styles/globals.css'
 // import { AnimatePresence } from "framer-motion"
+import {AppWrapper} from '../context/context'
 import { motion, AnimatePresence } from "framer-motion";
 
 import 'tailwindcss/tailwind.css'
@@ -28,7 +29,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     
   // </AnimatePresence>
        <AnimatePresence exitBeforeEnter>
-         <Component {...pageProps} />
+        <AppWrapper>
+           <Component {...pageProps} />
+        </AppWrapper> 
+         
        </AnimatePresence>
     
   ) 

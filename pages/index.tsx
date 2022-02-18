@@ -5,6 +5,7 @@ import Sidebar from '../components/Sidebar'
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
 import { motion, AnimatePresence } from "framer-motion";
+import {useThemeContext} from '../context/context'
 
 
  const categories =['pending','paid','draft']
@@ -21,22 +22,25 @@ import { motion, AnimatePresence } from "framer-motion";
 
 
 const Home: NextPage = () => {
-  const[dark,setDark]=React.useState(false)
-  const handleToggleTheme=()=>setDark(prev=>!prev)
+
+  const [darkTheme]=useThemeContext()
+  
+
+   
  
   return (
    <motion.div animate='animate' initial='initial'>
-      <div className={`${dark? 'bg-slate-900': ""} ${dark? 'text-white': ""} min-h-screen  sm:flex`}>
+      <div className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}>
         <Head title='invoices'/>
-        <Sidebar dark={dark} handleToggleTheme={handleToggleTheme} />
+        <Sidebar/>
         <div className='flex flex-col mx-auto md:w-9/12 '>
-            <Header categories={categories} dark={dark} InvoiceTotal={invoices.length}/>
-            <InvoiceList invoices={invoices} dark={dark} />
+            <Header categories={categories} darkTheme={darkTheme} InvoiceTotal={invoices.length}/>
+            <InvoiceList invoices={invoices}  />
           
-        </div>
+        </div> 
           
       
-      </div>
+       </div>
     </motion.div>   
   )
 }

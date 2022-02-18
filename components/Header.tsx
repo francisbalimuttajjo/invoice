@@ -5,7 +5,7 @@ import { FormControl, Select } from "@mui/material";
 
 type Props={
         InvoiceTotal:Number 
-        dark:boolean
+        darkTheme:boolean
         categories:string[]   
 }
 
@@ -27,7 +27,7 @@ const Sidebar:React.FC<Props>=(props)=>{
                     <Select
                     labelId="demo-simple-select-standard-label"
                     id="demo-simple-select-standard"
-                    sx={{ color: props.dark ?  "white" :''}}
+                    sx={{ color: props.darkTheme ?  "white" :''}}
                     value={category}
                     //   onChange={handleChange}
                     

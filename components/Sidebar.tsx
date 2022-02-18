@@ -2,14 +2,18 @@ import React from 'react'
 import { FaPiedPiper } from "react-icons/fa";
 import { BsBrightnessHighFill } from "react-icons/bs";
 import { MdBrightness2} from "react-icons/md";
-
+import {useThemeContext} from '../context/context'
 type Props={
     title?:string
-    dark:boolean
-    handleToggleTheme:()=>void
+    // darkTheme:boo()=>setDarkTheme:()=>void
 }
 
 const Sidebar:React.FC<Props>=(props)=>{
+ 
+    const[darkTheme,setDarkTheme]=useThemeContext()
+    
+  
+    
    
 
     return (
@@ -18,13 +22,17 @@ const Sidebar:React.FC<Props>=(props)=>{
                <FaPiedPiper className='text-white mx-auto   text-5xl ' />
             </div>
             <div className='flex  sm:justify-center my-6  right-2  absolute  sm:bottom-6  sm:w-24 sm:left-0     sm:px-auto   '>
-                { props.dark &&<button 
-                onClick={props.handleToggleTheme}
+                {  darkTheme &&
+                <button 
+                 onClick={setDarkTheme}
                 >
                   <BsBrightnessHighFill className='text-white text-2xl  opacity-70' />
                 </button>}
-               {!props.dark && <button
-                onClick={props.handleToggleTheme}
+               {
+               !darkTheme
+                && 
+                <button
+                onClick={setDarkTheme}
                >
                    <MdBrightness2 className='text-white text-2xl opacity-70' />
                 </button>}

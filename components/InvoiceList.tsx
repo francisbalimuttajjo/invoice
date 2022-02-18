@@ -7,7 +7,7 @@ interface Invoice{
   
    type Props={
      invoices:Invoice[]
-     dark:boolean
+  
     
   }
   
@@ -16,7 +16,7 @@ interface Invoice{
       return(
         <>
          { props.invoices.map(invoice=>        
-            < Invoice  debtor={invoice.debtor} key={invoice.number} dark={props.dark} amount={invoice.amount} number={invoice.number} status={invoice.status}  />
+            < Invoice  debtor={invoice.debtor} key={invoice.number}  amount={invoice.amount} number={invoice.number} status={invoice.status}  />
           
           ) }
         </>
