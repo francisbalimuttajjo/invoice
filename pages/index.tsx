@@ -29,8 +29,8 @@ const Home: NextPage = () => {
    
  
   return (
-   <motion.div animate='animate' initial='initial'>
-      <div className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}>
+   <motion.div animate='animate' initial='initial' className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}>
+      {/* <div className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}> */}
         <Head title='invoices'/>
         <Sidebar/>
         <div className='flex flex-col mx-auto md:w-9/12 '>
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
         </div> 
           
       
-       </div>
+       {/* </div> */}
     </motion.div>   
   )
 }
