@@ -13,3 +13,7 @@
             if(props.status==='paid') return 'bg-green-500'
             if(props.status==='draft') return 'bg-black'
             }
+   export function getSum(arr){
+        const arrayOfNumbers=arr.map(el=>el.amount)
+        return arrayOfNumbers.reduce((acc,cv)=>acc+cv,0)
+   }         

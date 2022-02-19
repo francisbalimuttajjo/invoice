@@ -49,7 +49,7 @@ const Invoice:React.FC<Props>=(props)=>{
                 </div>
                 <div className='flex justify-between flex-col sm:my-auto ' >
                     <h1 className={`${!darkTheme? 'opacity-50':''} sm:hidden text-sm `}>{props.debtor}</h1>
-                    <div className={`${handleBackgroundColor(props)} ${props.status==='pending' ? "px-3":"px-4"} rounded-md py-2  flex`}>
+                    <div className={`${handleBackgroundColor(props)}  ${props.status==='pending' ? "px-3":"px-4"} rounded-md py-2  flex`}>
                         <div className={`${handleCircleColor(props)}   h-2 w-2 rounded-full my-auto mr-2`}></div>
                         <p className={`${handleColor(props)}   capitalize font-semibold`}>{props.status}</p> 
             
