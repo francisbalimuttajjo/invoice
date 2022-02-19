@@ -11,6 +11,14 @@
  }
 
 
+ export type InvoiceProps={
+    
+    debtor:string
+    status:string
+       amount:number
+     number:number | string
+    // handleToggleTheme:()=>void
+}
  export type Props={
     status:string
     title:string

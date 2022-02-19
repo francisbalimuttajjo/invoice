@@ -40,7 +40,13 @@ const DetailsPage: NextPage = () => {
             <InvoiceDetails
             paymentDate='21 Jan 2022'
             issuingDate='21 Oct 2021'
-             items={items} debtorsAddress={debtorsAddress} IssuingAddress={homeAddress} email='bamayanja@gmail.com' street='19 Mobutu Roard' debtor='francis bafra mayanja' country='Uganda' block='411' city='Kampala' status='pending' title='Re-branding' number={665734} />
+             items={items} debtorsAddress={debtorsAddress}
+              IssuingAddress={homeAddress} 
+              email='bamayanja@gmail.com'
+               street='19 Mobutu Roard'
+                debtor='francis bafra mayanja' 
+                country='Uganda' block='411' city='Kampala' 
+                status='paid' title='Re-branding' number={665734} />
                 
             
             </div>
