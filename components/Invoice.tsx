@@ -4,15 +4,35 @@ import { motion } from "framer-motion";
 import {fadeIn} from '../animations/animation'
 import {useThemeContext} from '../context/context'
 import {InvoiceProps} from '../types/types'
-import {handleBackgroundColor,handleColor,handleCircleColor} from '../utils/fns'
+import { FaCircle } from "react-icons/fa";
+import {
+    //handleBackgroundColor ,
+    handleColor,handleCircleColor} from '../utils/fns'
 
 
 
 const Invoice:React.FC<InvoiceProps>=(props)=>{
    const router =useRouter()
    const [darkTheme]=useThemeContext()
+
+
+    function handleColor() {
+    if (props.status === "pending") {
+      return "orange-500";
+    } else if (props.status === "paid") {
+      return "green-500";
+    } else {
+      return "black";
+    }
+  }
+
  
-    
+ 
+    function handleBackgroundColor() {
+    if (props.status === "pending") return "bg-orange-100";
+    if (props.status === "paid") return "bg-green-100";
+    if (props.status === "draft") return "bg-gray-100";
+  }
     return(
   
             <motion.div variants={fadeIn} 
@@ -36,9 +56,9 @@ const Invoice:React.FC<InvoiceProps>=(props)=>{
                 </div>
                 <div className='flex justify-between flex-col sm:my-auto ' >
                     <h1 className={`${!darkTheme? 'opacity-50':''} sm:hidden text-sm `}>{props.debtor}</h1>
-                    <div className={`${handleBackgroundColor(props)}   ${props.status==='pending' ? "px-3":"px-4"} rounded-md py-2  flex`}>
-                        <div className={`${handleCircleColor(props)}   h-2 w-2 rounded-full my-auto mr-2`}></div>
-                        <p className={`${handleColor(props)}   capitalize font-semibold`}>{props.status}</p> 
+                    <div className={`${handleBackgroundColor()}    ${props.status==='pending' ? "px-3":"px-4"} rounded-md py-2  `}>
+                       
+                        <p className={`text-${handleColor()}    capitalize font-semibold`}><FaCircle className='h-2 w-2 inline' /> {props.status}</p> 
             
                     </div>
                     

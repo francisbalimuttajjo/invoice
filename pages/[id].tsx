@@ -14,6 +14,9 @@ const DetailsPage: NextPage = () => {
         {description:'advice',amount:4200},
         {description:'brush',amount:2000},
         {description:'brush',amount:2000},
+        {description:'brush',amount:2000},
+        {description:'brush',amount:2000},
+        {description:'brush',amount:2000},
         {description:'brusjjh',amount:2000},
         {description:'bruuyush',amount:2000},
     ]
@@ -46,7 +49,7 @@ const DetailsPage: NextPage = () => {
                street='19 Mobutu Roard'
                 debtor='francis bafra mayanja' 
                 country='Uganda' block='411' city='Kampala' 
-                status='paid' title='Re-branding' number={665734} />
+                status='pending' title='Re-branding' number={665734} />
                 
             
             </div>

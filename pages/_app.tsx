@@ -28,12 +28,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   //     </motion.div>
     
   // </AnimatePresence>
-       <AnimatePresence exitBeforeEnter>
+      //  <AnimatePresence exitBeforeEnter>
         <AppWrapper>
            <Component {...pageProps} />
         </AppWrapper> 
          
-       </AnimatePresence>
+       /* </AnimatePresence> */
     
   ) 
 }
