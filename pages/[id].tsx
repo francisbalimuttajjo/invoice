@@ -49,7 +49,7 @@ const DetailsPage: NextPage = () => {
                street='19 Mobutu Roard'
                 debtor='francis bafra mayanja' 
                 country='Uganda' block='411' city='Kampala' 
-                status='pending' title='Re-branding' number={665734} />
+                status='paid' title='Re-branding' number={665734} />
                 
             
             </div>

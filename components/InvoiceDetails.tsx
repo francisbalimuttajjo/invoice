@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {fadeIn} from '../animations/animation'
 import {useThemeContext} from '../context/context'
 import {Props} from '../types/types'
+import { FaCircle } from "react-icons/fa";
 import {handleBackgroundColor,handleColor,handleCircleColor,getSum} from '../utils/fns'
 import Address from './Address'
 
@@ -15,6 +16,25 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
     const handleRouterBack=()=>router.back()
     const [darkTheme]=useThemeContext()
      
+
+    
+    function handleColor() {
+        if (props.status === "pending") {
+          return "text-orange-500";
+        } else if (props.status === "paid") {
+          return "text-green-500";
+        } else {
+          return "text-black";
+        }
+      }
+    
+     
+     
+        function handleBackgroundColor() {
+        if (props.status === "pending") return "bg-orange-100";
+        if (props.status === "paid") return "bg-green-100";
+        if (props.status === "draft") return "bg-gray-100";
+      }
 
     return (
        <div className='sm:w-10/12 md:w-7/12 sm:mx-auto  sm:pb-8'> 
@@ -28,12 +48,16 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
             <motion.div variants={fadeIn}>
                <div className= {`${darkTheme? 'bg-slate-800' : 'bg-white'} relative w-11/12   h-20 sm:justify-start sm:h-24 mt-8 mx-auto rounded-md flex justify-around items-center`}>
                  <p className= {`${darkTheme? 'opacity-90': 'opacity-50'} -ml-3 sm:ml-2 text-sm ` }>Status</p>
-                
-                 <div className={`${handleBackgroundColor(props)}   rounded-md py-2 h-10 px-3  sm:ml-2 ml-28 flex`}>
+                 <div className={`${handleBackgroundColor()}    px-4 rounded-md py-2  `}>
+                       
+                       <p className={`${handleColor()}    capitalize font-semibold`}><FaCircle className='h-2 w-2 inline' /> {props.status}</p> 
+           
+                   </div>
+                 {/* <div className={`${handleBackgroundColor(props)}   rounded-md py-2 h-10 px-3  sm:ml-2 ml-28 flex`}>
                     <div className={`${handleCircleColor(props)} mr-2 mt-2  h-2 w-2 rounded-full`}></div>
                     <p className={`${handleColor(props)}   capitalize font-semibold`}>{props.status}</p> 
             
-                 </div>
+                 </div> */}
                  <div className={`  flex right-0 absolute hidden sm:block `}>
                     <button className={`${darkTheme? 'bg-slate-900' : 'bg-gray-200 text-gray-500'} hover:bg-gray-300 p-3 mx-1  px-4 py-3  rounded-3xl font-semibold  `}>
                         Edit

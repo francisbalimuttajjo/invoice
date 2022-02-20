@@ -5,9 +5,7 @@ import {fadeIn} from '../animations/animation'
 import {useThemeContext} from '../context/context'
 import {InvoiceProps} from '../types/types'
 import { FaCircle } from "react-icons/fa";
-import {
-    //handleBackgroundColor ,
-    handleColor,handleCircleColor} from '../utils/fns'
+
 
 
 
@@ -18,11 +16,11 @@ const Invoice:React.FC<InvoiceProps>=(props)=>{
 
     function handleColor() {
     if (props.status === "pending") {
-      return "orange-500";
+      return "text-orange-500";
     } else if (props.status === "paid") {
-      return "green-500";
+      return "text-green-500";
     } else {
-      return "black";
+      return "text-black";
     }
   }
 
@@ -58,7 +56,7 @@ const Invoice:React.FC<InvoiceProps>=(props)=>{
                     <h1 className={`${!darkTheme? 'opacity-50':''} sm:hidden text-sm `}>{props.debtor}</h1>
                     <div className={`${handleBackgroundColor()}    ${props.status==='pending' ? "px-3":"px-4"} rounded-md py-2  `}>
                        
-                        <p className={`text-${handleColor()}    capitalize font-semibold`}><FaCircle className='h-2 w-2 inline' /> {props.status}</p> 
+                        <p className={`${handleColor()}    capitalize font-semibold`}><FaCircle className='h-2 w-2 inline' /> {props.status}</p> 
             
                     </div>
                     
