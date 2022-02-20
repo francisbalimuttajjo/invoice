@@ -11,6 +11,7 @@ import { FaCircle } from "react-icons/fa";
 
 const Invoice:React.FC<InvoiceProps>=(props)=>{
    const router =useRouter()
+   
    const [darkTheme]=useThemeContext()
 
 
@@ -44,16 +45,17 @@ const Invoice:React.FC<InvoiceProps>=(props)=>{
                         className= {`${darkTheme ? "text-white":"text-black"}`}
                     
                     >UG{props.number}</span></h1>
-                    <div className='sm:flex '>
+                    <div className='sm:flex sm:justify-around'>
                         <p className='opacity-50 text-sm sm:ml-3 sm:pt-0.5 '>Due <span>27 Aug 2022</span></p>
                         <h1 className={`${!darkTheme? 'opacity-50':''} mx-3 mt-0.5 hidden sm:block text-sm `}>{props.debtor}</h1>
-                        <p className='font-light  '>UGX <span className=' font-bold'>{props.amount}</span></p>
+                        <p className='font-light sm:hidden  '>UGX <span className=' font-bold'>{props.amount}</span></p>
                         
                     </div>
                     
                 </div>
-                <div className='flex justify-between flex-col sm:my-auto ' >
+                <div className='flex justify-between flex-col  sm:flex-row sm:my-auto ' >
                     <h1 className={`${!darkTheme? 'opacity-50':''} sm:hidden text-sm `}>{props.debtor}</h1>
+                    <p className='font-light hidden sm:inline my-auto mr-3 '>UGX <span className=' font-bold'>{props.amount}</span></p>
                     <div className={`${handleBackgroundColor()}    ${props.status==='pending' ? "px-3":"px-4"} rounded-md py-2  `}>
                        
                         <p className={`${handleColor()}    capitalize font-semibold`}><FaCircle className='h-2 w-2 inline' /> {props.status}</p> 

@@ -1,17 +1,10 @@
 import React from 'react'
 import Invoice from '../components/Invoice'
+import {InvoiceListProps} from '../types/types'
 
-interface Invoice{
-    debtor:string,number:number,status:string,amount:number
-   }
+
   
-   type Props={
-     invoices:Invoice[]
-  
-    
-  }
-  
-  const InvoiceList:React.FC<Props>=(props)=>{
+  const InvoiceList:React.FC<InvoiceListProps>=(props)=>{
       
       return(
         <>

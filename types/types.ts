@@ -1,3 +1,4 @@
+  //Address.tsx,Invoice.tsx,InvoiceDetails.tsx
   type AddressFormat={
     street:string
     city:string
@@ -9,6 +10,7 @@
  export type Address={
      address:AddressFormat
  }
+
 
 
  export type InvoiceProps={
@@ -36,10 +38,23 @@
     debtorsAddress:AddressFormat
      
 }
+//invoiceList
+interface Invoice{
+  debtor:string,number:number,status:string,amount:number
+ }
+
+ export type InvoiceListProps={
+   invoices:Invoice[]
+
+  
+}
+
+//header.tsx
+export type HeadingProps={
+  InvoiceTotal:Number 
+  darkTheme:boolean
+  categories:string[]   
+  handleCategorizingInvoices:(a:string)=>void
+}
 
 
-
-{/* 20,Kampala Rd <br/>
-                      Kampala <br/>
-                    231<br/>
-                    Uganda  */}

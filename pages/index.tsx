@@ -6,6 +6,7 @@ import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
 import { motion, AnimatePresence } from "framer-motion";
 import {useThemeContext} from '../context/context'
+import {InvoiceListProps} from '../types/types'
 
 
  const categories =['pending','paid','draft']
@@ -21,21 +22,51 @@ import {useThemeContext} from '../context/context'
 ]
 
 
+type Invoices={status:string,debtor:string,amount:number,number:number}
+
+// const n=invoices.filter(el=>el.status==='pending')
+// console.log('n',n)
 
 const Home: NextPage = () => {
-
-  const [darkTheme]=useThemeContext()
+  // const [data, dispatch] = React.useReducer(reducer, invoices);
   
-
-   
+  const [darkTheme]=useThemeContext()
+  const handleCategorizingInvoices=(value:string)=>{
+    // console.log('d1',data)
+    //    console.log('value',value)
+    //   dispatch({ type: "reset" });
+    //    dispatch({ type: value });
+    //    console.log('d2',data)
+       
+  }  
+  // function reducer(data: any, action: { type: any }) {
+  //   const newData = [...data];
+  //   switch (action.type) {
+  //     case "draft":
+  //       return data.filter((el) => el.status == "draft");
+  //       break;
+  //     case "paid":
+  //       return newData.filter((el) => el.status == "paid");
+  //       break;
+  //     case "pending":
+  //       return newData.filter((el) => el.status == "pending");
+  //       break;
+  //     case "reset":
+  //       return invoices;
+  //       break;
+      
+  //   }
+    
+  // }
+ 
  
   return (
    <motion.div animate='animate' initial='initial' className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}>
    
-        <Head title={`invoices ( ${invoices.length}) `}/>
+        <Head title={`invoices (${invoices.length}) `}/>
         <Sidebar/>
         <div className='flex flex-col mx-auto md:w-9/12 '>
-            <Header categories={categories} darkTheme={darkTheme} InvoiceTotal={invoices.length}/>
+            <Header handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={invoices.length}/>
             <InvoiceList invoices={invoices}  />
           
         </div> 

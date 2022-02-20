@@ -16,7 +16,8 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
     const handleRouterBack=()=>router.back()
     const [darkTheme]=useThemeContext()
      
-
+      const handleEditing=()=>router.push(`/edit/${props.number}`)
+     
     
     function handleColor() {
         if (props.status === "pending") {
@@ -47,19 +48,17 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
            </div>
             <motion.div variants={fadeIn}>
                <div className= {`${darkTheme? 'bg-slate-800' : 'bg-white'} relative w-11/12   h-20 sm:justify-start sm:h-24 mt-8 mx-auto rounded-md flex justify-around items-center`}>
-                 <p className= {`${darkTheme? 'opacity-90': 'opacity-50'} -ml-3 sm:ml-2 text-sm ` }>Status</p>
-                 <div className={`${handleBackgroundColor()}    px-4 rounded-md py-2  `}>
+                 <p className= {`${darkTheme? 'opacity-90': 'opacity-50'}  absolute left-3 text-sm ` }>Status</p>
+                 <div className={`${handleBackgroundColor()}  absolute right-5 sm:static sm:ml-16   px-4 rounded-md py-2  `}>
                        
                        <p className={`${handleColor()}    capitalize font-semibold`}><FaCircle className='h-2 w-2 inline' /> {props.status}</p> 
            
                    </div>
-                 {/* <div className={`${handleBackgroundColor(props)}   rounded-md py-2 h-10 px-3  sm:ml-2 ml-28 flex`}>
-                    <div className={`${handleCircleColor(props)} mr-2 mt-2  h-2 w-2 rounded-full`}></div>
-                    <p className={`${handleColor(props)}   capitalize font-semibold`}>{props.status}</p> 
-            
-                 </div> */}
-                 <div className={`  flex right-0 absolute hidden sm:block `}>
-                    <button className={`${darkTheme? 'bg-slate-900' : 'bg-gray-200 text-gray-500'} hover:bg-gray-300 p-3 mx-1  px-4 py-3  rounded-3xl font-semibold  `}>
+                 
+                 <div className={` right-0 absolute hidden sm:block `}>
+                    <button
+                    onClick={handleEditing}
+                     className={`${darkTheme? 'bg-slate-900' : 'bg-gray-200 text-gray-500'} hover:bg-gray-300 p-3 mx-1  px-4 py-3  rounded-3xl font-semibold  `}>
                         Edit
                     </button>
                     <button className={`${darkTheme? 'bg-red-400 hover:bg-red-300' : 'bg-red-500 hover:bg-red-400 '} text-white p-2  mx-1  px-6 py-3  rounded-3xl font-semibold  `}>
@@ -108,7 +107,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                         </div>
                     </div>  
                      
-                    <div className='right-0 pr-7 absolute sm:static'>
+                    <div className='right-0 pr-9 absolute sm:static'>
                         <h6 className= {`${darkTheme ? "opacity-90":"opacity-50"} `} >Bill To</h6>
                         <p className='capitalize text-xs xs:text-base'><strong>{props.debtor}</strong></p>
                         <div className={`${darkTheme ? "opacity-90":"opacity-50"} text-xs xs:text-base mt-8 sm:mt-0 sm:text-xs  `}>
@@ -143,7 +142,9 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                   
                </div>
                <div className={`${darkTheme? 'bg-slate-800' : 'bg-white'} sm:hidden flex justify-end mt-8 p-4`}>
-                  <button className={`${darkTheme? 'bg-slate-900' : 'bg-gray-200 text-gray-500'} hover:bg-gray-300 p-3 mx-1  xs:px-4 xs:py-3 xs:mx-2 rounded-3xl font-semibold  `}>
+                  <button
+                  onClick={handleEditing}
+                   className={`${darkTheme? 'bg-slate-900' : 'bg-gray-200 text-gray-500'} hover:bg-gray-300 p-3 mx-1  xs:px-4 xs:py-3 xs:mx-2 rounded-3xl font-semibold  `}>
                       Edit
                   </button>
                   <button className={`${darkTheme? 'bg-red-400 hover:bg-red-300' : 'bg-red-500 hover:bg-red-400 '} text-white p-2  mx-1  xs:px-6 xs:py-3 xs:mx-2 rounded-3xl font-semibold  `}>
