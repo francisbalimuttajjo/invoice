@@ -1,7 +1,5 @@
 import React, { ChangeEvent } from 'react'
 import {useRouter} from 'next/router';
-import MenuItem from "@mui/material/MenuItem";
-import { FormControl, Select } from "@mui/material";
 import{HeadingProps} from '../types/types'
 
 
@@ -17,7 +15,7 @@ const Sidebar:React.FC<HeadingProps>=(props)=>{
    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
     props.handleCategorizingInvoices(e.target.value)
-   
+    // props.invoices.filter((el) => el.status == "draft")
   
    }
 
@@ -32,30 +30,16 @@ const Sidebar:React.FC<HeadingProps>=(props)=>{
             </div>
             <div className='flex sm:ml-20 sm:justify-end    '>
                 <label className='mt-3'>Filter 
-                <span className='hidden xs:inline'>by status</span></label>
+                <span className='hidden xs:inline'>by status</span>
                 <select
+                className={`${props.darkTheme ? ' bg-slate-900  text-orange-600':' text-blue-600  bg-gray-200'}   text-xs xs:text-base cursor-pointer h-6 border-none  form-select m-1`}
                 onChange={handleChange}
                 >
-                    {props.categories.map(option=><option key={option} value={option}>{option}</option>)}
+                    {props.categories.map(option=><option  key={option} value={option}>{option} </option>)}
                 </select>
-                {/* <FormControl variant="standard" sx={{ margin:1 }}>        
-                    <Select
-                    labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard"
-                    sx={{ color: props.darkTheme ?  "white" :''}}
-                    value={category}
-                    onChange={handleChange}
-                    
-                    
-                    > 
-                    {props.categories.map((optionValue) => (
-                            <MenuItem value={optionValue} key={optionValue}>
-                                                               {optionValue}
-                            </MenuItem>
-                            ))}
-                    
-                    </Select>
-                </FormControl> */}
+                </label>
+    
+               
                             
                     <button
                     onClick={handleNewInvoiceRoute}
