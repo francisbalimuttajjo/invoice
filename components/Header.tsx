@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import {useRouter} from 'next/router';
 import{HeadingProps} from '../types/types'
 
@@ -15,7 +15,7 @@ const Sidebar:React.FC<HeadingProps>=(props)=>{
    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
     props.handleCategorizingInvoices(e.target.value)
-    // props.invoices.filter((el) => el.status == "draft")
+
   
    }
 
@@ -25,17 +25,17 @@ const Sidebar:React.FC<HeadingProps>=(props)=>{
             <div className='flex flex-col  '>
                 <h1 className='font-semibold text-3xl '>Invoices</h1>
                 <p className=' text-sm opacity-50 mt-1 '>
-                    There are {props.InvoiceTotal}   invoices total .</p>
+                    There {props.InvoiceTotal >1 ? ' are' : 'is'} {props.InvoiceTotal}  {props.description} {props.InvoiceTotal >1 ? ' Invoices' : 'Invoice'} </p>
 
             </div>
             <div className='flex sm:ml-20 sm:justify-end    '>
                 <label className='mt-3'>Filter 
                 <span className='hidden xs:inline'>by status</span>
                 <select
-                className={`${props.darkTheme ? ' bg-slate-900  text-orange-600':' text-blue-600  bg-gray-200'}   text-xs xs:text-base cursor-pointer h-6 border-none  form-select m-1`}
+                className={`${props.darkTheme ? 'text-white bg-slate-900 ':' text-blue-500 bg-gray-200'}  text-xs xs:text-base  cursor-pointer h-6 border-none  form-select m-1`}
                 onChange={handleChange}
                 >
-                    {props.categories.map(option=><option  key={option} value={option}>{option} </option>)}
+                    {props.categories.map(option=><option key={option} value={option}>{option}</option>)}
                 </select>
                 </label>
     

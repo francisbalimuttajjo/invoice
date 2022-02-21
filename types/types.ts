@@ -54,6 +54,7 @@ export type HeadingProps={
   InvoiceTotal:Number 
   darkTheme:boolean
   categories:string[]   
+  description:string
   handleCategorizingInvoices:(a:string)=>void
 }
 
