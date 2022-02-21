@@ -46,7 +46,7 @@ const Invoice:React.FC<InvoiceProps>=(props)=>{
                     
                     >UG{props.number}</span></h1>
                     <div className='sm:flex sm:justify-even'>
-                        <p className='opacity-50 text-sm sm:ml-3 sm:pt-0.5 '>Due <span>27 Aug 2022</span></p>
+                        <p className='opacity-50 text-sm sm:ml-3 sm:pt-0.5 '>Due <span>{props.InvoiceDueDate}</span></p>
                         <p className='font-light sm:hidden  '>UGX <span className=' font-bold'>{props.amount}</span></p>
                         
                     </div>

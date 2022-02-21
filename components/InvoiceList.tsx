@@ -9,7 +9,7 @@ import {InvoiceListProps} from '../types/types'
       return(
         <>
          { props.invoices.map(invoice=>        
-            < Invoice  debtor={invoice.debtor} key={invoice.number}  amount={invoice.amount} number={invoice.number} status={invoice.status}  />
+            < Invoice InvoiceDueDate={invoice.InvoiceDueDate} debtor={invoice.debtor} key={invoice.number}  amount={invoice.amount} number={invoice.number} status={invoice.status}  />
           
           ) }
         </>

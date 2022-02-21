@@ -29,10 +29,10 @@ const Sidebar:React.FC<HeadingProps>=(props)=>{
 
             </div>
             <div className='flex sm:ml-20 sm:justify-end    '>
-                <label className='mt-3'>Filter 
+                <label className='mt-3 text-xs xs:text-base  '>Filter 
                 <span className='hidden xs:inline'>by status</span>
                 <select
-                className={`${props.darkTheme ? 'text-white bg-slate-900 ':' text-blue-500 bg-gray-200'}  text-xs xs:text-base  cursor-pointer h-6 border-none  form-select m-1`}
+                className={`${props.darkTheme ? 'text-white bg-slate-900 ':' text-blue-500 bg-gray-200'}  text-xs xs:text-base  cursor-pointer h-6 `}
                 onChange={handleChange}
                 >
                     {props.categories.map(option=><option key={option} value={option}>{option}</option>)}

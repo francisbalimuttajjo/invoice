@@ -14,9 +14,10 @@
 
 
  export type InvoiceProps={
-    
+    InvoiceDueDate:string
     debtor:string
     status:string
+    
        amount:number
      number:number | string
     // handleToggleTheme:()=>void
@@ -40,6 +41,7 @@
 }
 //invoiceList
 interface Invoice{
+  InvoiceDueDate:string
   debtor:string,number:number,status:string,amount:number
  }
 
