@@ -23,7 +23,7 @@ const n=new Date().toISOString().slice(0, 10)
         <>
         <div className='inset-0 absolute bg-black bg-opacity-40'></div>
        
-      <div className={`${darkTheme ? 'bg-slate-900' : 'bg-white'} h-screen absolute w-full sm:w-9/12 sm:flex` }>
+      <div className={`${darkTheme ? 'bg-slate-900' : 'bg-white'} min-h-screen absolute w-full sm:w-9/12 sm:flex` }>
 
           <Sidebar />
            <motion.div variants={fadeIn} >
