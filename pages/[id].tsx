@@ -2,6 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import {useRouter} from 'next/router'
 import Sidebar from '../components/Sidebar'
+import Head from '../components/Head'
 import InvoiceDetails from '../components/InvoiceDetails'
 import { motion } from "framer-motion";
 import {useThemeContext} from '../context/context'
@@ -34,9 +35,12 @@ const DetailsPage: NextPage = () => {
                   blockNumber:  2,
                   country:' Uganda'
     }
+
+    const number=546724
    
     return (
         <motion.div animate='animate' initial='initial' >
+            <Head title={`UGX ${number}`}/>
             <div className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}>
             
             <Sidebar />
@@ -49,7 +53,7 @@ const DetailsPage: NextPage = () => {
                street='19 Mobutu Roard'
                 debtor='francis bafra mayanja' 
                 country='Uganda' block='411' city='Kampala' 
-                status='pending' title='Re-branding' number={665734} />
+                status='pending' title='Re-branding' number={number} />
                 
             
             </div>

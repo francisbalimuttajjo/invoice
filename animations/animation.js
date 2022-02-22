@@ -3,7 +3,8 @@ const easing=[.6,-.05,.01,.99]
 
 const fadeIn={
     initial:{
-        y:60,
+         y:60,
+       // x:20,
         opacity:0
     },
     animate:{

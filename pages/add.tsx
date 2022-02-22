@@ -1,8 +1,13 @@
 import type { NextPage } from 'next'
+import { motion, AnimatePresence } from "framer-motion";
+import Form from  '../components/Form'
 
 const NewInvoice: NextPage = () => {
     return(
-        <h1>new Invoice</h1>
+        <motion.div animate='animate' initial='initial'>
+            <Form />
+        </motion.div> 
+        
     )
 
 }

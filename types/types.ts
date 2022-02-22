@@ -58,6 +58,13 @@ export type HeadingProps={
   categories:string[]   
   description:string
   handleCategorizingInvoices:(a:string)=>void
+  displayNewInvoiceForm:()=>void
+ 
+}
+
+//form
+export type FormProps={
+  hideForm:()=>void
 }
 
 

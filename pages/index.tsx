@@ -2,6 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from '../components/Head'
 import Sidebar from '../components/Sidebar'
+import Form from '../components/Form'
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,18 +24,26 @@ import {useThemeContext} from '../context/context'
 
 
 
-
+//storing invoices
 const store=invoices
+//
+
 const Home: NextPage = () => {
  const [data,setData]=React.useState(store)
  const [description,setDescription]=React.useState('total ')
+ const [displayForm,setDisplayForm]=React.useState(false)
 
   const [darkTheme]=useThemeContext()
  
  
 
-   ///
-   
+   ///displaying form
+ const displayNewInvoiceForm=()=>setDisplayForm(true)
+
+ //hiding form
+ const hideForm=()=>setDisplayForm(false)
+
+ //categorizing forms
   const handleCategorizingInvoices=(value:string)=>{
     
     setData(invoices)
@@ -56,14 +65,22 @@ const Home: NextPage = () => {
   return (
    <motion.div animate='animate' initial='initial' className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}>
    
-        <Head title={`invoices (${data.length}) `}/>
+       
+         {!displayForm &&
+         <>
+          <Head title={`invoices (${data.length}) `}/>
         <Sidebar/>
         <div className='flex flex-col mx-auto md:w-9/12 '>
-            <Header description={description} handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={data.length}/>
+            <Header displayNewInvoiceForm={displayNewInvoiceForm}
+             description={description} handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={data.length}/>
             <InvoiceList invoices={data}  />
-          
+         
         </div> 
-          
+        </>
+         } 
+         {
+           displayForm && < Form hideForm={hideForm} />
+         }
       
        
     </motion.div>   

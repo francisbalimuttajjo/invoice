@@ -37,7 +37,7 @@ const Invoice:React.FC<InvoiceProps>=(props)=>{
             <motion.div variants={fadeIn} 
             onClick={()=>router.push(`/${props.number}`)}
              className={` ${darkTheme? 'bg-slate-800':'bg-white'}  
-              hover:cursor-pointer hover:border-solid hover:border-2 hover:border-purple-300
+              hover:cursor-pointer hover:border-solid hover:border hover:border-gray-500
               mx-auto px-5 flex justify-between  py-3 my-2 h-28 sm:h-20 rounded-md sm:w-full md:w-9/12 w-10/12 `}>
                 
                 <div className='flex flex-col justify-around sm:flex-row sm:my-auto ' >
@@ -53,7 +53,7 @@ const Invoice:React.FC<InvoiceProps>=(props)=>{
                     
                 </div>
                 <div className='flex justify-between flex-col  sm:flex-row sm:my-auto ' >
-                    <h1 className={`${!darkTheme? 'opacity-50':''}  sm:mt-1.5 sm:mr-3 md:mr-12  text-sm sm:text-base    `}>{props.debtor}</h1>
+                    <h1 className={`${!darkTheme? 'opacity-50':''} capitalize  sm:mt-1.5 sm:mr-3 md:mr-12  text-sm sm:text-base    `}>{props.debtor}</h1>
                     <p className='font-light hidden sm:inline my-auto mr-3 '>UGX <span className=' font-bold'>{props.amount}</span></p>
                     <div className={`${handleBackgroundColor()}    ${props.status==='pending' ? "px-3":"px-4"} rounded-md py-2  `}>
                        
