@@ -110,7 +110,7 @@ const n=new Date().toISOString().slice(0, 10)
                                 </div>
                                 <div className="w-1/3    mb-6 ">
                                     <label className= {`${darkTheme?'text-white':'text-gray-700' } block mb-2 tracking-wide text-xs  sm:text-sm `}>
-                                        Payment Terms
+                                       <span className='hidden sm:inline'>Payment</span>  Terms
                                     </label>
                                     <select className= {`${darkTheme ? 'text-white bg-slate-800' :"text-gray-700"} appearance-none block w-full hover:cursor-pointer   border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500`} >
                                         
