@@ -30,7 +30,7 @@ const Sidebar:React.FC<HeadingProps>=(props)=>{
                 <label className='mt-3 text-xs xs:text-base  '>Filter 
                 <span className='hidden xs:inline'>by status</span>
                 <select
-                className={`${props.darkTheme ? 'text-white bg-slate-900 ':' text-blue-500 bg-gray-200'}  m-1 outline-none  text-xs xs:text-base  cursor-pointer h-6 `}
+                className={`${props.darkTheme ? 'text-white bg-slate-900 ':' text-blue-500 bg-gray-200'}   sm:m-1 outline-none  text-xs xs:text-base  cursor-pointer h-6 `}
                 onChange={handleChange}
                 >
                     {props.categories.map(option=><option className='capitalize' key={option} value={option}>
