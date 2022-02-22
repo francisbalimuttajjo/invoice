@@ -65,7 +65,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                         Delete
                     </button>
                     {props.status !=='paid' &&
-                    <button className=' bg-violet-500 hover:bg-violet-400 text-white mx-1 p-2  xs:px-6  xs:py-3  rounded-3xl font-semibold'>
+                    <button className=' bg-blue-500 hover:bg-blue-400 text-white mx-1 p-2  xs:px-6  xs:py-3  rounded-3xl font-semibold'>
                         Mark As Paid
                     </button>
                     }
@@ -151,7 +151,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                       Delete
                   </button>
                   {props.status !=='paid' && 
-                  <button className=' bg-violet-500 hover:bg-violet-400 text-white mx-1 p-2  xs:px-6  xs:py-3 xs:mx-2 rounded-3xl font-semibold'>
+                  <button className=' bg-blue-500 hover:bg-blue-400 text-white mx-1 p-2  xs:px-6  xs:py-3 xs:mx-2 rounded-3xl font-semibold'>
                       Mark As Paid
                   </button>
                  }

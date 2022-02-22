@@ -101,7 +101,7 @@ const n=new Date().toISOString().slice(0, 10)
                                     </label>
                                     <input className={`${darkTheme ? 'text-white bg-slate-800' :"text-gray-700"} appearance-none block w-full   border border-gray-200 rounded  py-3 px-4 mb-3 leading-tight focus:outline-none  focus:border-gray-500`}  type="text"  />
                                 </div>
-                                <div className="flex  w-full  px-3 mt-2 mb-0 justify-between">
+                            <div className="flex  w-full  px-3 mt-2 mb-0 justify-between">
                                 <div className="w-1/2   ">
                                     <label className= {`${darkTheme?'text-white':'text-gray-700' } block  mb-2  tracking-wide  text-sm `}>
                                         Invoice Date
@@ -119,8 +119,21 @@ const n=new Date().toISOString().slice(0, 10)
                                         
                                     </select>
                                 </div>
+                               
+                                
                             </div>
-
+                            <div className="w-full px-3">
+                                    <label className= {`${darkTheme?'text-white':'text-gray-700' } block  tracking-wide  text-sm  mb-2`}  >
+                                        Description
+                                    </label>
+                                    <input className={`${darkTheme ? 'text-white bg-slate-800' :"text-gray-700"} appearance-none block w-full   border border-gray-200 rounded  py-3 px-4 mb-3 leading-tight focus:outline-none  focus:border-gray-500`}  type="text"  placeholder='eg Graphic Designing' />
+                            </div>
+                            <div className='w-full  p-3'>
+                                <label className= {`${darkTheme?'text-white':'text-gray-700' }  block font-semibold  tracking-wide  text-xl  mb-2`}  >
+                                        Item List
+                                </label>
+                            </div> 
+                                
 
                             </div>
 
@@ -130,10 +143,21 @@ const n=new Date().toISOString().slice(0, 10)
                         
                         
                     </section>
-                    <button onClick={props.hideForm}>back</button> 
+                    <div className=' py-10 flex relative'>
+                        <button
+                        onClick={props.hideForm}
+                         className='bg-gray-200 text-sm  sm:text-sm font-bold text-gray-400 hover:text-gray-500 hover:bg-gray-300 rounded-3xl px-2 py-3  sm:px-4 sm:py-3 '>Discard</button>
+                        <div className='flex right-0  absolute'>
+                            <button className={`${darkTheme ? 'hover:bg-opacity-40' : "hover:bg-opacity-90"} p-2 sm:px-4 py-3 text-sm  sm:text-sm text-gray-500 font-bold rounded-3xl bg-black bg-opacity-80 `}>Save as Draft</button>
+                            <button className='bg-blue-700 ml-1 text-white opacity-70 text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600'>Save & Send</button>
+
+                        </div>
+
+                    </div>
+                   
                </div>
                
-               <button onClick={props.hideForm}>back</button> 
+         
             
              
 
