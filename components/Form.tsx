@@ -141,7 +141,7 @@ const n=new Date().toISOString().slice(0, 10)
                         
                         
                     </section>
-                    <div className=' pt-1 flex relative'>
+                    <div className=' sticky bottom-0 flex '>
                         <button
                         onClick={props.hideForm}
                          className='bg-gray-200 text-sm  sm:text-sm font-bold text-gray-400 hover:text-gray-500 hover:bg-gray-300 rounded-3xl px-2 py-3  sm:px-4 sm:py-3 '>Discard</button>
