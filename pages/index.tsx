@@ -78,8 +78,11 @@ const Home: NextPage = () => {
         </div> 
         </>
          } 
-         {
-           displayForm && < Form hideForm={hideForm} />
+         { displayForm &&
+          <>
+            <Head title='New Invoice' />
+            < Form hideForm={hideForm} />
+           </> 
          }
       
        
