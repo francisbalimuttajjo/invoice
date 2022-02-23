@@ -21,16 +21,16 @@ const n=new Date().toISOString().slice(0, 10)
         <>
         <div className='inset-0 absolute bg-black bg-opacity-40'></div>
        
-      <div className={`${darkTheme ? 'dark' : ''} min-h-screen absolute w-full sm:w-9/12 sm:flex` }>
+      <div className={`${darkTheme ? 'dark' : ''}  h-screen absolute w-full sm:w-9/12 sm:flex` }>
 
           <Sidebar />
            <motion.div variants={fadeIn} >
-               <div  className='dark:bg-slate-900 bg-white w-10/12  mx-auto z-40 mt-8  ' >
+               <div  className='dark:bg-slate-900 px-3 bg-white w-full h-screen  mx-auto z-40   ' >
                    
                     <header>
-                        <h1 className=' font-bold opacity-80 text-2xl   '>Create Invoice</h1>
+                        <h1 className=' font-bold opacity-80 text-2xl pt-12  '>Create Invoice</h1>
                     </header>
-                    <section className='h-80  mt-12 overflow-auto    '>
+                    <section className='h-80  mt-8 overflow-auto    '>
                         <p className='opacity-90 px-3  mb-4 font-bold text-blue-500'>Bill From</p>
                         <form>
                             <div className="w-full px-3">
@@ -141,7 +141,7 @@ const n=new Date().toISOString().slice(0, 10)
                         
                         
                     </section>
-                    <div className=' py-10 flex relative'>
+                    <div className=' pt-4 flex relative'>
                         <button
                         onClick={props.hideForm}
                          className='bg-gray-200 text-sm  sm:text-sm font-bold text-gray-400 hover:text-gray-500 hover:bg-gray-300 rounded-3xl px-2 py-3  sm:px-4 sm:py-3 '>Discard</button>
