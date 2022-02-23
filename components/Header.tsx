@@ -1,11 +1,12 @@
 import React from 'react'
 import{HeadingProps} from '../types/types'
-
+import {useThemeContext} from '../context/context'
 
 
 
 
 const Sidebar:React.FC<HeadingProps>=(props)=>{
+    const [darkTheme]=useThemeContext()
   
    const [category,setCategory]=React.useState(props.categories[0])
 
@@ -19,7 +20,7 @@ const Sidebar:React.FC<HeadingProps>=(props)=>{
 
 
     return (
-        <div className='flex  mt-7  mx-auto justify-around ' >
+        <div className={`${darkTheme ? 'dark ' :''} flex  mt-7  mx-auto justify-around`} >
             <div className='flex flex-col  '>
                 <h1 className='font-semibold text-3xl '>Invoices</h1>
                 <p className=' text-sm opacity-50 mt-1 '>
@@ -30,7 +31,7 @@ const Sidebar:React.FC<HeadingProps>=(props)=>{
                 <label className='mt-3 text-xs xs:text-base  '>Filter 
                 <span className='hidden xs:inline'>by status</span>
                 <select
-                className={`${props.darkTheme ? 'text-white bg-slate-900 ':' text-blue-500 bg-gray-200'}   sm:m-1 outline-none  text-xs xs:text-base  cursor-pointer h-6 `}
+                className="dark:text-white dark:bg-slate-900  text-blue-500 bg-gray-200   sm:m-1 outline-none  text-xs xs:text-base  cursor-pointer h-6 "
                 onChange={handleChange}
                 >
                     {props.categories.map(option=><option className='capitalize' key={option} value={option}>
