@@ -19,7 +19,7 @@ const n=new Date().toISOString().slice(0, 10)
 
     return (
         <>
-        <div className='inset-0 absolute bg-black bg-opacity-40'></div>
+        <div className='hidden sm:block inset-0 absolute bg-black bg-opacity-40'></div>
        
       <div className={`${darkTheme ? 'dark' : ''}  h-screen absolute w-full sm:w-9/12 sm:flex` }>
 
@@ -30,7 +30,7 @@ const n=new Date().toISOString().slice(0, 10)
                     <header>
                         <h1 className=' font-bold opacity-80 text-2xl pt-12  '>Create Invoice</h1>
                     </header>
-                    <section className='h-80  mt-8 overflow-auto    '>
+                    <section className='h-80  mt-8 overflow-auto mb-8   '>
                         <p className='opacity-90 px-3  mb-4 font-bold text-blue-500'>Bill From</p>
                         <form>
                             <div className="w-full px-3">
