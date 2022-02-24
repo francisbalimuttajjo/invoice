@@ -40,6 +40,7 @@ const n=new Date().toISOString().slice(0, 10)
                         <form>
                             <div className='px-3'>
                                 <InputComponent  description='Street  Address' />
+                                <InputComponentTwo label1='City' label2='Postal Code' />
                                 <InputComponent  description='Country' />
                             </div>
                            
