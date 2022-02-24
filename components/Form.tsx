@@ -78,7 +78,8 @@ const n=new Date().toISOString().slice(0, 10)
                                 <ItemsList inputArray={inputArray}  />
                                 <button
                                 onClick={addInput}
-                                 className='bg-gray-100 dark:text-white dark:bg-slate-800 dark:hover:text-opacity-70 dark:hover:bg-opacity-70 hover:bg-gray-200 font-semibold text-gray-400 w-full py-3 rounded-3xl mx-auto'>+ Add New Item</button>
+                                 className='bg-gray-100 dark:text-white dark:bg-slate-800 dark:hover:text-opacity-70 dark:hover:bg-opacity-70 hover:bg-gray-200 font-semibold text-gray-400 w-full py-3 rounded-3xl mx-auto'>
+                                     <span className='font-extrabold'>+</span> Add New Item</button>
     
                             </div> 
                                 

@@ -1,10 +1,9 @@
   //Address.tsx,Invoice.tsx,InvoiceDetails.tsx
   type AddressFormat={
-   
-       
-    street:string,
-   
-    country:string, block:string, city:string
+       street:string,
+       country:string,
+     block:string,
+      city:string
 
  }
 

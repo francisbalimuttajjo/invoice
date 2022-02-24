@@ -1,6 +1,5 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import {useRouter} from 'next/router'
 import Sidebar from '../components/Sidebar'
 import Head from '../components/Head'
 import InvoiceDetails from '../components/InvoiceDetails'
@@ -9,20 +8,8 @@ import {useContextProvider} from '../context/context'
 
 
 const DetailsPage: NextPage = () => {
+       const [darkTheme]=useContextProvider()
     
-    const items=[
-        {description:'paint',amount:9320},
-        {description:'advice',amount:4200},
-        {description:'brush',amount:2000},
-        {description:'brush',amount:2000},
-        {description:'brush',amount:2000},
-        {description:'brush',amount:2000},
-        {description:'brush',amount:2000},
-        {description:'brusjjh',amount:2000},
-        {description:'bruuyush',amount:2000},
-    ]
-    const [darkTheme]=useContextProvider()
-    const router=useRouter()
 
 
 

@@ -5,6 +5,9 @@ type PropTypes={
     qty:number
     price:number
      removeInputField:()=>void
+      handleNameChange:(a:any)=>void
+      handleQtyChange:(a:any)=>void
+      handlePriceChange:(a:any)=>void
 }
 
 const validateNo=(no:number)=>{
@@ -21,7 +24,9 @@ const validateNo=(no:number)=>{
         <label className='dark:text-white text-gray-700 block  tracking-wide  text-sm  mb-2' >
            Item Name
         </label>
-        <input className= 'dark:text-white dark:bg-slate-800 text-black  appearance-none block w-full   border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none  focus:border-gray-500'  type="text"  />
+        <input className= 'dark:text-white dark:bg-slate-800 text-black  appearance-none block w-full   border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none  focus:border-gray-500'  type="text" 
+        onChange={props.handleNameChange}
+        />
         <div className='flex justify-around '>
             <div className="w-2/12   ">
                 <label className= 'dark:text-white text-gray-700 block  mb-2  tracking-wide  text-sm'>
@@ -30,7 +35,8 @@ const validateNo=(no:number)=>{
                 <input 
                  className= 'dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' min='1' type="number"
                   value={props.qty}
-                //  onChange={(e)=>setQty(parseInt(e.target.value))}
+                  onChange={props.handleQtyChange}
+                
                  />
             </div>
             <div className="w-1/3    mb-6 ">
@@ -39,7 +45,8 @@ const validateNo=(no:number)=>{
                 </label>
                 <input className='dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' min='1'  type="number"
                  value={props.price}
-                // onChange={(e)=>setPrice(parseInt(e.target.value))}
+                 onChange={props.handlePriceChange}
+                
                 />
            </div>
            <div className="w-1/3    mb-6 ">
