@@ -1,9 +1,10 @@
   //Address.tsx,Invoice.tsx,InvoiceDetails.tsx
   type AddressFormat={
-    street:string
-    city:string
-    blockNumber:Number
-    country:string
+   
+       
+    street:string,
+   
+    country:string, block:string, city:string
 
  }
 
@@ -22,23 +23,24 @@
      number:number | string
     // handleToggleTheme:()=>void
 }
- export type Props={
-    status:string
-    title:string
-    debtor:string
-    street:string
-    country:string
-    block:string
-    city:string
-    email:string
-    issuingDate:string
-    paymentDate:string
-    number:number
-    items:{description:string,amount:number}[]
-    IssuingAddress:AddressFormat
-    debtorsAddress:AddressFormat
-     
-}
+
+
+export type Props={
+
+   
+   invoice:{
+     invoiceNumber:number,
+     email:string,
+     status:string,
+     title:string,
+     debtor:string,
+     paymentDate:string,
+     issuingDate:string,
+     issuingAddress:AddressFormat,
+     debtorsAddress:AddressFormat
+     items:{description:string,amount:number}[],
+   }
+ }
 //invoiceList
 interface Invoice{
   InvoiceDueDate:string

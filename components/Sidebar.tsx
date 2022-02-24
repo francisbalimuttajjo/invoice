@@ -2,12 +2,12 @@ import React from 'react'
 import { FaPiedPiper } from "react-icons/fa";
 import { BsBrightnessHighFill } from "react-icons/bs";
 import { MdBrightness2} from "react-icons/md";
-import {useThemeContext} from '../context/context'
+import {useContextProvider} from '../context/context'
 
 
 const Sidebar=()=>{
  
-    const[darkTheme,setDarkTheme]=useThemeContext()
+    const[darkTheme,setDarkTheme]=useContextProvider()
     
   
     

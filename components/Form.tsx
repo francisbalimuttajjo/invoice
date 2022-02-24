@@ -5,7 +5,7 @@ import InputComponent from './inputs/InputLabel'
 import InputComponentTwo from './inputs/TwoStepInput'
 import Sidebar from './Sidebar'
 import ItemsList from './Items'
-import {useThemeContext} from '../context/context'
+import {useContextProvider} from '../context/context'
 import {FormProps} from '../types/types'
 
 
@@ -16,7 +16,7 @@ const n=new Date().toISOString().slice(0, 10)
 
  const InvoiceDetails:React.FC<FormProps >=(props)=>{
         
-        const [darkTheme,toggleDarkTheme,inputArray,addInput]=useThemeContext()
+        const [darkTheme,toggleDarkTheme,inputArray,addInput]=useContextProvider()
       
       
     
@@ -38,10 +38,12 @@ const n=new Date().toISOString().slice(0, 10)
                     <section className='h-96  mt-8 overflow-auto mb-8   '>
                         <p className='opacity-90 px-3  mb-4 font-bold text-blue-500'>Bill From</p>
                         <form>
-                           <InputComponent  description='Street  Address' />
-                        
-                            <InputComponent  description='Country' />
-                                                       <div className='mt-6 px-3'>
+                            <div className='px-3'>
+                                <InputComponent  description='Street  Address' />
+                                <InputComponent  description='Country' />
+                            </div>
+                           
+                            <div className='mt-6 px-3'>
                                <p className='opacity-90  mb-2 font-semibold text-blue-500'>Bill To</p>
                                 <InputComponent description='Client&apos;s Name' />
                                 <InputComponent description='Client&apos;s Email' />
@@ -69,7 +71,7 @@ const n=new Date().toISOString().slice(0, 10)
                                 
                             </div>
                             <InputComponent  description='Description' />
-                            <div className='w-full  p-3'>
+                            <div className='w-full  '>
                                 <label className= 'dark:text-white text-gray-700  block font-semibold  tracking-wide  text-xl  mb-2'  >
                                         Item List
                                 </label>

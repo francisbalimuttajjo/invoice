@@ -5,7 +5,7 @@ import Sidebar from '../components/Sidebar'
 import Head from '../components/Head'
 import InvoiceDetails from '../components/InvoiceDetails'
 import { motion } from "framer-motion";
-import {useThemeContext} from '../context/context'
+import {useContextProvider} from '../context/context'
 
 
 const DetailsPage: NextPage = () => {
@@ -21,39 +21,46 @@ const DetailsPage: NextPage = () => {
         {description:'brusjjh',amount:2000},
         {description:'bruuyush',amount:2000},
     ]
-    const [darkTheme]=useThemeContext()
+    const [darkTheme]=useContextProvider()
     const router=useRouter()
-    const homeAddress={
-         street:'20,Kampala Rd',
-                 city:' Kampala',
-                  blockNumber:  231,
-                  country:' Uganda'
-    }
-    const debtorsAddress={
-        street:'19Mobutu Rd',
-                 city:' Makindye',
-                  blockNumber:  2,
-                  country:' Uganda'
-    }
 
-    const number=546724
+
+
+    const invoice={
+        debtor:'francis bafra mayanja' ,
+        invoiceNumber:456353,
+        debtorsAddress:{
+            street:'Kampala Rd',
+                     city:' Makindye',
+                      block:  '2E',
+                      country:' Uganda'
+        },
+        status:'pending', title:'Re-branding', InvoiceNumber:674345,
+        issuingAddress:{
+        street:'19 Mobutu Roard',
+     
+        country:'Uganda', block:'411', city:'Kampala' 
+
+    },paymentDate:'21 Jan 2022',email:'bafra@gmail.com',issuingDate:'01 Jan 2022',items:[
+        {description:'paint',amount:9320},
+        {description:'advice',amount:4200},
+        {description:'brush',amount:2000},
+        {description:'brush',amount:2000},
+        {description:'brush',amount:2000},
+        {description:'brush',amount:2000},
+        {description:'brush',amount:2000},
+        {description:'brusjjh',amount:2000},
+        {description:'bruuyush',amount:2000},
+    ],
+}
    
     return (
         <motion.div animate='animate' initial='initial' >
-            <Head title={`UGX ${number}`}/>
+            <Head title={`UGX ${invoice.invoiceNumber}`}/>
             <div className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}>
             
-            <Sidebar />
-            <InvoiceDetails
-            paymentDate='21 Jan 2022'
-            issuingDate='21 Oct 2021'
-             items={items} debtorsAddress={debtorsAddress}
-              IssuingAddress={homeAddress} 
-              email='bamayanja@gmail.com'
-               street='19 Mobutu Roard'
-                debtor='francis bafra mayanja' 
-                country='Uganda' block='411' city='Kampala' 
-                status='pending' title='Re-branding' number={number} />
+                <Sidebar />
+                <InvoiceDetails   invoice={invoice}  />
                 
             
             </div>

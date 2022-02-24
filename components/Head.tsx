@@ -9,7 +9,7 @@ const HeadComponent:React.FC<Props>=(props)=>{
         <Head>
         <title>{props.title}</title>
         <meta name="invoicing" content="invoicing app" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
     )
 }

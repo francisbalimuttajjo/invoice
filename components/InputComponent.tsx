@@ -1,10 +1,10 @@
 import React from 'react'
 import { MdDelete } from "react-icons/md";
-import {useThemeContext} from '../context/context'
+import {useContextProvider} from '../context/context'
 type PropTypes={
     qty:number
     price:number
-    //  removeInputField:()=>void
+     removeInputField:()=>void
 }
 
 const validateNo=(no:number)=>{
@@ -15,7 +15,7 @@ const validateNo=(no:number)=>{
 
 }
  const InputComponent:React.FC<PropTypes>=(props)=>{
-    const[darkTheme,setDarkTheme,inputArray,addInput,removeInput]=useThemeContext()
+    const[darkTheme,setDarkTheme,inputArray,addInput,removeInput]=useContextProvider()
      return(
         <div  className="w-full px-3">
         <label className='dark:text-white text-gray-700 block  tracking-wide  text-sm  mb-2' >
@@ -52,7 +52,7 @@ const validateNo=(no:number)=>{
                     </p>
            </div>
            <MdDelete
-            // onClick={props.removeInputField}
+             onClick={props.removeInputField}
             className=' text-xl  mt-12 hover:cursor-pointer text-gray-400 hover:text-red-700' />
         </div>
     </div>

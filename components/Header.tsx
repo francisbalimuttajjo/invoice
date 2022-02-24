@@ -1,12 +1,12 @@
 import React from 'react'
 import{HeadingProps} from '../types/types'
-import {useThemeContext} from '../context/context'
+import {useContextProvider} from '../context/context'
 
 
 
 
 const Sidebar:React.FC<HeadingProps>=(props)=>{
-    const [darkTheme]=useThemeContext()
+    const [darkTheme]=useContextProvider()
   
    const [category,setCategory]=React.useState(props.categories[0])
 

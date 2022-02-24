@@ -6,7 +6,7 @@ import Form from '../components/Form'
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
 import { motion, AnimatePresence } from "framer-motion";
-import {useThemeContext} from '../context/context'
+import {useContextProvider} from  '../context/context'
 
 
 
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
  const [description,setDescription]=React.useState('total ')
  const [displayForm,setDisplayForm]=React.useState(false)
 
-  const [darkTheme]=useThemeContext()
+  const [darkTheme]=useContextProvider()
  
  
 

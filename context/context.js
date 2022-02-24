@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 import React from 'react'
-const ThemeContext = createContext();
+const contextProvider = createContext();
 
 export function AppWrapper({ children }) {
   const [inputArray,setInputArray]=React.useState([{qty:1,price:500}])
@@ -10,17 +10,20 @@ export function AppWrapper({ children }) {
            e.preventDefault()
            setInputArray([...inputArray,{qty:1,price:500}])
          }
-         const removeInput=(P)=> {
-           console.log(P)}
+         const removeInput=index=> {
+                    const list = [...inputArray];
+            list.splice(index, 1);
+            setInputArray(list);
+          }
   
-
+         
   return (
-    <ThemeContext.Provider value={[darkTheme,toggleDarkTheme,inputArray,addInput,removeInput]}>
+    <contextProvider.Provider value={[darkTheme,toggleDarkTheme,inputArray,addInput,removeInput]}>
       {children}
-    </ThemeContext.Provider>
+    </contextProvider.Provider>
   );
 }
 
-export function useThemeContext() {
-  return useContext(ThemeContext);
+export function useContextProvider() {
+  return useContext(contextProvider);
 }

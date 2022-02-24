@@ -3,26 +3,28 @@ import {useRouter} from 'next/router'
 import { IoIosArrowBack } from "react-icons/io";
 import { motion } from "framer-motion";
 import {fadeIn} from '../animations/animation'
-import {useThemeContext} from '../context/context'
+import {useContextProvider} from '../context/context'
 import {Props} from '../types/types'
 import { FaCircle } from "react-icons/fa";
-import {handleBackgroundColor,handleColor,handleCircleColor,getSum} from '../utils/fns'
+import {getSum} from '../utils/fns'
 import Address from './Address'
 
+ 
 
 
 const InvoiceDetails:React.FC<Props>=(props)=>{
+
     const router=useRouter()
     const handleRouterBack=()=>router.back()
-    const [darkTheme]=useThemeContext()
+    const [darkTheme]=useContextProvider()
      
-      const handleEditing=()=>router.push(`/edit/${props.number}`)
+      const handleEditing=()=>router.push(`/edit/${props.invoice.invoiceNumber}`)
      
     
     function handleColor() {
-        if (props.status === "pending") {
+        if (props.invoice.status === "pending") {
           return "text-orange-500";
-        } else if (props.status === "paid") {
+        } else if (props.invoice.status === "paid") {
           return "text-green-500";
         } else {
           return "text-black";
@@ -32,9 +34,9 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
      
      
         function handleBackgroundColor() {
-        if (props.status === "pending") return "bg-orange-100";
-        if (props.status === "paid") return "bg-green-100";
-        if (props.status === "draft") return "bg-gray-100";
+        if (props.invoice.status === "pending") return "bg-orange-100";
+        if (props.invoice.status === "paid") return "bg-green-100";
+        if (props.invoice.status === "draft") return "bg-gray-100";
       }
 
     return (
@@ -56,7 +58,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                  <p className= ' dark:opacity-90 opacity-50 absolute left-3 text-sm '>Status</p>
                  <div className={`${handleBackgroundColor()}  absolute right-5 sm:static sm:ml-16   px-4 rounded-md py-2  `}>
                        
-                       <p className={`${handleColor()}    capitalize font-semibold`}><FaCircle className='h-2 w-2 inline' /> {props.status}</p> 
+                       <p className={`${handleColor()}    capitalize font-semibold`}><FaCircle className='h-2 w-2 inline' /> {props.invoice.status}</p> 
            
                    </div>
                  
@@ -69,7 +71,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                     <button className= 'dark:bg-red-400 dark:hover:bg-red-300 bg-red-500 hover:bg-red-400  text-white p-2  mx-1  px-6 py-3  rounded-3xl font-semibold  '>
                         Delete
                     </button>
-                    {props.status !=='paid' &&
+                    {props.invoice.status !=='paid' &&
                     <button className=' bg-blue-500 hover:bg-blue-400 text-white mx-1 p-2  xs:px-6  xs:py-3  rounded-3xl font-semibold'>
                         Mark As Paid
                     </button>
@@ -84,13 +86,13 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                             <h1 className='text-neutral-400 font-bold '>#<span
                                 className= 'dark:text-white text-black text-sm opacity-80'
                             
-                            >UG{props.number}</span></h1>
-                           <p className= "dark:opacity-90 opacity-50  text-sm font-normal -mt-1">{props.title}</p>
+                            >UG{props.invoice.invoiceNumber}</span></h1>
+                           <p className= "dark:opacity-90 opacity-50  text-sm font-normal -mt-1">{props.invoice.title}</p>
 
                          </div>
                         
                        <div className= "dark:opacity-90 opacity-50 hidden sm:block   right-3 absolute">
-                           <Address address={props.IssuingAddress} />
+                           <Address address={props.invoice.issuingAddress} />
                            
                        </div> 
                      </div> 
@@ -98,51 +100,51 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                        
                   </div>
                   <div className="dark:opacity-90 opacity-50 sm:hidden text-xs xs:text-base mt-8 px-4 ">
-                     <Address address={props.IssuingAddress} />
+                     <Address address={props.invoice.issuingAddress} />
                   </div>
                   <div className='px-4 mt-8 flex sm:mt-16 sm:justify-around  sm:relative '>
                     <div>
                         <div >
                             <p className= "dark:opacity-90 opacity-50  text-xs xs:text-base" >Invoice Date</p>
-                            <time className='text-xs xs:text-base'> <strong>{props.issuingDate} </strong></time>
+                            <time className='text-xs xs:text-base'> <strong>{props.invoice.issuingDate} </strong></time>
                         </div>
                         <div className='mt-8' >
                             <p className= "dark:opacity-90 opacity-50 text-xs xs:text-base" >Payment Due</p>
-                            <time className='text-xs xs:text-base'> <strong>{props.paymentDate} </strong></time>
+                            <time className='text-xs xs:text-base'> <strong>{props.invoice.paymentDate} </strong></time>
                         </div>
                     </div>  
                      
                     <div className='right-0 pr-9 absolute sm:static'>
                         <h6 className= "dark:opacity-90 opacity-50" >Bill To</h6>
-                        <p className='capitalize text-xs xs:text-base'><strong>{props.debtor}</strong></p>
+                        <p className='capitalize text-xs xs:text-base'><strong>{props.invoice.debtor}</strong></p>
                         <div className="dark:opacity-90 opacity-50 text-xs xs:text-base mt-8 sm:mt-0 sm:text-xs">
-                            <Address address={props.debtorsAddress} /> 
+                            <Address address={props.invoice.debtorsAddress} /> 
                         </div>
                     </div>
                     <div  className='  hidden sm:block'>
                         <p className="dark:opacity-90 opacity-50" >Sent to</p>
-                        <a href={`mailto:${props.email}`}><strong><em>{props.email}</em></strong></a>
+                        <a href={`mailto:${props.invoice.email}`}><strong><em>{props.invoice.email}</em></strong></a>
                     </div>  
                     
                   </div>
                   <div  className='px-4 mt-8 sm:hidden '>
                     <p className= "dark:opacity-90 opacity-50" >Sent to</p>
-                    <a href={`mailto:${props.email}`}><strong><em>{props.email}</em></strong></a>
+                    <a href={`mailto:${props.invoice.email}`}><strong><em>{props.invoice.email}</em></strong></a>
                   </div>   
                   <div className= "dark:bg-slate-900 dark:font-semibold  font-normal bg-gray-50  flex p-4 mt-8 sm:mt-16 rounded-t-md  w-11/12 mx-auto min-h-fit">
                     
                     <ul className='mx-auto'>
-                        {props.items.map((item,index)=><li key={index} className='capitalize '>{item.description}</li>)}
+                        {props.invoice.items.map((item,index)=><li key={index} className='capitalize '>{item.description}</li>)}
                     </ul>
                     <ul className='mx-auto'>
-                        {props.items.map((item,index)=><li key={index} > Ugx <span className='ml-2'>{item.amount}</span></li>)}
+                        {props.invoice.items.map((item,index)=><li key={index} > Ugx <span className='ml-2'>{item.amount}</span></li>)}
                     </ul>
                     
                  
                   </div>
                   <div className= 'dark:bg-black bg-slate-900 justify-around  flex rounded-b-md  py-4  w-11/12 mx-auto min-h-fit'>
                       <p className='text-white text-sm font-semibold'>Amount Due</p>
-                      <p className='text-white  font-bold'>Ugx <span>{getSum(props.items)}</span></p>
+                      <p className='text-white  font-bold'>Ugx <span>{getSum(props.invoice.items)}</span></p>
                   </div>
                   
                </div>
@@ -155,7 +157,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                   <button className='dark:bg-red-400 dark:hover:bg-red-300 bg-red-500 hover:bg-red-400 text-white p-2  mx-1  xs:px-6 xs:py-3 xs:mx-2 rounded-3xl font-semibold '>
                       Delete
                   </button>
-                  {props.status !=='paid' && 
+                  {props.invoice.status !=='paid' && 
                   <button className=' bg-blue-500 hover:bg-blue-400 text-white mx-1 p-2  xs:px-6  xs:py-3 xs:mx-2 rounded-3xl font-semibold'>
                       Mark As Paid
                   </button>

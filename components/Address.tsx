@@ -6,7 +6,7 @@ const Address:React.FC<Address>=(props)=>{
         <address>
             {props.address.street}<br/>
             {props.address.city}<br/>
-            {props.address.blockNumber}<br/>
+            {props.address.block}<br/>
             {props.address.country}<br/>
                    
         </address>

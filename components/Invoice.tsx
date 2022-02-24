@@ -2,7 +2,7 @@ import React from 'react'
 import {useRouter} from 'next/router'
 import { motion } from "framer-motion";
 import {fadeIn} from '../animations/animation'
-import {useThemeContext} from '../context/context'
+import {useContextProvider} from '../context/context'
 import {InvoiceProps} from '../types/types'
 import { FaCircle } from "react-icons/fa";
 
@@ -12,7 +12,7 @@ import { FaCircle } from "react-icons/fa";
 const Invoice:React.FC<InvoiceProps>=(props)=>{
    const router =useRouter()
    
-   const [darkTheme]=useThemeContext()
+   const [darkTheme]=useContextProvider()
 
 
     function handleColor() {
