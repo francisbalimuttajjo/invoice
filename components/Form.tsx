@@ -34,7 +34,7 @@ const n=new Date().toISOString().slice(0, 10)
           {/* <Sidebar /> */}
            <motion.div variants={fadeIn} >
                <div 
-                 className='dark:bg-slate-900 px-3 bg-white w-full   h-screen sm:rounded-r-3xl    ' >
+                 className='dark:bg-slate-900 px-3 bg-white w-full md:max-w-3xl  h-screen sm:rounded-r-3xl    ' >
                    
                     <header>
                         <h1 className=' font-bold opacity-80 text-2xl pt-12  '>Create Invoice</h1>

@@ -79,7 +79,7 @@ const Home: NextPage = () => {
           <Head title={`invoices (${data.length}) `}/>
             
          
-        <div className={`${displayForm ? 'fixed overflow-hidden ' : "" }  mx-auto  md:w-9/12`}>
+        <div className={`${displayForm ? 'fixed overflow-hidden md:w-11/12 ' : "" }  mx-auto  md:w-9/12`}>
             <Header displayNewInvoiceForm={displayNewInvoiceForm}
              description={description} handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={data.length}/>
            

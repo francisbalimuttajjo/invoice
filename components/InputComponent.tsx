@@ -36,13 +36,13 @@ const validateNo=(no:number)=>{
                     Qty
                 </label>
                 <input 
-                 className= 'dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' min='1' type="number"
+                 className= 'dark:text-white  dark:bg-slate-800 text-gray-700 appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' min='1' type="number"
                   value={props.qty}
                   onChange={props.handleQtyChange}
                 
                  />
             </div>
-            <div className="w-4/12    mb-6 ">
+            <div className="w-4/12 overflow-hidden   mb-6 ">
                 <label className= 'dark:text-white text-gray-700 block mb-2 tracking-wide  text-sm'>
                 Price
                 </label>
