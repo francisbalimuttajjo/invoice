@@ -62,9 +62,12 @@ const validateNo=(no:number)=>{
                     </p>
            </div>
            {
-            props.inputArray.length !=1 && <MdDelete
+            
+             <MdDelete
             onClick={props.removeInputField}
-           className=' text-xl  mt-12 hover:cursor-pointer text-gray-400 hover:text-red-700' />
+           className={`${props.inputArray.length <2 ? 'invisible' : "visible"} text-xl  mt-12 hover:cursor-pointer text-gray-400 hover:text-red-700`}
+           
+           />
            }
            
         </div>

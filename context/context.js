@@ -18,10 +18,7 @@ export function AppWrapper({ children }) {
   //removing input field
   const removeInput = (index) => {
     const list = [...inputArray];
-    // if(list.length===1){
-    //   console.log('atleast one item is required')
-    //   return
-    // }
+  
    
     list.splice(index, 1);
     setInputArray(list);

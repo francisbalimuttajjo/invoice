@@ -6,6 +6,7 @@ import Form from '../components/Form'
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
 
+
 import { motion, AnimatePresence } from "framer-motion";
 import {useContextProvider} from  '../context/context'
 
@@ -55,7 +56,7 @@ const Home: NextPage = () => {
     }else{
     const newData=store.filter(el=>el.status===value)  
     setData(newData)
-    setDescription(`${value} `)
+    setDescription(value)
     
     }
         
@@ -68,20 +69,20 @@ const Home: NextPage = () => {
    
        
          <>
-           
+         <Sidebar /> 
          { displayForm &&
           <div className='z-20   '>
             <Head title='New Invoice' />
-            < Form hideForm={hideForm} />
+                       < Form hideForm={hideForm} />
            </div> 
          }
           <Head title={`invoices (${data.length}) `}/>
-           {/* {!displayForm && <Sidebar/> } */}
-           <Sidebar/>
-          
+            
+         
         <div className={`${displayForm ? 'fixed overflow-hidden ' : "" }  mx-auto  md:w-9/12`}>
             <Header displayNewInvoiceForm={displayNewInvoiceForm}
              description={description} handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={data.length}/>
+           
             <InvoiceList invoices={data}  />
          
         </div> 

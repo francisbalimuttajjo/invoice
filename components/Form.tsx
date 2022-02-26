@@ -24,11 +24,14 @@ const n=new Date().toISOString().slice(0, 10)
 
     return (
         <>
-        <div className=' hidden z-20 fixed sm:block overflow-y-hidden inset-0  bg-black bg-opacity-40'></div>
+        <div 
+        onClick={()=>console.log('clicked')}
+       // onClick={props.hideForm}
+        className=' hidden z-20 fixed sm:block overflow-y-hidden inset-0  bg-black bg-opacity-40'></div>
        
       <div className={`${darkTheme ? 'dark' : ''} z-20 w-full  h-screen fixed   sm:flex` }>
             
-          <Sidebar />
+          {/* <Sidebar /> */}
            <motion.div variants={fadeIn} >
                <div 
                  className='dark:bg-slate-900 px-3 bg-white w-full   h-screen sm:rounded-r-3xl    ' >
