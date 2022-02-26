@@ -10,7 +10,7 @@ import {FormProps} from '../types/types'
 
 
 
- const terms=[{desc:'Net 1 Day',value:1},{desc:'Net 7 Days',value:7},{desc:'Net 14 Days',value:14},{desc:'Net 30 Day',value:30}]
+ const terms=[{desc:' 1 Day',value:1},{desc:' 7 Days',value:7},{desc:'14 Days',value:14},{desc:' 30 Day',value:30}]
 const n=new Date().toISOString().slice(0, 10) 
 
 
@@ -24,41 +24,42 @@ const n=new Date().toISOString().slice(0, 10)
 
     return (
         <>
-        <div className='hidden sm:block inset-0 absolute bg-black bg-opacity-40'></div>
+        <div className=' hidden z-20 fixed sm:block overflow-y-hidden inset-0  bg-black bg-opacity-40'></div>
        
-      <div className={`${darkTheme ? 'dark' : ''}  h-screen absolute w-full sm:w-9/12 sm:flex` }>
-
+      <div className={`${darkTheme ? 'dark' : ''} z-20 w-full  h-screen fixed   sm:flex` }>
+            
           <Sidebar />
            <motion.div variants={fadeIn} >
-               <div  className='dark:bg-slate-900 px-3 bg-white w-full h-screen  mx-auto z-40   ' >
+               <div 
+                 className='dark:bg-slate-900 px-3 bg-white w-full   h-screen sm:rounded-r-3xl    ' >
                    
                     <header>
                         <h1 className=' font-bold opacity-80 text-2xl pt-12  '>Create Invoice</h1>
                     </header>
                     <section className='h-96  mt-8 overflow-auto mb-8   '>
                         <p className='opacity-90 px-3  mb-4 font-bold text-blue-500'>Bill From</p>
-                        <form>
+                        <form className=''>
                             <div className='px-3'>
                                 <InputComponent  description='Street  Address' />
                                 <InputComponentTwo label1='City' label2='Postal Code' />
                                 <InputComponent  description='Country' />
                             </div>
                            
-                            <div className='mt-6 px-3'>
+                            <div className='mt-6 px-3 '>
                                <p className='opacity-90  mb-2 font-semibold text-blue-500'>Bill To</p>
                                 <InputComponent description='Client&apos;s Name' />
                                 <InputComponent description='Client&apos;s Email' />
                                 <InputComponent description='Street Address' />
                                 <InputComponentTwo label1='City' label2='Postal Code' />
                                 <InputComponent  description='Country' />
-                            <div className="flex  w-full  px-3 mt-2 mb-0 justify-between">
-                                <div className="w-1/2   ">
+                            <div className="flex  w-full md:w-9/12 sm:w-11/12  px-3 mt-2 mb-0 justify-between">
+                                <div className="w-1/2 md:w-7/12   ">
                                     <label className= 'dark:text-white text-gray-700  block  mb-2  tracking-wide  text-sm'>
                                         Invoice Date
                                     </label>
                                     <input className= 'dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full hover:cursor-pointer  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' value={n}  type="date" />
                                 </div>
-                                <div className="w-1/3    mb-6 ">
+                                <div className="w-1/3 md:w-4/12   mb-6 ">
                                     <label className= 'dark:text-white text-gray-700  block mb-2 tracking-wide text-sm'>
                                        <span className='hidden sm:inline'>Payment</span>  Terms
                                     </label>
@@ -72,17 +73,22 @@ const n=new Date().toISOString().slice(0, 10)
                                 
                             </div>
                             <InputComponent  description='Description' />
-                            <div className='w-full  '>
+                            <div className='w-full py-2   '>
                                 <label className= 'dark:text-white text-gray-700  block font-semibold  tracking-wide  text-xl  mb-2'  >
                                         Item List
                                 </label>
                                 <ItemsList inputArray={inputArray}  />
-                                <button
+                                
+                                  <button
                                 onClick={addInput}
-                                 className='bg-gray-100 dark:text-white dark:bg-slate-800 dark:hover:text-opacity-70 dark:hover:bg-opacity-70 hover:bg-gray-200 font-semibold text-gray-400 w-full py-3 rounded-3xl mx-auto'>
+                                 className='bg-gray-100 sm:w-10/12 md:w-9/12   px-3 dark:text-white dark:bg-slate-800 dark:hover:text-opacity-70 dark:hover:bg-opacity-70 hover:bg-gray-200 font-semibold text-gray-400 w-full  py-3 rounded-3xl     '>
                                      <span className='font-extrabold'>+</span> Add New Item</button>
+
+                                
+                                
     
                             </div> 
+                
                                 
 
                             </div>
@@ -122,4 +128,3 @@ const n=new Date().toISOString().slice(0, 10)
     )}   
 
     export default InvoiceDetails
-

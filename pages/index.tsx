@@ -5,6 +5,7 @@ import Sidebar from '../components/Sidebar'
 import Form from '../components/Form'
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
+
 import { motion, AnimatePresence } from "framer-motion";
 import {useContextProvider} from  '../context/context'
 
@@ -66,24 +67,26 @@ const Home: NextPage = () => {
    <motion.div animate='animate' initial='initial' className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}>
    
        
-         {!displayForm &&
          <>
+           
+         { displayForm &&
+          <div className='z-20   '>
+            <Head title='New Invoice' />
+            < Form hideForm={hideForm} />
+           </div> 
+         }
           <Head title={`invoices (${data.length}) `}/>
-        <Sidebar/>
-        <div className='flex flex-col mx-auto md:w-9/12 '>
+           {/* {!displayForm && <Sidebar/> } */}
+           <Sidebar/>
+          
+        <div className={`${displayForm ? 'fixed overflow-hidden ' : "" }  mx-auto  md:w-9/12`}>
             <Header displayNewInvoiceForm={displayNewInvoiceForm}
              description={description} handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={data.length}/>
             <InvoiceList invoices={data}  />
          
         </div> 
         </>
-         } 
-         { displayForm &&
-          <>
-            <Head title='New Invoice' />
-            < Form hideForm={hideForm} />
-           </> 
-         }
+      
       
        
     </motion.div>   

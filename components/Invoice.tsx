@@ -17,20 +17,20 @@ const Invoice:React.FC<InvoiceProps>=(props)=>{
 
     function handleColor() {
     if (props.status === "pending") {
-      return "text-orange-500";
+      return "text-orange-500 ";
     } else if (props.status === "paid") {
       return "text-green-500";
     } else {
-      return "text-black";
+      return "text-black ";
     }
   }
 
  
  
     function handleBackgroundColor() {
-    if (props.status === "pending") return "bg-orange-100";
+    if (props.status === "pending") return "bg-orange-100 bg-opacity-40";
     if (props.status === "paid") return "bg-green-100";
-    if (props.status === "draft") return "bg-gray-100";
+    if (props.status === "draft") return "bg-gray-100 bg-opacity-40";
   }
     return(
   

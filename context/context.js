@@ -3,7 +3,7 @@ import React from "react";
 const contextProvider = createContext();
 
 export function AppWrapper({ children }) {
-  const [inputArray, setInputArray] = React.useState([]);
+  const [inputArray, setInputArray] = React.useState([{ qty: 0, price: 1, name: "" }]);
   const [darkTheme, setDarkTheme] = React.useState(false);
 
   //toggling theme
@@ -18,6 +18,11 @@ export function AppWrapper({ children }) {
   //removing input field
   const removeInput = (index) => {
     const list = [...inputArray];
+    // if(list.length===1){
+    //   console.log('atleast one item is required')
+    //   return
+    // }
+   
     list.splice(index, 1);
     setInputArray(list);
   };

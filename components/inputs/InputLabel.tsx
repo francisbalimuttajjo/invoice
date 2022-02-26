@@ -5,7 +5,7 @@ import React from 'react'
 
 const InputLabel:React.FC<Props>=(props)=>{
     return (
-        <div className="w-full px-3">
+        <div className="w-full px-3  sm:w-11/12 md:w-9/12">
         <label className='dark:text-white text-gray-700 block  tracking-wide  text-sm  mb-2' >
             {props.description}
         </label>
