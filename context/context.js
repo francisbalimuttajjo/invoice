@@ -3,7 +3,9 @@ import React from "react";
 const contextProvider = createContext();
 
 export function AppWrapper({ children }) {
-  const [inputArray, setInputArray] = React.useState([{ qty: 0, price: 1, name: "" }]);
+  const [inputArray, setInputArray] = React.useState([
+    { qty: 0, price: 1, name: "" }
+  ]);
   const [darkTheme, setDarkTheme] = React.useState(false);
 
   //toggling theme
@@ -18,11 +20,10 @@ export function AppWrapper({ children }) {
   //removing input field
   const removeInput = (index) => {
     const list = [...inputArray];
-  
-   
-    list.splice(index, 1);
-    setInputArray(list);
+      list.splice(index, 1);
+      setInputArray(list);
   };
+  
  
   //changing qty
   const handleQtyChange = (e, index) => {
@@ -42,9 +43,8 @@ export function AppWrapper({ children }) {
   //changing name
   const handleNameChange = (e, index) => {
     const list = [...inputArray];
-
-    list[index].name = e.target.value;
-    setInputArray(list);
+     list[index].name = e.target.value;
+       setInputArray(list);
   };
 
   return (

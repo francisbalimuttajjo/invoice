@@ -5,6 +5,7 @@ type PropTypes={
     inputArray:{qty:number,price:number}[]
     qty:number
     price:number
+    name:string
      removeInputField:()=>void
       handleNameChange:(a:any)=>void
       handleQtyChange:(a:any)=>void
@@ -26,7 +27,9 @@ const validateNo=(no:number)=>{
             <label className='dark:text-white text-gray-700 block  tracking-wide  text-sm  mb-2' >
             Item Name
             </label>
-            <input className= 'dark:text-white dark:bg-slate-800 text-black  appearance-none block w-full   border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none  focus:border-gray-500'  type="text" 
+            <input
+             value={props.name}
+             className= 'dark:text-white dark:bg-slate-800 text-black  appearance-none block w-full   border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none  focus:border-gray-500'  type="text" 
             onChange={props.handleNameChange}
             />
         </div> 
@@ -62,14 +65,16 @@ const validateNo=(no:number)=>{
                     </p>
            </div>
            {
-            
+            props.inputArray.length !=1 &&
              <MdDelete
             onClick={props.removeInputField}
-           className={`${props.inputArray.length <2 ? 'invisible' : "visible"} text-xl  mt-12 hover:cursor-pointer text-gray-400 hover:text-red-700`}
+           className={`
+        
+           text-xl  mt-12 hover:cursor-pointer text-gray-400 hover:text-red-700`}
            
            />
            }
-           
+              {/* ${props.inputArray.length <2 ? 'invisible' : "visible"}  */}
         </div>
     </div>
      )

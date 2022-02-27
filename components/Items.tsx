@@ -14,7 +14,7 @@ import React from 'react'
 
     const[darkTheme,setDarkTheme,inputArray,add,removeInput,handleNameChange,handleQtyChange,handlePriceChange]=useContextProvider()
   
-
+   console.log('i',inputArray)
 
     
     
@@ -30,7 +30,7 @@ import React from 'react'
     handleNameChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handleNameChange(e,index)}
     handlePriceChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handlePriceChange(e,index)}
     handleQtyChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handleQtyChange(e,index)}
-    removeInputField={()=>removeInput(index)} key={index} qty={el.qty} price={el.price} />
+    removeInputField={()=>removeInput(index)} key={index} qty={el.qty} price={el.price} name={el.name} />
    
     )}
         </div>      

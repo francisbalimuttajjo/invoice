@@ -41,10 +41,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           referrerPolicy="no-referrer"
         />
       </Head>
+      {loading && <h1 className=''>Loading</h1>}
+      {!loading &&
         <AppWrapper>
            <Component {...pageProps} />
         </AppWrapper> 
-         
+}
        </>
     
   ) 

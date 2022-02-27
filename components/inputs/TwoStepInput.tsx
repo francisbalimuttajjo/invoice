@@ -2,6 +2,10 @@ import React from 'react'
  type Props={
     label1:string
     label2:string
+    inputValue1:string
+    handleInputChange1:(a:any)=>void
+    inputValue2:string
+    handleInputChange2:(a:any)=>void
  }
 
 const InputLabel:React.FC<Props>=(props)=>{
@@ -12,7 +16,8 @@ const InputLabel:React.FC<Props>=(props)=>{
                 {props.label1}
             </label>
             <input 
-            onChange={()=>console.log('changing')}
+            value={props.inputValue1}
+            onChange={props.handleInputChange1}
             className= 'dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type="text" />
         </div>
         <div className="w-1/3    mb-6 ">
@@ -20,7 +25,9 @@ const InputLabel:React.FC<Props>=(props)=>{
             {props.label2}
             </label>
             <input
-             onChange={()=>console.log('changing')}
+             value={props.inputValue2}
+            onChange={props.handleInputChange2}
+           
             
             className='dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type="text" />
         </div>
