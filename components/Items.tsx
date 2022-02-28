@@ -13,8 +13,7 @@ import React from 'react'
   const Items:React.FC<ItemsProps>=(props)=>{
 
     const[darkTheme,setDarkTheme,inputArray,add,removeInput,handleNameChange,handleQtyChange,handlePriceChange]=useContextProvider()
-  
-   console.log('i',inputArray)
+
 
     
     

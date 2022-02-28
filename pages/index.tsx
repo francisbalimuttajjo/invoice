@@ -69,7 +69,7 @@ const Home: NextPage = () => {
    
        
          <>
-         <Sidebar /> 
+         <Sidebar displayForm={displayForm} /> 
          { displayForm &&
           <div className='z-20   '>
             <Head title='New Invoice' />

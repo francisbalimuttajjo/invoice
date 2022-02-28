@@ -148,10 +148,10 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                   </div>
                   
                </div>
-               <div className= 'dark:bg-slate-80 bg-white sm:hidden flex justify-end mt-8 p-4'>
+               <div className= 'dark:bg-slate-800 bg-white sm:hidden flex justify-end mt-8 p-4'>
                   <button
                   onClick={handleEditing}
-                   className= 'dark:bg-slate-900 bg-gray-200 text-gray-500 hover:bg-gray-300 p-3 mx-1  xs:px-4 xs:py-3 xs:mx-2 rounded-3xl font-semibold'>
+                   className= 'dark:bg-slate-900 dark:hover:bg-gray-100 bg-gray-200 text-gray-500 hover:bg-gray-300 p-3 mx-1  xs:px-4 xs:py-3 xs:mx-2 rounded-3xl font-semibold'>
                       Edit
                   </button>
                   <button className='dark:bg-red-400 dark:hover:bg-red-300 bg-red-500 hover:bg-red-400 text-white p-2  mx-1  xs:px-6 xs:py-3 xs:mx-2 rounded-3xl font-semibold '>

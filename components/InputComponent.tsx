@@ -20,7 +20,7 @@ const validateNo=(no:number)=>{
 
 }
  const InputComponent:React.FC<PropTypes>=(props)=>{
-    const[darkTheme,setDarkTheme,inputArray,addInput,removeInput]=useContextProvider()
+   
      return(
         <div  className="w-full px-3  sm:flex">
         <div className='sm:mr-3'>   
@@ -34,7 +34,7 @@ const validateNo=(no:number)=>{
             />
         </div> 
         <div className='flex justify-around '>
-            <div className="w-2/12  sm:w-3/12 sm:mr-2 ">
+            <div className="w-4/12    mr-2 ">
                 <label className= 'dark:text-white text-gray-700 block  mb-2  tracking-wide  text-sm'>
                     Qty
                 </label>
@@ -55,26 +55,33 @@ const validateNo=(no:number)=>{
                 
                 />
            </div>
-           <div className="w-4/12    mb-6 ">
-                <label className= 'dark:text-white text-gray-700 block mb-2 tracking-wide  text-sm'>
+           <div className="w-4/12    mb-6 flex ">
+              <div className='w-9/12'>
+              <label className= 'dark:text-white text-gray-700 block mb-2 tracking-wide  text-sm'>
                 Total
                 </label>
-                <p className='dark:text-white text-gray-700 font-semibold   p-4   ' >
+                <p className='dark:text-white text-gray-700 font-semibold   px-2   py-4   ' >
                     {validateNo(props.qty*props.price) }
                     
-                    </p>
-           </div>
-           {
-            props.inputArray.length !=1 &&
-             <MdDelete
+                </p>
+              </div> 
+              <MdDelete
             onClick={props.removeInputField}
-           className={`
-        
-           text-xl  mt-12 hover:cursor-pointer text-gray-400 hover:text-red-700`}
+           className={`${props.inputArray.length <2 ? 'invisible' : "visible"}       
+           text-xl  mt-12 hover:cursor-pointer w-3/12 text-gray-400 hover:text-red-700`}
            
            />
-           }
-              {/* ${props.inputArray.length <2 ? 'invisible' : "visible"}  */}
+              
+           </div>
+         
+             {/* <MdDelete
+            onClick={props.removeInputField}
+           className={`${props.inputArray.length <2 ? 'invisible' : "visible"}       
+           text-xl  mt-12 hover:cursor-pointer text-gray-400 hover:text-red-700`}
+           
+           /> */}
+           
+             
         </div>
     </div>
      )
