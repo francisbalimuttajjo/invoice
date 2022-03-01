@@ -70,7 +70,7 @@ const Home: NextPage = () => {
        
          <>
          <Sidebar 
-         //displayForm={displayForm}
+         displayForm={displayForm}
           /> 
          { displayForm &&
           <div className='z-20   '>
