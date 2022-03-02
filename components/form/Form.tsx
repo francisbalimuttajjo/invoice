@@ -1,14 +1,14 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import {fadeIn} from '../animations/animation'
-import InputComponent from './inputs/InputLabel'
-import TwoStepInputComponent from './inputs/TwoStepInput'
+import {fadeIn} from '../../animations/animation'
+import InputComponent from './InputLabel'
+import TwoStepInputComponent from './TwoStepInput'
 import DateComponent from './DateComponent'
-import ItemsList from './Items'
+import ItemsList from '../Items'
 import Footer from './Footer'
-import {useContextProvider} from '../context/context'
-import {FormProps} from '../types/types'
-import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} from '../utils/fns'
+import {useContextProvider} from '../../context/context'
+import {FormProps} from '../../types/types'
+import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} from '../../utils/fns'
 
 
 

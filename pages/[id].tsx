@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Sidebar from '../components/Sidebar'
 import Head from '../components/Head'
-import InvoiceDetails from '../components/InvoiceDetails'
+import InvoiceDetails from '../components/invoiceDetails/InvoiceDetails'
 import { motion } from "framer-motion";
 import {useContextProvider} from '../context/context'
 
@@ -44,7 +44,7 @@ const DetailsPage: NextPage = () => {
     return (
         <motion.div animate='animate' initial='initial' >
             <Head title={`UGX ${invoice.invoiceNumber}`}/>
-            <div className={`${darkTheme? 'bg-slate-900': ""} ${darkTheme? 'text-white': ""} min-h-screen  sm:flex`}>
+            <div className={`${darkTheme? 'bg-slate-900 text-white ': ""}  min-h-screen  sm:flex`}>
             
                 <Sidebar />
                 <InvoiceDetails   invoice={invoice}  />

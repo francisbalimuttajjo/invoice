@@ -1,6 +1,6 @@
 import React from 'react'
 import { MdDelete } from "react-icons/md";
-import {useContextProvider} from '../context/context'
+import {useContextProvider} from '../../context/context'
 type PropTypes={
     inputArray:{qty:number,price:number}[]
     qty:number

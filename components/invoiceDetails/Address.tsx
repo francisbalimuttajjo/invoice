@@ -1,5 +1,5 @@
 import React from 'react'
-import {Address} from '../types/types'
+import {Address} from '../../types/types'
 
 const Address:React.FC<Address>=(props)=>{
     return(

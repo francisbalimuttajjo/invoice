@@ -1,5 +1,5 @@
 import React from 'react'
- import InputComponent from './InputComponent'
+ import InputComponent from './form/InputComponent'
  import {useContextProvider} from '../context/context'
 
 
