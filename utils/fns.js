@@ -4,7 +4,7 @@ function getDate(str) {
 }
 
 
-const termsArray=[{desc:' Choose ',value:0},{desc:' 1 Day',value:1},{desc:' 7 Days',value:7},{desc:'14 Days',value:14},{desc:' 30 Day',value:30}]
+const termsArray=[{desc:' Choose ',value:0},{desc:' 1 Day',value:1},{desc:' 7 Days',value:7},{desc:'14 Days',value:14},{desc:' 30 Days',value:30}]
 const initialValues={issuerStreet:"",receiverStreet:"",receiverName:"",issuerCountry:'',receiverEmail:'',description:"",issuerCity:'',receiverCity:'',receiverCountry:'',receiverPostalAddress:'',issuerPostalAddress:''}
 const initialErrorValues={date:'',paymentTerms:"",issuerStreet:"",receiverStreet:"",receiverName:"",issuerCountry:'',receiverEmail:'',description:"",issuerCity:'',receiverCity:'',receiverCountry:'',receiverPostalAddress:'',issuerPostalAddress:''}
 
@@ -62,9 +62,9 @@ export function getPaymentDate(date, days) {
   if (date) {
     const n = getDate(date);
     var res = new Date(n);
-    console.log(res);
+    // console.log(res);
     res.setDate(res.getDate() + days);
-    console.log(res);
+    // console.log(res);
     return res;
   }
   return;

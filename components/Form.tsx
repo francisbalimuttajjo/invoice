@@ -5,6 +5,7 @@ import InputComponent from './inputs/InputLabel'
 import TwoStepInputComponent from './inputs/TwoStepInput'
 import DateComponent from './DateComponent'
 import ItemsList from './Items'
+import Footer from './Footer'
 import {useContextProvider} from '../context/context'
 import {FormProps} from '../types/types'
 import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} from '../utils/fns'
@@ -13,11 +14,14 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
 
 
  const InvoiceDetails:React.FC<FormProps >=(props)=>{
-       const [darkTheme,toggleDarkTheme,inputArray,addInput]=useContextProvider()
+       const [darkTheme,toggleDarkTheme,inputArray,addInput, removeInput,
+        handleNameChange,
+        handleQtyChange,
+        handlePriceChange,checkEmptyField]=useContextProvider()
        const [date, setInvoiceDate] = React.useState();
        const [terms, setTerms] = React.useState(termsArray[0].value);
        const paymentDate=getPaymentDate(date, terms)
- 
+       const[submitting,setSubmitting]=React.useState(true)
       const [formValues,setFormValues]=React.useState(initialValues)
       const [formErrors,setFormErrors]=React.useState(initialErrorValues)
       const handleChange=(e:React.ChangeEvent<HTMLSelectElement>)=>{
@@ -26,18 +30,25 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
        
 
       }
+    //   console.log({inputArray,paymentDate,formValues})
    
      const onSubmit=()=>{
          setFormErrors(validate(formValues,date,terms))
+            const k=Object.keys(formErrors)
+            const d =checkEmptyField()
+
+            console.log({k,d})
+
+         if(Object.keys(formErrors).length === 0 && checkEmptyField() ){
+                     console.log('form is clear')
+                     return
+                 }
+                 console.log('some data is mising')
+    
        
      }
-    //  React.useEffect(()=>{
-    //     //  console.log('keys',Object.keys(formErrors))
-    //      console.log(formErrors)
-    //      if(Object.keys(formErrors).length === 0){
-    //          console.log('form is clear')
-    //      }
-    //  },[formErrors])
+   
+ 
     return (
         <>
         <div 
@@ -111,7 +122,7 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
 
                                 <InputComponent
                                 name='receiverStreet'
-                                  inputValue={formValues.receiverStreet}
+                                 inputValue={formValues.receiverStreet}
                                  handleInputChange={handleChange}
                                  error={formErrors.receiverStreet}
                                  description='Street Address' />
@@ -161,7 +172,9 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
                                 <label className= 'dark:text-white text-gray-700  block font-semibold  tracking-wide  text-xl  mb-2'  >
                                         Item List
                                 </label>
-                                <ItemsList inputArray={inputArray}  />
+                                <ItemsList submitting={submitting} inputArray={inputArray} 
+                                
+                                 />
                                 
                                   <button
                                 onClick={addInput}
@@ -174,20 +187,8 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
                         </form>
     
                     </section>
-                    <div className=' sticky bottom-0 flex '>
-                        <button
-                        onClick={props.hideForm}
-                         className='bg-gray-200 text-sm  sm:text-sm font-bold text-gray-400 hover:text-gray-500 hover:bg-gray-300 rounded-3xl px-2 py-3  sm:px-4 sm:py-3 '>Discard</button>
-                        <div className='flex right-0  absolute'>
-                            <button className= 'dark:hover:bg-opacity-30 hover:bg-opacity-90 p-2 sm:px-4 py-3 text-sm  sm:text-sm text-gray-500 font-bold rounded-3xl bg-black bg-opacity-80 '>Save as Draft</button>
-                            <button
-                            onClick={onSubmit}
-                             className='bg-blue-700 ml-1 text-white opacity-70 text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600'>Save & Send</button>
-
-                        </div>
-
-                    </div>
-                   
+                    <Footer onSubmit={onSubmit} hideForm={props.hideForm} />
+                                     
                </div>
         
             </motion.div> 
