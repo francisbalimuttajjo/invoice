@@ -22,7 +22,7 @@ const validateNo=(no:number)=>{
  const InputComponent:React.FC<PropTypes>=(props)=>{
    
      return(
-        <div  className="w-full px-3  sm:flex">
+        <div  className="w-full px-4  sm:flex">
         <div className='sm:mr-3'>   
             <label className='dark:text-white text-gray-700 block  tracking-wide  text-sm  mb-2' >
             Item Name

@@ -5,6 +5,8 @@
       changeDate:(e:any)=>void
       changeTerms:(e:any)=>void
       date?:string
+      error1?:string
+      error2?:string
       termValue:number
    
   }
@@ -17,25 +19,28 @@
             <label className= 'dark:text-white text-gray-700  block  mb-2  tracking-wide  text-sm'>
                 Invoice Date
             </label>
-            <input className= 'dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full hover:cursor-pointer  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
+            <input className={`${props.error1 ? "border-red-500 border ":"" } rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500 dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full hover:cursor-pointer  border border-gray-200`}
+            
             value={props.date} 
             onChange={props.changeDate} 
          
             
             type="date" /> 
-  
+            {props.error1 && <p className="text-red-500 text-xs mt-1 px-2 capitalize mb-3 italic">{props.error1} * </p>}
         </div>
          <div className="w-1/3 md:w-4/12   mb-6 ">
             <label className= 'dark:text-white text-gray-700  block mb-2 tracking-wide text-sm'>
                <span className='hidden sm:inline'>Payment</span>  Terms
             </label>
-            <select className=  'dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full hover:cursor-pointer   border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500'
+            <select className= {`${props.error2 ? "border-red-500 border ":""} border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500 dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full hover:cursor-pointer`}
+             
             onChange={props.changeTerms}
             value={props.termValue}
             >
              {props.terms.map(term=>  <option key={term.value} value={term.value}>{term.desc}</option>)}
                                                      
             </select>
+            {props.error2 && <p className="text-red-500 text-xs mt-1 px-2 capitalize mb-3 italic">{props.error2} * </p>}
         </div>
        
         

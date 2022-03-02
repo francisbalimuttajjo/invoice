@@ -37,7 +37,7 @@ const Invoice:React.FC<InvoiceProps>=(props)=>{
             <motion.div variants={fadeIn} 
             onClick={()=>router.push(`/${props.number}`)}
              className={` ${darkTheme? 'bg-slate-800':'bg-white'}  
-              hover:cursor-pointer hover:border-solid hover:border hover:border-gray-500
+              hover:cursor-pointer hover:border-solid hover:border    hover:border-gray-500
               mx-auto px-5 flex justify-between  py-3 my-2 h-28 sm:h-20 rounded-md sm:w-full md:w-9/12 w-10/12 `}>
                 
                 <div className='flex flex-col justify-around sm:flex-row sm:my-auto ' >

@@ -3,6 +3,7 @@ import type { NextPage } from 'next'
 import Head from '../components/Head'
 import Sidebar from '../components/Sidebar'
 import Form from '../components/Form'
+
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
 
@@ -51,7 +52,7 @@ const Home: NextPage = () => {
     setData(invoices)
     
     if(value==='all'){
-      setData(invoices)
+      setData(store)
       setDescription('total ')
     }else{
     const newData=store.filter(el=>el.status===value)  
