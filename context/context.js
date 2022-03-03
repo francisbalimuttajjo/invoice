@@ -18,7 +18,8 @@ function checkForEmptyFields(inputArray){
 
 export function AppWrapper({ children }) {
   const [inputArray, setInputArray] = React.useState([
-    { qty: 0, price: 1, name: "",errorName:'',errorQty:'',errorPrice:'' }
+    { qty: 0, price: 1, name: "",errorName:'',errorQty:'',errorPrice:'' },
+    
   ]);
   const [darkTheme, setDarkTheme] = React.useState(false);
 

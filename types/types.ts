@@ -2,7 +2,7 @@
   type AddressFormat={
        street:string,
        country:string,
-     block:string,
+     postalAddress:string,
       city:string
 
  }
@@ -22,23 +22,24 @@
      number:number | string
     // handleToggleTheme:()=>void
 }
-
+export type InvoiceFormat={
+  
+    invoiceNumber:number,
+    email:string,
+    status:string,
+    description:string,
+    debtor:string,
+    paymentDate:string,
+    issuingDate:string,
+    issuingAddress:AddressFormat,
+    debtorsAddress:AddressFormat
+    items:{name:string,qty:number,price:number}[],
+  }
 
 export type Props={
 
-   
-   invoice:{
-     invoiceNumber:number,
-     email:string,
-     status:string,
-     title:string,
-     debtor:string,
-     paymentDate:string,
-     issuingDate:string,
-     issuingAddress:AddressFormat,
-     debtorsAddress:AddressFormat
-     items:{description:string,amount:number}[],
-   }
+   handleEditing:()=>void
+   invoice:InvoiceFormat
  }
 //invoiceList
 interface Invoice{

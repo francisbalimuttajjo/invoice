@@ -24,7 +24,7 @@ const Sidebar:React.FC<HeadingProps>=(props)=>{
             <div className='flex flex-col  '>
                 <h1 className='font-semibold text-3xl '>Invoices</h1>
                 <p className=' text-sm opacity-50 mt-1 '>
-                    There {props.InvoiceTotal >1 ? ' are' : 'is'} {props.InvoiceTotal}  {props.description} {props.InvoiceTotal >1 ? ' Invoices' : 'Invoice'} </p>
+                    There {props.InvoiceTotal >1 ? ' are' : 'is'} {props.InvoiceTotal}  {props.description} {props.InvoiceTotal >1 ? ' Invoices' : ' Invoice'} </p>
 
             </div>
             <div className='flex sm:ml-20 sm:justify-end    '>

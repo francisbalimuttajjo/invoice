@@ -4,7 +4,8 @@ import React from 'react'
 
 
  type ItemsProps={
-        inputArray:{qty:number,price:number,error:string}[]
+        //inputArray:{qty:number,price:number,error:string}[]
+        inputArray:el[]
         submitting:boolean
   }
 

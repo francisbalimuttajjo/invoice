@@ -9,6 +9,7 @@ import { FaCircle } from "react-icons/fa";
 import {getSum} from '../../utils/fns'
 import Address from './Address'
 import Buttons from './Button'
+import Table from './Table'
 
  
 
@@ -19,7 +20,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
     const handleRouterBack=()=>router.back()
     const [darkTheme]=useContextProvider()
      
-      const handleEditing=()=>router.push(`/edit/${props.invoice.invoiceNumber}`)
+      // const handleEditing=()=>router.push(`/edit/${props.invoice.invoiceNumber}`)
      
   
     function handleColor() {
@@ -64,7 +65,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                    </div>
                  
                  <div className='right-0 absolute hidden sm:block '>
-                   <Buttons handleEditing={handleEditing} status={props.invoice.status} /> 
+                   <Buttons handleEditing={props.handleEditing} status={props.invoice.status} /> 
                </div>
                  
                </div>
@@ -76,7 +77,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                                 className= 'dark:text-white text-black text-sm opacity-80'
                             
                             >UG{props.invoice.invoiceNumber}</span></h1>
-                           <p className= "dark:opacity-90 opacity-50  text-sm font-normal -mt-1">{props.invoice.title}</p>
+                           <p className= "dark:opacity-90 opacity-50  text-sm font-normal -mt-1">{props.invoice.description}</p>
 
                          </div>
                         
@@ -121,15 +122,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                     <a href={`mailto:${props.invoice.email}`}><strong><em>{props.invoice.email}</em></strong></a>
                   </div>   
                   <div className= "dark:bg-slate-900 dark:font-semibold  font-normal bg-gray-50  flex p-4 mt-8 sm:mt-16 rounded-t-md  w-11/12 mx-auto min-h-fit">
-                    
-                    <ul className='mx-auto'>
-                        {props.invoice.items.map((item,index)=><li key={index} className='capitalize '>{item.description}</li>)}
-                    </ul>
-                    <ul className='mx-auto'>
-                        {props.invoice.items.map((item,index)=><li key={index} > Ugx <span className='ml-2'>{item.amount}</span></li>)}
-                    </ul>
-                    
-                 
+                    <Table items={props.invoice.items}/>                 
                   </div>
                   <div className= 'dark:bg-black bg-slate-900 justify-around  flex rounded-b-md  py-4  w-11/12 mx-auto min-h-fit'>
                       <p className='text-white text-sm font-semibold'>Amount Due</p>
@@ -138,7 +131,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                   
                </div>
                <div className= 'dark:bg-slate-800 bg-white sm:hidden flex justify-end mt-8 p-4'>
-                    <Buttons handleEditing={handleEditing} status={props.invoice.status} />
+                    <Buttons handleEditing={props.handleEditing} status={props.invoice.status} />
                </div>
               
             

@@ -103,7 +103,7 @@ export function handleCircleColor(props) {
   //   }
 }
 export function getSum(arr) {
-  const arrayOfNumbers = arr.map((el) => el.amount);
+  const arrayOfNumbers = arr.map((el) => el.price*el.qty);
   return arrayOfNumbers.reduce((acc, cv) => acc + cv, 0);
 }
  export{termsArray,initialValues,initialErrorValues}

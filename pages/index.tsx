@@ -2,7 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from '../components/Head'
 import Sidebar from '../components/Sidebar'
-import Form from '../components/form/Form'
+import Form from '../components/Form'
 
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
@@ -74,7 +74,7 @@ const Home: NextPage = () => {
          displayForm={displayForm}
           /> 
          { displayForm &&
-          <div className='z-20   '>
+          <div className='   '>
             <Head title='New Invoice' />
                        < Form hideForm={hideForm} />
            </div> 
@@ -82,7 +82,7 @@ const Home: NextPage = () => {
           <Head title={`invoices (${data.length}) `}/>
             
          
-        <div className={`${displayForm ? 'fixed overflow-hidden md:w-11/12 ' : "" }  mx-auto  md:w-9/12`}>
+        <div className={`${displayForm ? 'fixed sm:ml-24 md:ml-48 overflow-hidden md:w-11/12 ' : "" }  mx-auto  md:w-9/12`}>
             <Header displayNewInvoiceForm={displayNewInvoiceForm}
              description={description} handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={data.length}/>
            
