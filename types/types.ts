@@ -30,6 +30,7 @@ export type InvoiceFormat={
     description:string,
     debtor:string,
     paymentDate:string,
+    terms:number,
     issuingDate:string,
     issuingAddress:AddressFormat,
     debtorsAddress:AddressFormat

@@ -53,8 +53,8 @@ const Invoice:React.FC<InvoiceProps>=(props)=>{
                     
                 </div>
                 <div className='flex justify-between flex-col  sm:flex-row sm:my-auto relative ' >
-                    <h1 className={`${!darkTheme? 'opacity-50':''} capitalize  sm:mt-1.5 sm:mr-3 md:mr-12  text-sm sm:text-base    `}>{props.debtor}</h1>
-                    <p className='font-light hidden sm:inline my-auto mr-3 '>UGX <span className=' font-bold'>{props.amount}</span></p>
+                    <h1 className={`${!darkTheme? 'opacity-50':''} capitalize  sm:mt-1.5 sm:mr-3 md:mr-12 sm:min-w-28  text-sm sm:text-base    `}>{props.debtor}</h1>
+                    <p className='font-light hidden sm:inline my-auto mr-3 w-24'>UGX <span className=' font-bold'>{props.amount}</span></p>
                     <div className={`${handleBackgroundColor()} dark:bg-slate-700 px-3  bg-opacity-50   rounded-md py-2 w-24 `}>
                        
                         <p className={`${handleColor()} text-sm   capitalize font-semibold`}><FaCircle className='h-2 w-2 m-1 inline' /> {props.status}</p> 

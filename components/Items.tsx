@@ -4,9 +4,8 @@ import React from 'react'
 
 
  type ItemsProps={
-        //inputArray:{qty:number,price:number,error:string}[]
-        inputArray:el[]
-        submitting:boolean
+               inputArray:el[]
+        
   }
 
   type  el={qty:number,price:number,name:string
@@ -36,9 +35,9 @@ import React from 'react'
     handlePriceChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handlePriceChange(e,index)}
     handleQtyChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handleQtyChange(e,index)}
     removeInputField={()=>removeInput(index)} key={index} qty={el.qty} price={el.price} name={el.name}
-    errorName={props.submitting ? el.errorName :''}
-    errorQty={props.submitting ? el.errorQty :""}
-    errorPrice={props.submitting ?  el.errorPrice :""}
+    errorName={el.errorName }
+    errorQty={ el.errorQty }
+    errorPrice={  el.errorPrice}
    
      />
     

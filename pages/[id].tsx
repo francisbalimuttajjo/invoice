@@ -15,57 +15,40 @@ const DetailsPage: NextPage = () => {
        const[items,setItems]=React.useState(invoice.items)
        const handleEditing=()=>setEditing(true)   
 
-//hiding
+//checking if their empty fields in items array
 const checkEmptyField=()=>{
-    console.log('clicked')
-     const list=[...items]
+        const list=[...items]
+
     for(let j=0;j<list.length;j++){
       //reseting state
       list[j].errorName=''
       list[j].errorQty=''
       list[j].errorPrice=''
-
-        if(list[j].name==''){
-            console.log(list[j])
-            list[j].errorName='name is required'
-           
+   
+        if(list[j].name==""){
+              list[j].errorName='name is required'           
             setItems(list);
             
           }
-            if(list[j].qty<1  ){
+            if(list[j].qty<1 || isNaN(list[j].qty)  ){
+               
         list[j].errorQty='required'
+      
         setItems(list);
         
       }
-        if(list[j].price==1  ){
+        if(list[j].price < 1 || isNaN(list[j].price) ){
         list[j].errorPrice='required'
         setItems(list);
         
       }
-      return checkForEmptyFields(items)
+      
     }  
     
-    // const list=[...items]
-    // for(let j=0;j<list.length;j++){
-    //   //reseting state
-    //   list[j].errorName=''
-    //   list[j].errorQty=''
-    //   list[j].errorPrice=''
-     
-    //   if(list[j].name==''){
-    //     list[j].errorName='name is required'
-       
-    //     setItems(list);
-        
-    //   }
-    //   if(list[j].qty<1  ){
-    //     list[j].errorQty='required'
-    //     setItems(list);
-        
-    //   }
+    return checkForEmptyFields(items)
     }
 //
-       
+  //changes in input fields     
 const nameChange = (e:React.ChangeEvent<HTMLSelectElement>, index:number) => {
     
      const list = [...items];
@@ -84,14 +67,16 @@ const nameChange = (e:React.ChangeEvent<HTMLSelectElement>, index:number) => {
       list[index].price =parseInt( e.target.value);
         setItems(list);
   };
+
+  //removing field from array
   const removeInputField=(index:number)=>{
-       console.log(index)
+       
        const list = [...items];
        if(list.length===1)return
        list.splice(index, 1);
        setItems(list);
   }
-
+//adding input field
   const addInputField = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setItems([...items, { qty: 0, price: 1, name: "",errorName:'',errorQty:'',errorPrice:''}]);

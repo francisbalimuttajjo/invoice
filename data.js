@@ -8,9 +8,10 @@ const invoice={
                   country:' Uganda'
     },
     status:'pending', description:'Re-branding', InvoiceNumber:674345,
+    terms:7,
     issuingAddress:{
     street:'19 Mobutu Roard',
- 
+    
     country:'Uganda', postalAddress:'411', city:'Kampala' 
 
 },paymentDate:'21 Jan 2022',email:'bafra@gmail.com',issuingDate:'01 Jan 2022',items:[

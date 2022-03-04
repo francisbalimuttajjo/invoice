@@ -55,17 +55,18 @@ export function AppWrapper({ children }) {
       list[j].errorPrice=''
      
       if(list[j].name==''){
-        list[j].errorName='name is required'
+        list[j].errorName=' required'
        
         setInputArray(list);
         
       }
-      if(list[j].qty<1  ){
+      
+      if((list[j].qty < 1 || isNaN(list[j].qty)) ){
         list[j].errorQty='required'
         setInputArray(list);
         
       }
-    if(list[j].price <=1 ){
+    if(list[j].price < 1 || isNaN(list[j].price)){
       list[j].errorPrice='required'
       setInputArray(list);
     }

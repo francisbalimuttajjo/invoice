@@ -21,7 +21,7 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
        const [date, setInvoiceDate] = React.useState();
        const [terms, setTerms] = React.useState(termsArray[0].value);
        const paymentDate=getPaymentDate(date, terms)
-       const[submitting,setSubmitting]=React.useState(true)
+      
       const [formValues,setFormValues]=React.useState(initialValues)
       const [formErrors,setFormErrors]=React.useState(initialErrorValues)
       const handleChange=(e:React.ChangeEvent<HTMLSelectElement>)=>{
@@ -30,7 +30,7 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
        
 
       }
-    //   console.log({inputArray,paymentDate,formValues})
+    //    console.log({inputArray,paymentDate,formValues})
    
      const onSubmit=()=>{
          setFormErrors(validate(formValues,date,terms))
@@ -172,7 +172,7 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
                                 <label className= 'dark:text-white text-gray-700  block font-semibold  tracking-wide  text-xl  mb-2'  >
                                         Item List
                                 </label>
-                                <ItemsList submitting={submitting} inputArray={inputArray} 
+                                <ItemsList inputArray={inputArray} 
                                 
                                  />
                                 
@@ -187,7 +187,7 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
                         </form>
     
                     </section>
-                    <Footer onSubmit={onSubmit} hideForm={props.hideForm} />
+                    <Footer save='Save & Send' draft='Save as Draft' discard='Discard' onSubmit={onSubmit} hideForm={props.hideForm} />
                                      
                </div>
         

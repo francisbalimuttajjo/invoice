@@ -39,6 +39,7 @@ type Props={
         receiverName:props.invoice.debtor,
         receiverEmail:props.invoice.email,
         description:props.invoice.description,
+        terms:props.invoice.terms,
         // date:props.invoice.issuingDate,
         receiverPostalAddress:props.invoice.debtorsAddress.postalAddress,
         issuerPostalAddress:props.invoice.issuingAddress.postalAddress,
@@ -50,11 +51,13 @@ type Props={
         handlePriceChange,checkEmptyField,setInputArray]=useContextProvider()
         
        const [date, setInvoiceDate] = React.useState();
-       const [terms, setTerms] = React.useState(termsArray[1].value);
-       const paymentDate=getPaymentDate(date, terms)
+      
+       
        const[submitting,setSubmitting]=React.useState(true)
       const [formValues,setFormValues]=React.useState(values)
+      const [terms, setTerms] = React.useState(formValues.terms);
       const [formErrors,setFormErrors]=React.useState(initialErrorValues)
+      const paymentDate=getPaymentDate(date, terms)
       const handleChange=(e:React.ChangeEvent<HTMLSelectElement>)=>{
           const{name,value}=e.target
           
@@ -71,8 +74,9 @@ type Props={
    
      const onSubmit=()=>{
          setFormErrors(validate(formValues,date,terms))
-         console.log({status:props.checkEmptyField(),formValues})
-      
+     console.log({paymentDate,status:props.checkEmptyField(),formValues,items:props.items})
+        props.checkEmptyField()
+        
          if(Object.keys(formErrors).length === 0 && props.checkEmptyField() ){
                      console.log('editform is clear')
                      return
@@ -209,7 +213,8 @@ type Props={
                                   handlePriceChange={(e: React.ChangeEvent<HTMLSelectElement>) => props.priceChange(e, index)}
                                   handleQtyChange={(e: React.ChangeEvent<HTMLSelectElement>) => props.qtyChange(e, index)}
                                   removeInputField={() => props.removeInputField(index)}
-                                   errorName={el.errorName} errorQty={el.errorQty} errorPrice={el.errorPrice}                                  />)}
+                                  errorName={el.errorName} errorQty={el.errorQty} errorPrice={el.errorPrice}  
+                                                                   />)}
                                  
                                   
                                     <button
@@ -223,7 +228,7 @@ type Props={
                           </form>
       
                       </section>
-                      <Footer onSubmit={onSubmit} hideForm={props.cancel} />
+                      <Footer onSubmit={onSubmit} discard='Cancel' save='Save Changes' hideForm={props.cancel} />
                                        
                  </div>
           
