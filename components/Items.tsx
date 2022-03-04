@@ -31,7 +31,7 @@ import React from 'react'
       return(
        <div className='md:w-9/12 sm:w-11/12'> 
            
-    {inputArray.map((el:el,index:index)=><InputComponent inputArray={inputArray}
+    {props.inputArray.map((el:el,index:index)=><InputComponent inputArray={props.inputArray}
     handleNameChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handleNameChange(e,index)}
     handlePriceChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handlePriceChange(e,index)}
     handleQtyChange={(e: React.ChangeEvent<HTMLSelectElement>)=>handleQtyChange(e,index)}

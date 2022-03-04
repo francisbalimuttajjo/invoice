@@ -1,20 +1,9 @@
 import { createContext, useContext } from "react";
 import React from "react";
+import{checkForEmptyFields} from '../utils/fns'
 const contextProvider = createContext();
 
-//function
-function checkForEmptyFields(inputArray){
-  let arr=[]
-  inputArray.map(el=>{
-   if(!el.name || el.qty<1 || el.price==1){
-     arr.push(el)
-   }
-  })
-  if(arr.length <1){
-    return true
-  }
-  return false
-}
+
 
 export function AppWrapper({ children }) {
   const [inputArray, setInputArray] = React.useState([
@@ -105,7 +94,8 @@ export function AppWrapper({ children }) {
         handleNameChange,
         handleQtyChange,
         handlePriceChange,
-        checkEmptyField
+        checkEmptyField,
+        setInputArray
       ]}
    
     >

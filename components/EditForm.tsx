@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from "framer-motion";
 import {fadeIn} from '../animations/animation'
 import InputComponent from './form/InputLabel'
+import ItemComponent from './form/InputComponent'
 import TwoStepInputComponent from './form/TwoStepInput'
 import DateComponent from './form/DateComponent'
 import ItemsList from './Items'
@@ -15,6 +16,13 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
 type Props={
     cancel:()=>void
     invoice:InvoiceFormat
+    checkEmptyField:()=>void
+    nameChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
+    qtyChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
+    priceChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
+    removeInputField:(e:number)=>void
+    addInputField:(e: any)=>void
+    items:{ qty: number, price: number, name: string,errorName:string,errorQty:string,errorPrice:string}[]
 
 }
 
@@ -39,42 +47,41 @@ type Props={
        const [darkTheme,toggleDarkTheme,inputArray,addInput, removeInput,
         handleNameChange,
         handleQtyChange,
-        handlePriceChange,checkEmptyField]=useContextProvider()
+        handlePriceChange,checkEmptyField,setInputArray]=useContextProvider()
+        
        const [date, setInvoiceDate] = React.useState();
-       const [terms, setTerms] = React.useState(termsArray[0].value);
+       const [terms, setTerms] = React.useState(termsArray[1].value);
        const paymentDate=getPaymentDate(date, terms)
        const[submitting,setSubmitting]=React.useState(true)
       const [formValues,setFormValues]=React.useState(values)
       const [formErrors,setFormErrors]=React.useState(initialErrorValues)
       const handleChange=(e:React.ChangeEvent<HTMLSelectElement>)=>{
           const{name,value}=e.target
+          
           setFormValues({...formValues,[name]:value})
+
+         
        
 
       }
-      const yy=props.invoice.items
-      console.log({inputArray,yy})
+
+      
+
     //   console.log({inputArray,paymentDate,formValues})
    
      const onSubmit=()=>{
          setFormErrors(validate(formValues,date,terms))
-            const k=Object.keys(formErrors)
-            const d =checkEmptyField()
-
-            console.log({k,d})
-
-         if(Object.keys(formErrors).length === 0 && checkEmptyField() ){
-                     console.log('form is clear')
+         console.log({status:props.checkEmptyField(),formValues})
+      
+         if(Object.keys(formErrors).length === 0 && props.checkEmptyField() ){
+                     console.log('editform is clear')
                      return
                  }
-                 console.log('some data is mising')
+                 console.log('edit form  is mising something')
     
        
      }
-    const items=[{ qty: 13, price: 31, name: "eggs",errorName:'',errorQty:'',errorPrice:'' },
-    { qty: 20, price: 19, name: "egg",errorName:'',errorQty:'',errorPrice:'' },
-    { qty: 20, price: 19, name: "egg",errorName:'',errorQty:'',errorPrice:'' },
-    { qty: 20, price: 19, name: "egg",errorName:'',errorQty:'',errorPrice:'' },]
+   
  
     return (
         <>
@@ -197,13 +204,16 @@ type Props={
                                   <label className= 'dark:text-white text-gray-700  block font-semibold  tracking-wide  text-xl  mb-2'  >
                                           Item List
                                   </label>
-                                  {/* <ItemsList submitting={submitting} inputArray={props.invoice.items}  */}
-                                  <ItemsList submitting={submitting} inputArray={items} 
-                                  
-                                   />
+                                  {props.items.map((el,index)=><ItemComponent key={index} qty={el.qty} inputArray={props.items} price={el.price} name={el.name}
+                                  handleNameChange={(e: React.ChangeEvent<HTMLSelectElement>) => props.nameChange(e, index)}
+                                  handlePriceChange={(e: React.ChangeEvent<HTMLSelectElement>) => props.priceChange(e, index)}
+                                  handleQtyChange={(e: React.ChangeEvent<HTMLSelectElement>) => props.qtyChange(e, index)}
+                                  removeInputField={() => props.removeInputField(index)}
+                                   errorName={el.errorName} errorQty={el.errorQty} errorPrice={el.errorPrice}                                  />)}
+                                 
                                   
                                     <button
-                                  onClick={addInput}
+                                  onClick={props.addInputField}
                                    className='bg-gray-100 sm:w-10/12 md:w-9/12   px-3 dark:text-white dark:bg-slate-800 dark:hover:text-opacity-70 dark:hover:bg-opacity-70 hover:bg-gray-200 font-semibold text-gray-400 w-full  py-3 rounded-3xl     '>
                                        <span className='font-extrabold'>+</span> Add New Item</button>
      
@@ -220,33 +230,9 @@ type Props={
               </motion.div> 
      
         </div>
-          
-                 {/* <motion.div variants={fadeIn} >
-             <div className='ml-24 mt-60' >
-                 editing
-                 <button onClick={props.cancel}>cancel</button>
-                   
-                   
-                                     
-               </div>
-        
-            </motion.div>  */}
         </div>
        
-      {/* <div className={`${darkTheme ? 'dark' : ''} z-20 w-full  h-screen fixed   sm:flex` }> */}
-            
-          {/* <motion.div variants={fadeIn} >
-             <div className='z-50' >
-                 editing
-                 <button onClick={props.cancel}>cancel</button>
-                   
-                   
-                                     
-               </div>
-        
-            </motion.div>  */}
-   
-      {/* </div> */}
+
       </>      
     
     )}   

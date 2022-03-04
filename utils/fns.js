@@ -106,4 +106,18 @@ export function getSum(arr) {
   const arrayOfNumbers = arr.map((el) => el.price*el.qty);
   return arrayOfNumbers.reduce((acc, cv) => acc + cv, 0);
 }
+
+//function
+ export function checkForEmptyFields(inputArray){
+  let arr=[]
+  inputArray.map(el=>{
+   if(!el.name || el.qty<1 || el.price==1){
+     arr.push(el)
+   }
+  })
+  if(arr.length <1){
+    return true
+  }
+  return false
+}
  export{termsArray,initialValues,initialErrorValues}

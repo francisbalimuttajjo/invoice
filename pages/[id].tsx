@@ -5,55 +5,97 @@ import EditForm from '../components/EditForm'
 import Head from '../components/Head'
 import InvoiceDetails from '../components/invoiceDetails/InvoiceDetails'
 import { motion } from "framer-motion";
+import{invoice} from '../data'
+import{checkForEmptyFields} from '../utils/fns'
 import {useContextProvider} from '../context/context'
-
 
 const DetailsPage: NextPage = () => {
        const [darkTheme]=useContextProvider()
        const [editing,setEditing]=React.useState(false)
-       const handleEditing=()=>setEditing(true)
+       const[items,setItems]=React.useState(invoice.items)
+       const handleEditing=()=>setEditing(true)   
+
+//hiding
+const checkEmptyField=()=>{
+    console.log('clicked')
+     const list=[...items]
+    for(let j=0;j<list.length;j++){
+      //reseting state
+      list[j].errorName=''
+      list[j].errorQty=''
+      list[j].errorPrice=''
+
+        if(list[j].name==''){
+            console.log(list[j])
+            list[j].errorName='name is required'
+           
+            setItems(list);
+            
+          }
+            if(list[j].qty<1  ){
+        list[j].errorQty='required'
+        setItems(list);
+        
+      }
+        if(list[j].price==1  ){
+        list[j].errorPrice='required'
+        setItems(list);
+        
+      }
+      return checkForEmptyFields(items)
+    }  
     
-
-
-
-    const invoice={
-        debtor:'francis bafra mayanja' ,
-        invoiceNumber:456353,
-        debtorsAddress:{
-            street:'Kampala Rd',
-                     city:' Makindye',
-                      postalAddress:  '2E',
-                      country:' Uganda'
-        },
-        status:'pending', description:'Re-branding', InvoiceNumber:674345,
-        issuingAddress:{
-        street:'19 Mobutu Roard',
+    // const list=[...items]
+    // for(let j=0;j<list.length;j++){
+    //   //reseting state
+    //   list[j].errorName=''
+    //   list[j].errorQty=''
+    //   list[j].errorPrice=''
      
-        country:'Uganda', postalAddress:'411', city:'Kampala' 
-
-    },paymentDate:'21 Jan 2022',email:'bafra@gmail.com',issuingDate:'01 Jan 2022',items:[
-        // { qty: 7, price: 40, name: "eggs", },
-        // { qty: 20, price: 911, name: "eggs" },
-        // { qty: 11, price: 230, name: "eggs" },
-        // { qty: 4, price: 100, name: "eggs2" },
-        // { qty: 6, price: 200, name: "eggs" }
-        // { qty: 13, price: 31, name: "eggs",errorName:'',errorQty:'',errorPrice:'' },
-        // { qty: 20, price: 19, name: "egg",errorName:'',errorQty:'',errorPrice:'' },
-        // { qty: 20, price: 19, name: "egg",errorName:'',errorQty:'',errorPrice:'' },
-        // { qty: 20, price: 19, name: "egg",errorName:'',errorQty:'',errorPrice:'' },
+    //   if(list[j].name==''){
+    //     list[j].errorName='name is required'
        
-
-        { qty: 4, price: 41, name: "iik",errorName:'',errorQty:'',errorPrice:'' },
-        { qty: 0, price: 1, name: "jjj",errorName:'',errorQty:'',errorPrice:'' },
-        { qty: 7, price: 40, name: "eggs",errorName:'',errorQty:'',errorPrice:'' },
-        { qty: 20, price: 911, name: "eggs",errorName:'',errorQty:'',errorPrice:'' },
-        { qty: 11, price: 230, name: "eggs",errorName:'',errorQty:'',errorPrice:'' },
-        { qty: 4, price: 100, name: "eggs2",errorName:'',errorQty:'',errorPrice:'' },
-        { qty: 6, price: 200, name: "eggs",errorName:'',errorQty:'',errorPrice:'' }
+    //     setItems(list);
+        
+    //   }
+    //   if(list[j].qty<1  ){
+    //     list[j].errorQty='required'
+    //     setItems(list);
+        
+    //   }
+    }
+//
        
-    ],
-}
-   
+const nameChange = (e:React.ChangeEvent<HTMLSelectElement>, index:number) => {
+    
+     const list = [...items];
+      list[index].name = e.target.value;
+        setItems(list);
+  };
+  const qtyChange = (e:React.ChangeEvent<HTMLSelectElement>, index:number) => {
+    
+     const list = [...items];
+      list[index].qty =parseInt( e.target.value);
+        setItems(list);
+  };
+  const priceChange = (e:React.ChangeEvent<HTMLSelectElement>, index:number) => {
+    
+     const list = [...items];
+      list[index].price =parseInt( e.target.value);
+        setItems(list);
+  };
+  const removeInputField=(index:number)=>{
+       console.log(index)
+       const list = [...items];
+       if(list.length===1)return
+       list.splice(index, 1);
+       setItems(list);
+  }
+
+  const addInputField = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setItems([...items, { qty: 0, price: 1, name: "",errorName:'',errorQty:'',errorPrice:''}]);
+  };
     return (
         <motion.div animate='animate' initial='initial' >
             
@@ -66,7 +108,14 @@ const DetailsPage: NextPage = () => {
                 <InvoiceDetails handleEditing={handleEditing}   invoice={invoice}  />
              
              {editing &&
-              <EditForm  invoice={invoice } cancel={()=>setEditing(false)} />}
+              <EditForm 
+              nameChange={nameChange} 
+              qtyChange={qtyChange} 
+              priceChange={priceChange} 
+              removeInputField={removeInputField}
+              addInputField={addInputField}
+              checkEmptyField={checkEmptyField}
+              invoice={invoice } items={items} cancel={()=>setEditing(false)} />}
                 
                 
             
