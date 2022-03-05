@@ -8,7 +8,7 @@ import ItemsList from './Items'
 import Footer from './form/Footer'
 import {useContextProvider} from '../context/context'
 import {FormProps} from '../types/types'
-import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} from '../utils/fns'
+import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../utils/fns'
 
 
 
@@ -18,10 +18,8 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
         handleNameChange,
         handleQtyChange,
         handlePriceChange,checkEmptyField]=useContextProvider()
-       const [date, setInvoiceDate] = React.useState();
+        const [startDate, setStartDate] =React.useState( new Date());
        const [terms, setTerms] = React.useState(termsArray[0].value);
-       const paymentDate=getPaymentDate(date, terms)
-      
       const [formValues,setFormValues]=React.useState(initialValues)
       const [formErrors,setFormErrors]=React.useState(initialErrorValues)
       const handleChange=(e:React.ChangeEvent<HTMLSelectElement>)=>{
@@ -30,14 +28,17 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
        
 
       }
-    //    console.log({inputArray,paymentDate,formValues})
+      const paymentDate=addDays(startDate,terms)
+      
+     
+
+   
    
      const onSubmit=()=>{
-         setFormErrors(validate(formValues,date,terms))
-            const k=Object.keys(formErrors)
-            const d =checkEmptyField()
-
-            console.log({k,d})
+         setFormErrors(validate(formValues,startDate,terms))
+           
+            console.log({formErrors,paymentDate})
+         
 
          if(Object.keys(formErrors).length === 0 && checkEmptyField() ){
                      console.log('form is clear')
@@ -151,10 +152,11 @@ import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} fro
 
                                   {/* invoice date */}
                                 <DateComponent 
-                                   date={date}
+                                   startDate={startDate}
+                                    changeDate={(date) => setStartDate(date)} 
                                    error1={formErrors.date}
                                    error2={formErrors.paymentTerms}
-                                  changeDate={(e:any)=>setInvoiceDate(e.target.value)}
+                                 
                                  changeTerms={(e: React.ChangeEvent<HTMLSelectElement>)=> setTerms(parseInt(e.target.value))}
                                  termValue={terms}
                                  terms={termsArray} />

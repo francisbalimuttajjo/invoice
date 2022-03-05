@@ -5,59 +5,34 @@ import InputComponent from './form/InputLabel'
 import ItemComponent from './form/InputComponent'
 import TwoStepInputComponent from './form/TwoStepInput'
 import DateComponent from './form/DateComponent'
-import ItemsList from './Items'
 import Sidebar from './Sidebar'
 import Footer from './form/Footer'
 import {useContextProvider} from '../context/context'
-import {InvoiceFormat} from '../types/types'
-import {getPaymentDate,validate,termsArray,initialValues,initialErrorValues} from '../utils/fns'
+import {InvoiceProps} from '../types/types'
+import{values } from '../data'
+import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../utils/fns'
 
 
-type Props={
-    cancel:()=>void
-    invoice:InvoiceFormat
-    checkEmptyField:()=>void
-    nameChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
-    qtyChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
-    priceChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
-    removeInputField:(e:number)=>void
-    addInputField:(e: any)=>void
-    items:{ qty: number, price: number, name: string,errorName:string,errorQty:string,errorPrice:string}[]
 
-}
 
- const InvoiceDetails:React.FC<Props >=(props)=>{
+ const InvoiceDetails:React.FC<InvoiceProps >=(props)=>{
 
     
-    const values={
-        issuerStreet:props.invoice.issuingAddress.street,
-        issuerCity:props.invoice.issuingAddress.city,
-        issuerCountry:props.invoice.issuingAddress.country,
-        receiverStreet:props.invoice.debtorsAddress.street,
-        receiverCity:props.invoice.debtorsAddress.city,
-        receiverCountry:props.invoice.debtorsAddress.country,
-        receiverName:props.invoice.debtor,
-        receiverEmail:props.invoice.email,
-        description:props.invoice.description,
-        terms:props.invoice.terms,
-        // date:props.invoice.issuingDate,
-        receiverPostalAddress:props.invoice.debtorsAddress.postalAddress,
-        issuerPostalAddress:props.invoice.issuingAddress.postalAddress,
-
-    }
+ 
        const [darkTheme,toggleDarkTheme,inputArray,addInput, removeInput,
         handleNameChange,
         handleQtyChange,
         handlePriceChange,checkEmptyField,setInputArray]=useContextProvider()
         
-       const [date, setInvoiceDate] = React.useState();
-      
-       
-       const[submitting,setSubmitting]=React.useState(true)
+  
+        
+     
       const [formValues,setFormValues]=React.useState(values)
       const [terms, setTerms] = React.useState(formValues.terms);
       const [formErrors,setFormErrors]=React.useState(initialErrorValues)
-      const paymentDate=getPaymentDate(date, terms)
+      const [startDate, setStartDate] =React.useState(new Date(formValues.issuingDate) );
+       
+      const paymentDate=addDays(startDate, terms)
       const handleChange=(e:React.ChangeEvent<HTMLSelectElement>)=>{
           const{name,value}=e.target
           
@@ -73,7 +48,7 @@ type Props={
     //   console.log({inputArray,paymentDate,formValues})
    
      const onSubmit=()=>{
-         setFormErrors(validate(formValues,date,terms))
+         setFormErrors(validate(formValues,startDate,terms))
      console.log({paymentDate,status:props.checkEmptyField(),formValues,items:props.items})
         props.checkEmptyField()
         
@@ -187,10 +162,12 @@ type Props={
   
                                     {/* invoice date */}
                                   <DateComponent 
-                                     date={date}
+                                    
+                                     startDate={startDate}
+                                     changeDate={(date) => setStartDate(date)} 
                                      error1={formErrors.date}
                                      error2={formErrors.paymentTerms}
-                                    changeDate={(e:any)=>setInvoiceDate(e.target.value)}
+                                   
                                    changeTerms={(e: React.ChangeEvent<HTMLSelectElement>)=> setTerms(parseInt(e.target.value))}
                                    termValue={terms}
                                    terms={termsArray} />

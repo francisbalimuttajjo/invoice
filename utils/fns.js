@@ -58,17 +58,24 @@ export   function validate(values,date,terms){
    
     return errors
  }
-export function getPaymentDate(date, days) {
-  if (date) {
-    const n = getDate(date);
-    var res = new Date(n);
-    // console.log(res);
-    res.setDate(res.getDate() + days);
-    // console.log(res);
-    return res;
-  }
-  return;
+
+
+ export   function addDays(date, days) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
 }
+// export function getPaymentDate(date, days) {
+//   if (date) {
+//     const n = getDate(date);
+//     var res = new Date(n);
+//     // console.log(res);
+//     res.setDate(res.getDate() + days);
+//     // console.log(res);
+//     return res;
+//   }
+//   return;
+// }
 
 
 

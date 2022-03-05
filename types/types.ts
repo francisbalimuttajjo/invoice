@@ -13,15 +13,15 @@
 
 
 
- export type InvoiceProps={
-    InvoiceDueDate:string
-    debtor:string
-    status:string
+//  export type InvoiceProps={
+//     InvoiceDueDate:string
+//     debtor:string
+//     status:string
     
-       amount:number
-     number:number | string
-    // handleToggleTheme:()=>void
-}
+//        amount:number
+//      number:number | string
+//     // handleToggleTheme:()=>void
+// }
 export type InvoiceFormat={
   
     invoiceNumber:number,
@@ -36,7 +36,21 @@ export type InvoiceFormat={
     debtorsAddress:AddressFormat
     items:{name:string,qty:number,price:number}[],
   }
+//invoice
+export type InvoiceProps={
+  cancel:()=>void
+  invoice:InvoiceFormat
+  checkEmptyField:()=>void
+  nameChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
+  qtyChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
+  priceChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
+  removeInputField:(e:number)=>void
+  addInputField:(e: any)=>void
+  items:{ qty: number, price: number, name: string,errorName:string,errorQty:string,errorPrice:string}[]
 
+}
+
+//invoice
 export type Props={
 
    handleEditing:()=>void
