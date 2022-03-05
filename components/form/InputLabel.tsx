@@ -1,5 +1,5 @@
 import React from 'react'
- type Props={
+ type PropsTypes={
     description:string
     inputValue:string
     placeholder?:string
@@ -9,7 +9,7 @@ import React from 'react'
     error?:string
  }
 
-const InputLabel:React.FC<Props>=(props)=>{
+const InputLabel:React.FC<PropsTypes>=(props)=>{
     
     return (
         <div className="w-full px-3  sm:w-11/12 md:w-9/12">
