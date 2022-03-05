@@ -13,15 +13,15 @@
 
 
 
-//  export type InvoiceProps={
-//     InvoiceDueDate:string
-//     debtor:string
-//     status:string
+ export type InvoicePropsHome={
+    InvoiceDueDate:string
+    debtor:string
+    status:string
     
-//        amount:number
-//      number:number | string
-//     // handleToggleTheme:()=>void
-// }
+       amount:number
+     number:number | string
+    // handleToggleTheme:()=>void
+}
 export type InvoiceFormat={
   
     invoiceNumber:number,

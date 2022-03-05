@@ -3,13 +3,13 @@ import {useRouter} from 'next/router'
 import { motion } from "framer-motion";
 import {fadeIn} from '../animations/animation'
 import {useContextProvider} from '../context/context'
-import {InvoiceProps} from '../types/types'
+import {InvoicePropsHome} from '../types/types'
 import { FaCircle } from "react-icons/fa";
 
 
 
 
-const Invoice:React.FC<InvoiceProps>=(props)=>{
+const Invoice:React.FC<InvoicePropsHome>=(props)=>{
    const router =useRouter()
    
    const [darkTheme]=useContextProvider()
