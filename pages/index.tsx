@@ -1,24 +1,24 @@
 import React from 'react'
-import type { NextPage } from 'next'
+import type { NextPage,GetServerSideProps } from 'next'
 import Head from '../components/Head'
 import Sidebar from '../components/Sidebar'
 import Form from '../components/form/Form'
 import{categories,invoices} from '../data'
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
-import { motion, AnimatePresence } from "framer-motion";
+import {Invoice} from '../types/types'
+import { motion} from "framer-motion";
 import {useContextProvider} from  '../context/context'
+import axios from 'axios'
 
+type Props={
+data:Invoice
+}
 
-
-
-
-
-//storing invoices
-const store=invoices
-//
-
-const Home: NextPage = () => {
+//const Home: NextPage <Props> = (props) => {
+const Home: NextPage  = (props) => {
+  console.log('props',props)
+  const store=props.data
  const [data,setData]=React.useState(store)
  const [description,setDescription]=React.useState('total ')
  const [displayForm,setDisplayForm]=React.useState(false)
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
       setData(store)
       setDescription('total ')
     }else{
-    const newData=store.filter(el=>el.status===value)  
+    const newData=store.filter((el:Invoice)=>el.status===value)  
     setData(newData)
     setDescription(value)
     
@@ -87,9 +87,13 @@ const Home: NextPage = () => {
 
 
 export default Home
-
-
-
-
-
-
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const res = await axios.get("http://localhost:3000/api/invoices");
+  // const res = await axios.get(
+  //   "https://invoicebafra.vercel.app/api/inoices"
+  // );
+  // console.log(res)
+  return {
+    props: { data: res.data.invoices },
+  };
+}

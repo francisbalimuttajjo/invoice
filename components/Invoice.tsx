@@ -3,13 +3,22 @@ import {useRouter} from 'next/router'
 import { motion } from "framer-motion";
 import {fadeIn} from '../animations/animation'
 import {useContextProvider} from '../context/context'
-import {InvoicePropsHome} from '../types/types'
+
 import { FaCircle } from "react-icons/fa";
 
-
-
-
+// {status:'pending',debtor:'bafra mayanja',amount:5000,number:64564,InvoiceDueDate:"2 Aug 2022" },
+type InvoicePropsHome={
+  paymentDate:string
+  debtor:string
+  status:string
+  amount:number
+  
+  invoiceNumber:number | string
+  
+  // items:{name:string,qty:number,price:number}[],
+}
 const Invoice:React.FC<InvoicePropsHome>=(props)=>{
+  // console.log({props})
    const router =useRouter()
    
    const [darkTheme]=useContextProvider()
@@ -35,7 +44,7 @@ const Invoice:React.FC<InvoicePropsHome>=(props)=>{
     return(
   
             <motion.div variants={fadeIn} 
-            onClick={()=>router.push(`/${props.number}`)}
+            onClick={()=>router.push(`/${props.invoiceNumber}`)}
              className={` ${darkTheme? 'bg-slate-800 dark':'bg-white'}  
               hover:cursor-pointer hover:border-solid hover:border    hover:border-gray-500
               mx-auto px-5 flex justify-between  py-3 my-2 h-28 sm:h-20 rounded-md sm:w-full md:w-9/12 w-10/12 `}>
@@ -44,10 +53,10 @@ const Invoice:React.FC<InvoicePropsHome>=(props)=>{
                     <h1 className='text-neutral-400 font-bold '>#<span
                         className=  "dark:text-white text-black"
                     
-                    >UG{props.number}</span></h1>
+                    >UG{props.invoiceNumber}</span></h1>
                     <div className='sm:flex sm:justify-even'>
-                        <p className='opacity-50 text-sm sm:ml-3 sm:pt-0.5 '>Due <span>{props.InvoiceDueDate}</span></p>
-                        <p className='font-light sm:hidden  '>UGX <span className=' font-bold'>{props.amount}</span></p>
+                        <p className='opacity-50 text-sm sm:ml-3 sm:pt-0.5 '>Due <span>{props.paymentDate}</span></p>
+                        <p className='font-light sm:hidden  '>UGX <span className=' font-bold'>{props.amount} </span></p>
                         
                     </div>
                     

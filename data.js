@@ -8,7 +8,8 @@ const invoice={
                   country:' Uganda'
     },
     issuingDate:'Thu Mar 27 2022 16:55:42 GMT+0300',
-    status:'pending', description:'Re-branding', InvoiceNumber:674345,
+    status:'pending', description:'Re-branding', 
+    //InvoiceNumber:674345,
     terms:7,
     issuingAddress:{
     street:'19 Mobutu Roard',

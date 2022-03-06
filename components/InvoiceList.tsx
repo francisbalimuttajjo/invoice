@@ -1,7 +1,7 @@
 import React from 'react'
 import Invoice from '../components/Invoice'
 import {InvoiceListProps} from '../types/types'
-
+import {getSum} from '../utils/fns'
 
   
   const InvoiceList:React.FC<InvoiceListProps>=(props)=>{
@@ -9,7 +9,7 @@ import {InvoiceListProps} from '../types/types'
       return(
         <>
          { props.invoices.map(invoice=>        
-            < Invoice InvoiceDueDate={invoice.InvoiceDueDate} debtor={invoice.debtor} key={invoice.number}  amount={invoice.amount} number={invoice.number} status={invoice.status}  />
+            < Invoice paymentDate={invoice.paymentDate} debtor={invoice.debtor} key={invoice._id}  amount={getSum(invoice.items)} invoiceNumber={invoice.invoiceNumber} status={invoice.status}  />
           
           ) }
         </>

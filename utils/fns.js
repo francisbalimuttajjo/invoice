@@ -87,7 +87,9 @@ export   function validate(values,date,terms){
 
 
 export function getSum(arr) {
+   
   const arrayOfNumbers = arr.map((el) => el.price*el.qty);
+ 
   return arrayOfNumbers.reduce((acc, cv) => acc + cv, 0);
 }
 
