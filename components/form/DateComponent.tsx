@@ -1,20 +1,11 @@
    import React from 'react'
    import DatePicker from 'react-datepicker'
+   import {DateProps} from '../../types/types'
    import "react-datepicker/dist/react-datepicker.css";
 
-  type Props={
-      terms:{desc:string,value:number}[]
-      changeDate:(e:any)=>void
-      changeTerms:(e:any)=>void
-    //   date?:string
-      error1?:string
-      error2?:string
-      startDate:Date
-      termValue:number
-   
-  }
  
- const DateComponent:React.FC<Props>=(props)=>{
+ 
+ const DateComponent:React.FC<DateProps>=(props)=>{
   
     return(
         <div className="flex  w-full md:w-9/12 sm:w-11/12  px-3 mt-2 mb-0 justify-between">

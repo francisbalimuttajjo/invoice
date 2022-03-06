@@ -17,13 +17,11 @@
     InvoiceDueDate:string
     debtor:string
     status:string
+    amount:number
+    number:number | string
     
-       amount:number
-     number:number | string
-    // handleToggleTheme:()=>void
 }
-export type InvoiceFormat={
-  
+export type InvoiceFormat={  
     invoiceNumber:number,
     email:string,
     status:string,
@@ -52,10 +50,10 @@ export type InvoiceProps={
 
 //invoice
 export type Props={
-
    handleEditing:()=>void
    invoice:InvoiceFormat
  }
+
 //invoiceList
 interface Invoice{
   InvoiceDueDate:string
@@ -86,3 +84,40 @@ export type FormProps={
 
 //items 
 
+//table
+export type TableProps={
+    items:   { 
+        qty: number,
+         price: number, 
+         name: string,
+         errorName?:string,
+         errorQty?:string,
+         errorPrice?:string }[]
+}
+
+//date component 
+export  type DateProps={
+  terms:{desc:string,value:number}[]
+  changeDate:(e:any)=>void
+  changeTerms:(e:any)=>void
+  error1?:string
+  error2?:string
+  startDate:Date
+  termValue:number
+
+}
+//input components
+export type InputComponentTypes={
+  inputArray:{qty:number,price:number}[]
+  qty:number
+  price:number
+  name:string
+   removeInputField:()=>void
+    handleNameChange:(a:any)=>void
+    handleQtyChange:(a:any)=>void
+    handlePriceChange:(a:any)=>void
+    errorName:string
+    errorQty:string
+    errorPrice:string
+   
+}

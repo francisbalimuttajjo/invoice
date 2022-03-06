@@ -1,24 +1,11 @@
 import React from 'react'
 import { MdDelete } from "react-icons/md";
 import{validateNo } from '../../utils/fns'
-
-type PropTypes={
-    inputArray:{qty:number,price:number}[]
-    qty:number
-    price:number
-    name:string
-     removeInputField:()=>void
-      handleNameChange:(a:any)=>void
-      handleQtyChange:(a:any)=>void
-      handlePriceChange:(a:any)=>void
-      errorName:string
-      errorQty:string
-      errorPrice:string
-     
-}
+import{InputComponentTypes } from '../../types/types'
 
 
- const InputComponent:React.FC<PropTypes>=(props)=>{
+
+ const InputComponent:React.FC<InputComponentTypes>=(props)=>{
     
    
      return(
@@ -80,12 +67,7 @@ type PropTypes={
               
            </div>
          
-             {/* <MdDelete
-            onClick={props.removeInputField}
-           className={`${props.inputArray.length <2 ? 'invisible' : "visible"}       
-           text-xl  mt-12 hover:cursor-pointer text-gray-400 hover:text-red-700`}
-           
-           /> */}
+       
            
              
         </div>

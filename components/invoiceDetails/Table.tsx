@@ -1,16 +1,8 @@
 import React from 'react'
  import {validateNo} from '../../utils/fns'
+ import {TableProps} from '../../types/types'
 
-type Props={
-    items:   { 
-        qty: number,
-         price: number, 
-         name: string,
-         errorName?:string,
-         errorQty?:string,
-         errorPrice?:string }[]
-}
-const Table:React.FC<Props>=(props)=>{
+const Table:React.FC<TableProps>=(props)=>{
     return(
         <table className="table-fixed mx-auto w-full sm:w-9/12 ">
 <thead className=' mb-2 text-xs sm:text-base text-slate-400 '>

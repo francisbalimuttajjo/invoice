@@ -18,8 +18,9 @@ const DetailsPage: NextPage = () => {
 //checking if their empty fields in items array
 const checkEmptyField=()=>{
         const list=[...items]
+        
 
-    for(let j=0;j<list.length;j++){
+    for(let j=0;j<list.length;j++){ 
       //reseting state
       list[j].errorName=''
       list[j].errorQty=''

@@ -1,7 +1,7 @@
-function getDate(str) {
-  const arr = str.split("-");
-  return arr.join(",").replace(/,/g, "-");
-}
+// function getDate(str) {
+//   const arr = str.split("-");
+//   return arr.join(",").replace(/,/g, "-");
+// }
 const validateNo=(no)=>{
     if(isNaN(no)){
         return 0

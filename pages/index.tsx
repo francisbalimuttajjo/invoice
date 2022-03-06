@@ -2,12 +2,10 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from '../components/Head'
 import Sidebar from '../components/Sidebar'
-import Form from '../components/Form'
+import Form from '../components/form/Form'
 import{categories,invoices} from '../data'
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
-
-
 import { motion, AnimatePresence } from "framer-motion";
 import {useContextProvider} from  '../context/context'
 
