@@ -13,10 +13,11 @@ import axios from 'axios'
 
 type Props={
 data:Invoice
+// filter:()=>void
 }
 
-//const Home: NextPage <Props> = (props) => {
-const Home: NextPage  = (props) => {
+const Home: NextPage <Props> = (props) => {
+//const Home: NextPage  = (props) => {
   console.log('props',props)
   const store=props.data
  const [data,setData]=React.useState(store)
@@ -88,12 +89,21 @@ const Home: NextPage  = (props) => {
 
 export default Home
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await axios.get("http://localhost:3000/api/invoices");
-  // const res = await axios.get(
-  //   "https://invoicebafra.vercel.app/api/inoices"
-  // );
-  // console.log(res)
-  return {
-    props: { data: res.data.invoices },
-  };
+  try{
+    const res = await axios.get("http://localhost:3000/api/invoices");
+    // const res = await axios.get(
+    //   "https://invoicebafra.vercel.app/api/inoices"
+    // );
+    // console.log(res)
+    return {
+      props: { data: res.data.invoices },
+    };
+
+  }
+  catch(err){
+    return{
+      props:{message:'something went wrong'}
+    }
+  }
+
 }
