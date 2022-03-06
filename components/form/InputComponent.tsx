@@ -1,5 +1,6 @@
 import React from 'react'
 import { MdDelete } from "react-icons/md";
+import{validateNo } from '../../utils/fns'
 
 type PropTypes={
     inputArray:{qty:number,price:number}[]
@@ -16,13 +17,7 @@ type PropTypes={
      
 }
 
-const validateNo=(no:number)=>{
-    if(isNaN(no)){
-        return 0
-    }
-    return no
 
-}
  const InputComponent:React.FC<PropTypes>=(props)=>{
     
    

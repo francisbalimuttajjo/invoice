@@ -9,7 +9,7 @@ import Sidebar from './Sidebar'
 import Footer from './form/Footer'
 import {useContextProvider} from '../context/context'
 import {InvoiceProps} from '../types/types'
-import{values } from '../data'
+import{getValues } from '../data'
 import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../utils/fns'
 
 
@@ -18,7 +18,7 @@ import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../u
  const InvoiceDetails:React.FC<InvoiceProps >=(props)=>{
 
     
- 
+    const values=getValues(props)
        const [darkTheme,toggleDarkTheme,inputArray,addInput, removeInput,
         handleNameChange,
         handleQtyChange,

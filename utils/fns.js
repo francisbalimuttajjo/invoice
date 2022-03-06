@@ -2,7 +2,13 @@ function getDate(str) {
   const arr = str.split("-");
   return arr.join(",").replace(/,/g, "-");
 }
+const validateNo=(no)=>{
+    if(isNaN(no)){
+        return 0
+    }
+    return no
 
+}
 
 const termsArray=[{desc:' Choose ',value:0},{desc:' 1 Day',value:1},{desc:' 7 Days',value:7},{desc:'14 Days',value:14},{desc:' 30 Days',value:30}]
 const initialValues={issuerStreet:"",receiverStreet:"",receiverName:"",issuerCountry:'',receiverEmail:'',description:"",issuerCity:'',receiverCity:'',receiverCountry:'',receiverPostalAddress:'',issuerPostalAddress:''}
@@ -98,4 +104,4 @@ export function getSum(arr) {
   }
   return false
 }
- export{termsArray,initialValues,initialErrorValues}
+ export{termsArray,initialValues,validateNo,initialErrorValues}

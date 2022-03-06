@@ -6,7 +6,7 @@ import {fadeIn} from '../../animations/animation'
 import {useContextProvider} from '../../context/context'
 import {Props} from '../../types/types'
 import { FaCircle } from "react-icons/fa";
-import {getSum} from '../../utils/fns'
+import {getSum,validateNo} from '../../utils/fns'
 import Address from './Address'
 import Buttons from './Button'
 import Table from './Table'
@@ -126,7 +126,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                   </div>
                   <div className= 'dark:bg-black bg-slate-900 justify-around  flex rounded-b-md  py-4  w-11/12 mx-auto min-h-fit'>
                       <p className='text-white text-sm font-semibold'>Amount Due</p>
-                      <p className='text-white  font-bold'>Ugx <span>{getSum(props.invoice.items)}</span></p>
+                      <p className='text-white  font-bold'>Ugx <span>{validateNo(getSum(props.invoice.items))}</span></p>
                   </div>
                   
                </div>

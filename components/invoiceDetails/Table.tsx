@@ -1,5 +1,5 @@
 import React from 'react'
-// import {Props} from '../../types/types'
+ import {validateNo} from '../../utils/fns'
 
 type Props={
     items:   { 
@@ -26,9 +26,9 @@ const Table:React.FC<Props>=(props)=>{
 
 key={index}>
         <td className='pl-2 sm:pl-6 '>{item.name}</td>
-        <td className='pl-6 sm:pl-12'>{item.qty}</td>
-        <td className='pl-4 sm:pl-12'>{item.price}</td>
-        <td className='pl-5 sm:pl-10'>{item.price*item.qty}</td>
+        <td className='pl-6 sm:pl-12'>{validateNo(item.qty)}</td>
+        <td className='pl-4 sm:pl-12'>{validateNo(item.price)}</td>
+        <td className='pl-5 sm:pl-10'>{validateNo(item.price*item.qty)}</td>
       </tr>)}
 </tbody>
 </table> 
