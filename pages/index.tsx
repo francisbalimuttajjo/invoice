@@ -90,7 +90,9 @@ export default Home
 type Data =  InvoiceFormat[] 
 
 export const getServerSideProps = async () => {
-  const res = await axios.get("http://localhost:3000/api/invoices"
+  const res = await axios.get(
+    "https://invoicebafra.vercel.app/api/invoices"
+    //"http://localhost:3000/api/invoices"
                      
   );
   const data1: Data = res.data.invoices
