@@ -3,17 +3,30 @@ import {useRouter} from 'next/router'
 import { motion } from "framer-motion";
 import {fadeIn} from '../animations/animation'
 import {useContextProvider} from '../context/context'
+import {AddressFormat} from '../types/types'
 
 import { FaCircle } from "react-icons/fa";
 
 // {status:'pending',debtor:'bafra mayanja',amount:5000,number:64564,InvoiceDueDate:"2 Aug 2022" },
 type InvoicePropsHome={
-  paymentDate:string
-  debtor:string
-  status:string
-  amount:number
+   invoiceNumber:number,
+    email:string,
+    status:string,
+    description?:string,
+    debtor:string,
+    paymentDate:string,
+    terms?:number,
+    issuingDate:string,
+    _id:string,
+    issuingAddress?:AddressFormat,
+    debtorsAddress?:AddressFormat
+    items:{name:string,qty:number,price:number}[],
+  // paymentDate:string
+  // debtor:string
+  // status:string
+   amount:number
   
-  invoiceNumber:number | string
+  // invoiceNumber:number | string
   
   // items:{name:string,qty:number,price:number}[],
 }

@@ -9,7 +9,7 @@ import {getSum} from '../utils/fns'
       return(
         <>
          { props.invoices.map(invoice=>        
-            < Invoice paymentDate={invoice.paymentDate} debtor={invoice.debtor} key={invoice._id}  amount={getSum(invoice.items)} invoiceNumber={invoice.invoiceNumber} status={invoice.status}  />
+            < Invoice paymentDate={invoice.paymentDate} debtor={invoice.debtor} key={invoice._id} amount={getSum(invoice.items)} invoiceNumber={invoice.invoiceNumber} status={invoice.status} email={''} issuingDate={''} _id={''} items={[]}  />
           
           ) }
         </>

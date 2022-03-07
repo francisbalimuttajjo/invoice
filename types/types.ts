@@ -1,5 +1,5 @@
   //Address.tsx,Invoice.tsx,InvoiceDetails.tsx
- export type AddressFormat={
+ export interface AddressFormat{
        street:string,
        country:string,
      postalAddress:string,
@@ -23,13 +23,14 @@
 }
 export type InvoiceFormat={  
     invoiceNumber:number,
-    email:string,
+    email?:string,
     status:string,
-    description:string,
+    description?:string,
     debtor:string,
     paymentDate:string,
-    terms:number,
+    terms?:number,
     issuingDate:string,
+    _id?:string,
     issuingAddress:AddressFormat,
     debtorsAddress:AddressFormat
     items:{name:string,qty:number,price:number}[],
@@ -63,9 +64,19 @@ export interface Invoice{
   status:string
   _id:string
  }
+//  type Format={
+//   paymentDate: string,
+//   debtor:string,
+//   status:string,
+//   _id?:string,
+//   invoiceNumber:number,
+//   items:{name:string,qty:number,price:number}[],
+
+//  }
 
  export type InvoiceListProps={
-   invoices:Invoice[]
+    invoices:InvoiceFormat[]
+  // invoices:Format[]
   
 
   
