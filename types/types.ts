@@ -64,19 +64,11 @@ export interface Invoice{
   status:string
   _id:string
  }
-//  type Format={
-//   paymentDate: string,
-//   debtor:string,
-//   status:string,
-//   _id?:string,
-//   invoiceNumber:number,
-//   items:{name:string,qty:number,price:number}[],
 
-//  }
 
  export type InvoiceListProps={
     invoices:InvoiceFormat[]
-  // invoices:Format[]
+
   
 
   

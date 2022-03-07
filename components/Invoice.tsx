@@ -7,7 +7,7 @@ import {AddressFormat} from '../types/types'
 
 import { FaCircle } from "react-icons/fa";
 
-// {status:'pending',debtor:'bafra mayanja',amount:5000,number:64564,InvoiceDueDate:"2 Aug 2022" },
+
 type InvoicePropsHome={
    invoiceNumber:number,
     email:string,
@@ -21,19 +21,12 @@ type InvoicePropsHome={
     issuingAddress?:AddressFormat,
     debtorsAddress?:AddressFormat
     items:{name:string,qty:number,price:number}[],
-  // paymentDate:string
-  // debtor:string
-  // status:string
-   amount:number
+    amount:number
   
-  // invoiceNumber:number | string
   
-  // items:{name:string,qty:number,price:number}[],
 }
 const Invoice:React.FC<InvoicePropsHome>=(props)=>{
-  // console.log({props})
-   const router =useRouter()
-   
+    const router =useRouter()   
    const [darkTheme]=useContextProvider()
 
 
@@ -67,15 +60,15 @@ const Invoice:React.FC<InvoicePropsHome>=(props)=>{
                         className=  "dark:text-white text-black"
                     
                     >UG{props.invoiceNumber}</span></h1>
-                    <div className='sm:flex sm:justify-even'>
+                    <div className='sm:flex sm:justify-even '>
                         <p className='opacity-50 text-sm sm:ml-3 sm:pt-0.5 '>Due <span>{props.paymentDate}</span></p>
                         <p className='font-light sm:hidden  '>UGX <span className=' font-bold'>{props.amount} </span></p>
                         
                     </div>
                     
                 </div>
-                <div className='flex justify-between flex-col  sm:flex-row sm:my-auto relative ' >
-                    <h1 className={`${!darkTheme? 'opacity-50':''} capitalize  sm:mt-1.5 sm:mr-3 md:mr-12 sm:min-w-28  text-sm sm:text-base    `}>{props.debtor}</h1>
+                <div className='flex justify-between items-end sm:items-center  flex-col  sm:flex-row sm:my-auto relative ' >
+                    <h1 className= 'dark:opacity-50 capitalize    sm:mr-3 md:mr-12   text-sm sm:text-base    '>{props.debtor}</h1>
                     <p className='font-light hidden sm:inline my-auto mr-3 w-24'>UGX <span className=' font-bold'>{props.amount}</span></p>
                     <div className={`${handleBackgroundColor()} dark:bg-slate-700 px-3  bg-opacity-50   rounded-md py-2 w-24 `}>
                        

@@ -10,6 +10,7 @@ import{checkForEmptyFields} from '../utils/fns'
 import {useContextProvider} from '../context/context'
 
 const DetailsPage: NextPage = () => {
+  //function Home({ data1 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
        const [darkTheme]=useContextProvider()
        const [editing,setEditing]=React.useState(false)
        const[items,setItems]=React.useState(invoice.items)
