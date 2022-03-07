@@ -1,7 +1,4 @@
-// function getDate(str) {
-//   const arr = str.split("-");
-//   return arr.join(",").replace(/,/g, "-");
-// }
+
 const validateNo=(no)=>{
     if(isNaN(no)){
         return 0
@@ -71,17 +68,7 @@ export   function validate(values,date,terms){
   result.setDate(result.getDate() + days);
   return result;
 }
-// export function getPaymentDate(date, days) {
-//   if (date) {
-//     const n = getDate(date);
-//     var res = new Date(n);
-//     // console.log(res);
-//     res.setDate(res.getDate() + days);
-//     // console.log(res);
-//     return res;
-//   }
-//   return;
-// }
+
 
 
 
@@ -97,7 +84,7 @@ export function getSum(arr) {
  export function checkForEmptyFields(inputArray){
   let arr=[]
   inputArray.map(el=>{
-   if(!el.name || el.qty<1 || el.price==1){
+   if(!el.name || el.qty<1 || el.price<1){
      arr.push(el)
    }
   })

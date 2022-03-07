@@ -15,6 +15,7 @@ import {
   termsArray,
   sendData,
   initialValues,
+  checkForEmptyFields,
   initialErrorValues,
 } from "../../utils/fns";
 
@@ -54,11 +55,12 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
 
   //gandling submit event
   const onSubmit = () => {
+    console.log({ formValues, inputArray, startDate, paymentDate, terms });
+    console.log({ k: checkForEmptyFields(inputArray) });
     //checking if all inputs are filled
     setFormErrors(validate(formValues, startDate, terms));
-
     if (Object.keys(formErrors).length === 0 && checkEmptyField()) {
-         console.log("form is clear");
+      console.log("form is clear");
       setLoading((prev) => !prev);
       axios
         .post("/api/invoice", data)
@@ -66,15 +68,17 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
           if (res.data.status === "success") {
             setLoading((prev) => !prev);
             setSuccessMessage("invoice saved");
+            //   setTimeout(()=>window.location.reload(),3000)
           }
-          console.log(res);
         })
         .catch((err) => {
           setError("please try again");
+          setLoading((prev) => !prev);
         });
-     
+         
       return;
-    }
+      }
+      setError("please fill all fields");
     return console.log("form is not clear");
   };
 
