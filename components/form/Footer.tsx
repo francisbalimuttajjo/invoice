@@ -2,12 +2,19 @@ type Props={
     onSubmit:()=>void
     hideForm:()=>void
     save:string
-    discard?:string
+    discard?: string
+    loading:boolean
     draft?:string
 
 }
 
- const Footer:React.FC<Props >=(props)=>{
+const Footer: React.FC<Props> = (props) => {
+    const disableBtn = () => {
+        if (props.loading) {
+            return 'cursor-not-allowed bg-blue-700 ml-1 text-white opacity-70  text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600'
+        }
+        return "bg-blue-700 ml-1 text-white opacity-70  text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600"
+    }
      return(
         <div className=' sticky bottom-0 flex '>
         <button
@@ -16,8 +23,9 @@ type Props={
         <div className='flex right-0  absolute'>
            {props.draft && <button className= 'dark:hover:bg-opacity-30 hover:bg-opacity-90 p-2 sm:px-4 py-3 text-sm  sm:text-sm text-gray-500 font-bold rounded-3xl bg-black bg-opacity-80 '>{props.draft}</button>}
             <button
-            onClick={props.onSubmit}
-             className='bg-blue-700 ml-1 text-white opacity-70 text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600'>{props.save}</button>
+                     onClick={props.onSubmit}
+                     disabled={props.loading}
+             className={disableBtn()}>{props.save}</button>
       
         </div>
       

@@ -7,7 +7,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 
 type Response={
-  msg:string
+  msg: string
+  status:string
 }
 export default async function handler(
   req: NextApiRequest,
@@ -17,9 +18,9 @@ export default async function handler(
     connect()
        const invoice=await Invoice.create(req.body)
     
-    return res.status(200).json({ msg:'invoice created' })
+    return res.status(200).json({ status:'success',msg:'invoice created' })
   }
-  return res.status(200).json({ msg: 'invalid method' })
+  return res.status(200).json({status:"fail", msg: 'invalid method' })
  
   // res.status(200).json({ name: 'John Doe' })
 }

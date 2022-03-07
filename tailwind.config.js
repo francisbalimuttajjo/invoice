@@ -7,6 +7,7 @@ module.exports = {
   variants: {
     extend: {},
   },
+  
   theme: {
     screens: {
       xs: "550px",

@@ -106,4 +106,55 @@ export function getSum(arr) {
   }
   return false
 }
+export function stringifyDate(str){
+    const monthNames = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+
+      const d = new Date(str);
+      const month = monthNames[d.getMonth()];
+      const day = d.getDate();
+      const year = d.getFullYear();
+
+      const date =month + " " +day  + ", " + "" + year;
+      return date
+}
+
+
+export function sendData(formValues,inputArray,startDate,paymentDate,terms) {
+    const data={    issuingAddress: {
+            street: formValues.issuerStreet,
+            city: formValues.issuerCity,
+            postalAddress: formValues.issuerPostalAddress,
+            country: formValues.issuerCountry,
+          },
+          debtorsAddress: {
+            street: formValues.receiverStreet,
+            city: formValues.receiverCity,
+            postalAddress: formValues.receiverPostalAddress,
+            country: formValues.receiverCountry,
+          },
+          items: inputArray,
+          paymentDate,
+          email: formValues.receiverEmail,
+          issuingDate: startDate,
+          terms,
+          invoiceNumber: 4554,
+          debtor: formValues.receiverName,
+          status: "pending",
+          description: formValues.description,
+    }
+    return data
+}
  export{termsArray,initialValues,validateNo,initialErrorValues}

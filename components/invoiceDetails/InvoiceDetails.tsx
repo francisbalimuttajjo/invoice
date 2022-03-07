@@ -1,12 +1,11 @@
 import React from 'react'
 import {useRouter} from 'next/router'
 import { IoIosArrowBack } from "react-icons/io";
-import { motion } from "framer-motion";
-import {fadeIn} from '../../animations/animation'
+import  Wrapper from '../Wrapper'
 import {useContextProvider} from '../../context/context'
 import {Props} from '../../types/types'
 import { FaCircle } from "react-icons/fa";
-import {getSum,validateNo} from '../../utils/fns'
+import {getSum,validateNo,stringifyDate} from '../../utils/fns'
 import Address from './Address'
 import Buttons from './Button'
 import Table from './Table'
@@ -54,7 +53,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                
                  >Go back</p>
            </div>
-            <motion.div variants={fadeIn}>
+            <Wrapper>
                <div className='dark:bg-slate-800 bg-white relative w-11/12   h-20 sm:justify-start sm:h-24 mt-8 mx-auto rounded-md flex justify-around items-center '>
                 
                  <p className= ' dark:opacity-90 opacity-50 absolute left-3 text-sm '>Status</p>
@@ -96,11 +95,11 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                     <div>
                         <div >
                             <p className= "dark:opacity-90 opacity-50  text-xs xs:text-base" >Invoice Date</p>
-                            <time className='text-xs xs:text-base'> <strong>{props.invoice.issuingDate} </strong></time>
+                            <time className='text-xs xs:text-base'> <strong>{stringifyDate(props.invoice.issuingDate)} </strong></time>
                         </div>
                         <div className='mt-8' >
                             <p className= "dark:opacity-90 opacity-50 text-xs xs:text-base" >Payment Due</p>
-                            <time className='text-xs xs:text-base'> <strong>{props.invoice.paymentDate} </strong></time>
+                            <time className='text-xs xs:text-base'> <strong>{stringifyDate(props.invoice.paymentDate)} </strong></time>
                         </div>
                     </div>  
                      
@@ -135,7 +134,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                </div>
               
             
-            </motion.div>
+            </Wrapper>
         </div>
         
     )}   

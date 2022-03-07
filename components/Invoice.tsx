@@ -1,9 +1,10 @@
 import React from 'react'
 import {useRouter} from 'next/router'
 import { motion } from "framer-motion";
-import {fadeIn} from '../animations/animation'
+import {fadeIn} from '../animation/animation'
 import {useContextProvider} from '../context/context'
 import {AddressFormat} from '../types/types'
+import {stringifyDate} from '../utils/fns'
 
 import { FaCircle } from "react-icons/fa";
 
@@ -61,7 +62,7 @@ const Invoice:React.FC<InvoicePropsHome>=(props)=>{
                     
                     >UG{props.invoiceNumber}</span></h1>
                     <div className='sm:flex sm:justify-even '>
-                        <p className='opacity-50 text-sm sm:ml-3 sm:pt-0.5 '>Due <span>{props.paymentDate}</span></p>
+                        <p className='opacity-50 text-sm sm:ml-3 sm:pt-0.5 '>Due <span>{stringifyDate(props.paymentDate)}</span></p>
                         <p className='font-light sm:hidden  '>UGX <span className=' font-bold'>{props.amount} </span></p>
                         
                     </div>

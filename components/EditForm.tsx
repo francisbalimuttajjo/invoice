@@ -1,11 +1,10 @@
 import React from 'react'
-import { motion } from "framer-motion";
-import {fadeIn} from '../animations/animation'
 import InputComponent from './form/InputLabel'
 import ItemComponent from './form/InputComponent'
 import TwoStepInputComponent from './form/TwoStepInput'
 import DateComponent from './form/DateComponent'
 import Sidebar from './Sidebar'
+import Wrapper from './Wrapper'
 import Footer from './form/Footer'
 import {useContextProvider} from '../context/context'
 import {InvoiceProps} from '../types/types'
@@ -68,7 +67,7 @@ import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../u
         <div className={`${darkTheme ? 'dark' : ''} z-20 w-full  h-screen fixed   sm:flex` }>
             <Sidebar />
             
-            <motion.div variants={fadeIn} >
+            <Wrapper >
                <div 
                    className='dark:bg-slate-900 px-3 bg-white w-full sm:w-10/12   h-screen sm:rounded-r-3xl    ' >
                      
@@ -209,7 +208,7 @@ import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../u
                                        
                  </div>
           
-              </motion.div> 
+              </Wrapper> 
      
         </div>
         </div>
