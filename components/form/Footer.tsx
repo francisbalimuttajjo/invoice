@@ -16,7 +16,7 @@ const Footer: React.FC<Props> = (props) => {
         return "bg-blue-700 ml-1 text-white opacity-70  text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600"
     }
      return(
-        <div className=' sticky bottom-0 flex '>
+        <div className='  flex '>
         <button
         onClick={props.hideForm}
          className='bg-gray-200 text-sm  sm:text-sm font-bold text-gray-400 hover:text-gray-500 hover:bg-gray-300 rounded-3xl px-2 py-3  sm:px-4 sm:py-3 '>{props.discard}</button>

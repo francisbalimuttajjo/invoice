@@ -27,6 +27,7 @@ import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../u
         
      
       const [formValues,setFormValues]=React.useState(values)
+      const [loading,setLoading]=React.useState(false)
       const [terms, setTerms] = React.useState(formValues.terms);
       const [formErrors,setFormErrors]=React.useState(initialErrorValues)
       const [startDate, setStartDate] =React.useState(new Date(formValues.issuingDate) );
@@ -204,7 +205,7 @@ import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../u
                           </form>
       
                       </section>
-                      <Footer onSubmit={onSubmit} discard='Cancel' save='Save Changes' hideForm={props.cancel} />
+                      <Footer loading={loading} onSubmit={onSubmit} discard='Cancel' save='Save Changes' hideForm={props.cancel} />
                                        
                  </div>
           
