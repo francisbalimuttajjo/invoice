@@ -118,8 +118,11 @@ export function stringifyDate(str){
       return date
 }
 
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
 
-export function sendData(formValues,inputArray,startDate,paymentDate,terms) {
+export function sendData(formValues,inputArray,startDate,paymentDate,terms,status) {
     const data={    issuingAddress: {
             street: formValues.issuerStreet,
             city: formValues.issuerCity,
@@ -137,9 +140,9 @@ export function sendData(formValues,inputArray,startDate,paymentDate,terms) {
           email: formValues.receiverEmail,
           issuingDate: startDate,
           terms,
-          invoiceNumber: 4554,
+          invoiceNumber: getRandom(10000,20000),
           debtor: formValues.receiverName,
-          status: "pending",
+          status,
           description: formValues.description,
     }
     return data

@@ -3,7 +3,7 @@ import { InferGetServerSidePropsType } from 'next'
 import Head from '../components/Head'
 import Sidebar from '../components/Sidebar'
 import Form from '../components/form/Form'
-import{categories,invoices} from '../data'
+import{categories} from '../data'
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
 import { InvoiceFormat} from '../types/types'
@@ -32,7 +32,7 @@ import axios from 'axios'
  //categorizing forms
   const handleCategorizingInvoices=(value:string)=>{
     
-    setData(invoices)
+    // setData(invoice)
     
     if(value==='all'){
       setData(store)

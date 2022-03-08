@@ -1,6 +1,7 @@
 type Props = {
   onSubmit: () => void;
   hideForm: () => void;
+  handleDraft?: () => void;
   save: string;
   discard?: string;
   loading: boolean;
@@ -24,8 +25,13 @@ const Footer: React.FC<Props> = (props) => {
       </button>
       <div className="flex right-0  absolute">
         {props.draft && (
-          <button className="dark:hover:bg-opacity-30 hover:bg-opacity-90 p-2 sm:px-4 py-3 text-sm  sm:text-sm text-gray-500 font-bold rounded-3xl bg-black bg-opacity-80 ">
-            {props.draft}
+          <button
+            onClick={props.handleDraft}
+            disabled={props.loading}
+            className="dark:hover:bg-opacity-30 hover:bg-opacity-90 p-2 sm:px-4 py-3 text-sm  sm:text-sm text-gray-500 font-bold rounded-3xl bg-black bg-opacity-80 "
+          >
+            {props.loading && "saving"}
+            {!props.loading && props.draft}
           </button>
         )}
         <button

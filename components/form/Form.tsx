@@ -34,6 +34,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
   ] = useContextProvider();
   //state
   const [loading, setLoading] = React.useState(false);
+  const [status, setStatus] = React.useState('pending');
   const [successMessage, setSuccessMessage] = React.useState("");
   const [error, setError] = React.useState("");
   const [startDate, setStartDate] = React.useState(new Date());
@@ -51,16 +52,15 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
   const paymentDate = addDays(startDate, terms);
 
   //data to be posted to database
-  const data = sendData(formValues, inputArray, startDate, paymentDate, terms);
+  const data = sendData(formValues, inputArray, startDate, paymentDate, terms,status);
 
   //gandling submit event
   const onSubmit = () => {
-    console.log({ formValues, inputArray, startDate, paymentDate, terms });
-    console.log({ k: checkForEmptyFields(inputArray) });
+ 
     //checking if all inputs are filled
     setFormErrors(validate(formValues, startDate, terms));
-    if (Object.keys(formErrors).length === 0 && checkEmptyField()) {
-      console.log("form is clear");
+    if (Object.keys(formErrors).length === 0 && checkEmptyField() ) {
+      setError('')      
       setLoading((prev) => !prev);
       axios
         .post("/api/invoice", data)
@@ -68,7 +68,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
           if (res.data.status === "success") {
             setLoading((prev) => !prev);
             setSuccessMessage("invoice saved");
-            //   setTimeout(()=>window.location.reload(),3000)
+               setTimeout(()=>window.location.reload(),3000)
           }
         })
         .catch((err) => {
@@ -78,10 +78,15 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
          
       return;
       }
-      setError("please fill all fields");
+      setError("please fill all fields correctly");
     return console.log("form is not clear");
   };
-
+  //saving as draft
+  const handleDraft = () => {
+    setStatus('draft')
+    console.log(status)
+    onSubmit()
+  }
   return (
     <>
       <div className=" hidden z-20 fixed sm:block overflow-y-hidden inset-0  bg-black bg-opacity-40"></div>
@@ -239,6 +244,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
               discard="Discard"
               loading={loading}
               onSubmit={onSubmit}
+              handleDraft={handleDraft}
               hideForm={props.hideForm}
             />
           </div>

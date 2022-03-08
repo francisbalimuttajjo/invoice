@@ -31,16 +31,16 @@ const invoice={
 ],
 }
  const categories =['all','pending','paid','draft']
-// const invoices=[
-//  {status:'pending',debtor:'bafra mayanja',amount:5000,number:64564,InvoiceDueDate:"2 Aug 2022" },
-//  {status:'draft',debtor:'francis mayanja',amount:200000,number:6645464,InvoiceDueDate:"2 Sept 2022"},
-//  {status:'pending',debtor:'francis mayanja',amount:2000,number:6645994,InvoiceDueDate:"1 Jan 2022"},
-//  {status:'paid',debtor:'francis mayanja',amount:2000,number:6645864,InvoiceDueDate:"2 Aug 2022"},
-//  {status:'pending',debtor:'francis mayanja',amount:2100,number:6695464,InvoiceDueDate:"2 Aug 2022" },
-//  {status:'pending',debtor:'francis mayanja',amount:21000,number:6695474,InvoiceDueDate:"2 Aug 2022" },
-//  {status:'draft',debtor:'bafra mayanja',amount:2900,number:66954649,InvoiceDueDate:"2 Aug 2022" },
-//  {status:'draft',debtor:'bafra mayanja',amount:29070,number:669580 ,InvoiceDueDate:"2 Aug 2022" }
-// ]
+const invoices=[
+ {status:'pending',debtor:'bafra mayanja',amount:5000,number:64564,InvoiceDueDate:"2 Aug 2022" },
+ {status:'draft',debtor:'francis mayanja',amount:200000,number:6645464,InvoiceDueDate:"2 Sept 2022"},
+ {status:'pending',debtor:'francis mayanja',amount:2000,number:6645994,InvoiceDueDate:"1 Jan 2022"},
+ {status:'paid',debtor:'francis mayanja',amount:2000,number:6645864,InvoiceDueDate:"2 Aug 2022"},
+ {status:'pending',debtor:'francis mayanja',amount:2100,number:6695464,InvoiceDueDate:"2 Aug 2022" },
+ {status:'pending',debtor:'francis mayanja',amount:21000,number:6695474,InvoiceDueDate:"2 Aug 2022" },
+ {status:'draft',debtor:'bafra mayanja',amount:2900,number:66954649,InvoiceDueDate:"2 Aug 2022" },
+ {status:'draft',debtor:'bafra mayanja',amount:29070,number:669580 ,InvoiceDueDate:"2 Aug 2022" }
+]
 
 function getValues(props){
 const values={
@@ -65,7 +65,7 @@ return values
 
 export {
     invoice, getValues, categories
-    //,
-    //invoices
+    ,
+    invoices
 }
 
