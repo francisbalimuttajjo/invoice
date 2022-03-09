@@ -11,7 +11,7 @@ import { FormProps } from "../../types/types";
 import { Alert, AlertDanger } from "../Alert";
 import {
   addDays,
-  validate,
+  useValidate,
   termsArray,
   sendData,
   initialValues,
@@ -41,7 +41,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
   const [terms, setTerms] = React.useState(termsArray[0].value);
   const [formValues, setFormValues] = React.useState(initialValues);
   const [formErrors, setFormErrors] = React.useState(initialErrorValues);
-
+  const values=useValidate(formValues, startDate, terms)
   //handling inout change
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -52,15 +52,24 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
   const paymentDate = addDays(startDate, terms);
 
   //data to be posted to database
-  const data = sendData(formValues, inputArray, startDate, paymentDate, terms,status);
+  const data = sendData(formValues, inputArray, startDate, paymentDate, terms, status);
+ 
 
   //gandling submit event
   const onSubmit = () => {
- 
+
+    
+    // setFormValues(initialValues)
     //checking if all inputs are filled
-    setFormErrors(validate(formValues, startDate, terms));
-    if (Object.keys(formErrors).length === 0 && checkEmptyField() ) {
-      setError('')      
+    setFormErrors(values);
+    console.log(formErrors)
+   
+    console.log({ formErrors:Object.keys(formErrors.errors) ,compl:formErrors.completed})
+    if (
+      // d.length === 0 &&
+      checkEmptyField()
+    ) {
+      // console.log("form is clear");
       setLoading((prev) => !prev);
       axios
         .post("/api/invoice", data)
@@ -68,7 +77,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
           if (res.data.status === "success") {
             setLoading((prev) => !prev);
             setSuccessMessage("invoice saved");
-               setTimeout(()=>window.location.reload(),3000)
+              // setTimeout(()=>window.location.reload(),3000)
           }
         })
         .catch((err) => {
@@ -81,12 +90,11 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
       setError("please fill all fields correctly");
     return console.log("form is not clear");
   };
-  //saving as draft
   const handleDraft = () => {
     setStatus('draft')
-    console.log(status)
     onSubmit()
   }
+
   return (
     <>
       <div className=" hidden z-20 fixed sm:block overflow-y-hidden inset-0  bg-black bg-opacity-40"></div>
@@ -114,6 +122,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
             <section className="h-96  mt-8 overflow-auto mb-8   ">
               <p className="opacity-90 px-3  mb-4 font-bold text-blue-500">
                 Bill From
+                
               </p>
               <form className="w-full">
                 <div className="px-3">
@@ -122,7 +131,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
                     name="issuerStreet"
                     inputValue={formValues.issuerStreet}
                     handleInputChange={handleChange}
-                    error={formErrors.issuerStreet}
+                    error={formErrors.errors.issuerStreet}
                     description="Street  Address"
                   />
 
@@ -130,8 +139,8 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
                     name1="issuerCity"
                     name2="issuerPostalAddress"
                     inputValue1={formValues.issuerCity}
-                    error1={formErrors.issuerCity}
-                    error2={formErrors.issuerPostalAddress}
+                    error1={formErrors.errors.issuerCity}
+                    error2={formErrors.errors.issuerPostalAddress}
                     inputValue2={formValues.issuerPostalAddress}
                     handleInputChange1={handleChange}
                     handleInputChange2={handleChange}
@@ -143,7 +152,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
                     inputValue={formValues.issuerCountry}
                     name="issuerCountry"
                     handleInputChange={handleChange}
-                    error={formErrors.issuerCountry}
+                    error={formErrors.errors.issuerCountry}
                     description="Country"
                   />
                 </div>
@@ -157,7 +166,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
                     name="receiverName"
                     inputValue={formValues.receiverName}
                     handleInputChange={handleChange}
-                    error={formErrors.receiverName}
+                    error={formErrors.errors.receiverName}
                     description="Client's Name"
                   />
 
@@ -166,7 +175,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
                     inputValue={formValues.receiverEmail}
                     handleInputChange={handleChange}
                     description="Client's Email"
-                    error={formErrors.receiverEmail}
+                    error={formErrors.errors.receiverEmail}
                     email
                     placeholder="youremail@example.com"
                   />
@@ -175,7 +184,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
                     name="receiverStreet"
                     inputValue={formValues.receiverStreet}
                     handleInputChange={handleChange}
-                    error={formErrors.receiverStreet}
+                    error={formErrors.errors.receiverStreet}
                     description="Street Address"
                   />
 
@@ -185,8 +194,8 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
                     inputValue1={formValues.receiverCity}
                     inputValue2={formValues.receiverPostalAddress}
                     handleInputChange1={handleChange}
-                    error1={formErrors.receiverCity}
-                    error2={formErrors.receiverPostalAddress}
+                    error1={formErrors.errors.receiverCity}
+                    error2={formErrors.errors.receiverPostalAddress}
                     handleInputChange2={handleChange}
                     label1="City"
                     label2="Postal Code"
@@ -196,7 +205,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
                     name="receiverCountry"
                     inputValue={formValues.receiverCountry}
                     handleInputChange={handleChange}
-                    error={formErrors.receiverCountry}
+                    error={formErrors.errors.receiverCountry}
                     description="Country"
                   />
 
@@ -204,8 +213,8 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
                   <DateComponent
                     startDate={startDate}
                     changeDate={(date) => setStartDate(date)}
-                    error1={formErrors.date}
-                    error2={formErrors.paymentTerms}
+                    error1={formErrors.errors.date}
+                    error2={formErrors.errors.paymentTerms}
                     changeTerms={(e: React.ChangeEvent<HTMLSelectElement>) =>
                       setTerms(parseInt(e.target.value))
                     }
@@ -217,7 +226,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
                     name="description"
                     inputValue={formValues.description}
                     handleInputChange={handleChange}
-                    error={formErrors.description}
+                    error={formErrors.errors.description}
                     description="Description"
                   />
 
@@ -230,7 +239,7 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
 
                     <button
                       onClick={addInput}
-                      className="bg-gray-100 sm:w-10/12 md:w-9/12   px-3 dark:text-white dark:bg-slate-800 dark:hover:text-opacity-70 dark:hover:bg-opacity-70 hover:bg-gray-200 font-semibold text-gray-400 w-full  py-3 rounded-3xl     "
+                      className="bg-gray-100 sm:w-10/12 md:w-9/12 mb-4   px-3 dark:text-white dark:bg-slate-800 dark:hover:text-opacity-70 dark:hover:bg-opacity-70 hover:bg-gray-200 font-semibold text-gray-400 w-full  py-3 rounded-3xl     "
                     >
                       <span className="font-extrabold">+</span> Add New Item
                     </button>
@@ -244,8 +253,8 @@ const InvoiceDetails: React.FC<FormProps> = (props) => {
               discard="Discard"
               loading={loading}
               onSubmit={onSubmit}
-              handleDraft={handleDraft}
               hideForm={props.hideForm}
+              handleDraft={handleDraft}
             />
           </div>
         </Wrapper>

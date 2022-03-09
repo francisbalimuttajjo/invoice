@@ -3,6 +3,7 @@ import { InferGetServerSidePropsType } from 'next'
 import Head from '../components/Head'
 import Sidebar from '../components/Sidebar'
 import Form from '../components/form/Form'
+//import Form from '../Form'
 import{categories} from '../data'
 import InvoiceList from '../components/InvoiceList'
 import Header from '../components/Header'
@@ -49,6 +50,7 @@ import axios from 'axios'
  
  
   return (
+    // <Form />
    <motion.div animate='animate' initial='initial' className={`${darkTheme? 'bg-slate-900 text-white': ""}  min-h-screen  sm:flex`}>
    
        
@@ -69,7 +71,8 @@ import axios from 'axios'
             <Header displayNewInvoiceForm={displayNewInvoiceForm}
              description={description} handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={data.length}/>
            
-            <InvoiceList invoices={data}  />
+          <InvoiceList invoices={data} />
+          {data.length < 1 &&<h1>There no invoices currently, click on add button to add one</h1>}
          
         </div> 
         </>
@@ -91,8 +94,8 @@ type Data =  InvoiceFormat[]
 
 export const getServerSideProps = async () => {
   const res = await axios.get(
-    "https://invoicebafra.vercel.app/api/invoices"
-    //"http://localhost:3000/api/invoices"
+    //"https://invoicebafra.vercel.app/api/invoices"
+    "http://localhost:3000/api/invoices"
                      
   );
   const data1: Data = res.data.invoices

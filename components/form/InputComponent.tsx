@@ -17,11 +17,11 @@ const InputComponent: React.FC<InputComponentTypes> = (props) => {
           type="text"
           onChange={props.handleNameChange}
         />
-        {props.errorName && (
+        {/* {props.errorName && (
           <p className="text-red-500 text-xs  px-2 capitalize  italic">
             {props.errorName} *{" "}
           </p>
-        )}
+        )} */}
       </div>
       <div className="flex justify-around ">
         <div className="w-4/12    mr-2 ">
@@ -34,14 +34,15 @@ const InputComponent: React.FC<InputComponentTypes> = (props) => {
                       dark:bg-slate-800 text-gray-700 appearance-none block w-full"
             min="1"
             type="number"
+            required
             value={props.qty}
             onChange={props.handleQtyChange}
           />
-          {props.errorQty && (
+          {/* {props.errorQty && (
             <p className="text-red-500 text-xs mt-2 px-2 capitalize  italic">
               {props.errorQty} *{" "}
             </p>
-          )}
+          )} */}
         </div>
         <div className="w-4/12 overflow-hidden   mb-6 ">
           <label className="dark:text-white text-gray-700 block mb-2 tracking-wide  text-sm">
@@ -56,11 +57,11 @@ const InputComponent: React.FC<InputComponentTypes> = (props) => {
             value={props.price}
             onChange={props.handlePriceChange}
           />
-          {props.errorPrice && (
+          {/* {props.errorPrice && (
             <p className="text-red-500 text-xs mt-2  px-2 capitalize  italic">
               {props.errorPrice} *{" "}
             </p>
-          )}
+          )} */}
         </div>
         <div className="w-4/12    mb-6 flex ">
           <div className="w-9/12">

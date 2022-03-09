@@ -49,10 +49,14 @@ import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../u
    
      const onSubmit=()=>{
          setFormErrors(validate(formValues,startDate,terms))
-     console.log({paymentDate,status:props.checkEmptyField(),formValues,items:props.items})
-        props.checkEmptyField()
+    //  console.log({paymentDate,status:props.checkEmptyField(),formValues,items:props.items})
+        // props.checkEmptyField()
         
-         if(Object.keys(formErrors).length === 0 && props.checkEmptyField() ){
+       if (Object.keys(formErrors).length === 0 
+       //&&
+         // props.checkEmptyField()
+       )
+       {
                      console.log('editform is clear')
                      return
                  }
@@ -190,7 +194,7 @@ import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../u
                                   handlePriceChange={(e: React.ChangeEvent<HTMLSelectElement>) => props.priceChange(e, index)}
                                   handleQtyChange={(e: React.ChangeEvent<HTMLSelectElement>) => props.qtyChange(e, index)}
                                   removeInputField={() => props.removeInputField(index)}
-                                  errorName={el.errorName} errorQty={el.errorQty} errorPrice={el.errorPrice}  
+                                  // errorName={el.errorName} errorQty={el.errorQty} errorPrice={el.errorPrice}  
                                                                    />)}
                                  
                                   

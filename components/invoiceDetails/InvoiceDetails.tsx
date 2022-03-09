@@ -80,7 +80,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
 
                          </div>
                         
-                       <div className= "dark:opacity-90 opacity-50 hidden sm:block   right-3 absolute">
+                       <div className= "dark:opacity-90 opacity-50 hidden sm:block text-right   right-3 absolute">
                            <Address address={props.invoice.issuingAddress} />
                            
                        </div> 
@@ -88,7 +88,7 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                     
                        
                   </div>
-                  <div className="dark:opacity-90 opacity-50 sm:hidden text-xs xs:text-base mt-8 px-4 ">
+                  <div className="dark:opacity-90 opacity-50 sm:hidden text-xs xs:text-base mt-8 px-4  ">
                      <Address address={props.invoice.issuingAddress} />
                   </div>
                   <div className='px-4 mt-8 flex sm:mt-16 sm:justify-around  sm:relative '>

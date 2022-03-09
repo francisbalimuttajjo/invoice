@@ -24,23 +24,23 @@ const Footer: React.FC<Props> = (props) => {
         {props.discard}
       </button>
       <div className="flex right-0  absolute">
-        {props.draft && (
+        {props.draft  && (
           <button
             onClick={props.handleDraft}
             disabled={props.loading}
             className="dark:hover:bg-opacity-30 hover:bg-opacity-90 p-2 sm:px-4 py-3 text-sm  sm:text-sm text-gray-500 font-bold rounded-3xl bg-black bg-opacity-80 "
           >
-            {props.loading && "saving"}
-            {!props.loading && props.draft}
+         
+            { props.draft}
           </button>
         )}
         <button
+          //  type='button'
           onClick={props.onSubmit}
           disabled={props.loading}
           className={disableBtn()}
         >
-          {props.loading && "saving"}
-          {!props.loading && props.save}
+          {props.save}
         </button>
       </div>
     </div>

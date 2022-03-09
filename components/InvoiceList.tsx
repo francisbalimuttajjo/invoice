@@ -1,21 +1,38 @@
-import React from 'react'
-import Invoice from '../components/Invoice'
-import {InvoiceListProps} from '../types/types'
-import {getSum} from '../utils/fns'
+import React from "react";
+import Invoice from "../components/Invoice";
+import { AddressFormat } from "../types/types";
+import { getSum } from "../utils/fns";
 
-  
-  const InvoiceList:React.FC<InvoiceListProps>=(props)=>{
-      
-      return(
-        <>
-         { props.invoices.map(invoice=>        
-            < Invoice paymentDate={invoice.paymentDate} debtor={invoice.debtor} key={invoice._id} amount={getSum(invoice.items)} invoiceNumber={invoice.invoiceNumber} status={invoice.status} email={''} issuingDate={''} _id={''} items={[]}  />
-          
-          ) }
-        </>
-      
-  
-      )
-    }
+export type InvoiceFormat = {
+  invoiceNumber: number;
+  email: string;
+  status: string;
+  description: string;
+  debtor: string;
+  paymentDate: string;
+  terms: number;
+  issuingDate: string;
+  _id: string;
+  issuingAddress: AddressFormat;
+  debtorsAddress: AddressFormat;
+  items: { name: string; qty: number; price: number }[];
+};
+type Props = {
+  invoices: InvoiceFormat[];
+};
 
-    export default InvoiceList
+const InvoiceList: React.FC<Props> = (props) => {
+  return (
+    <>
+      {props.invoices.map((invoice) => (
+        <Invoice
+          invoice={invoice}
+          key={invoice._id}
+          amount={getSum(invoice.items)}
+        />
+      ))}
+    </>
+  );
+};
+
+export default InvoiceList;

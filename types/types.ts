@@ -39,13 +39,14 @@ export type InvoiceFormat={
 export type InvoiceProps={
   cancel:()=>void
   invoice:InvoiceFormat
-  checkEmptyField:()=>void
+  // checkEmptyField:()=>void
   nameChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
   qtyChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
   priceChange:(e: React.ChangeEvent<HTMLSelectElement>,index:number)=>void
   removeInputField:(e:number)=>void
   addInputField:(e: any)=>void
-  items:{ qty: number, price: number, name: string,errorName:string,errorQty:string,errorPrice:string}[]
+  //items:{ qty: number, price: number, name: string,errorName:string,errorQty:string,errorPrice:string}[]
+  items:{ qty: number, price: number, name: string}[]
 
 }
 
@@ -124,8 +125,8 @@ export type InputComponentTypes={
     handleNameChange:(a:any)=>void
     handleQtyChange:(a:any)=>void
     handlePriceChange:(a:any)=>void
-    errorName:string
-    errorQty:string
-    errorPrice:string
+    // errorName:string
+    // errorQty:string
+    // errorPrice:string
    
 }
