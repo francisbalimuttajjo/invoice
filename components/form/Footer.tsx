@@ -1,5 +1,5 @@
 type Props = {
-  onSubmit: () => void;
+  onSubmit?: () => void;
   hideForm: () => void;
   handleDraft?: () => void;
   save: string;
