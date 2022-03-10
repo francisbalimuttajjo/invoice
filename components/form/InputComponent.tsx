@@ -32,9 +32,8 @@ const InputComponent: React.FC<InputComponentTypes> = (props) => {
             className=" border border-gray-200 rounded py-3 px-4 leading-tight
                      focus:outline-none  focus:border-gray-500 dark:text-white 
                       dark:bg-slate-800 text-gray-700 appearance-none block w-full"
-            min="1"
+            // min="1"
             type="number"
-            required
             value={props.qty}
             onChange={props.handleQtyChange}
           />
@@ -52,7 +51,7 @@ const InputComponent: React.FC<InputComponentTypes> = (props) => {
             className="  border border-gray-200 rounded
                      py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500
                       dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full"
-            min="1"
+            // min="1"
             type="number"
             value={props.price}
             onChange={props.handlePriceChange}

@@ -1,7 +1,8 @@
    import React from 'react'
    import DatePicker from 'react-datepicker'
+     import "react-datepicker/dist/react-datepicker.css";
    import {DateProps} from '../../types/types'
-   import "react-datepicker/dist/react-datepicker.css";
+ 
 
  
  
@@ -27,7 +28,9 @@
             <label className= 'dark:text-white text-gray-700  block mb-2 tracking-wide text-sm'>
                <span className='hidden sm:inline'>Payment</span>  Terms
             </label>
-            <select className= {`${props.error2 ? "border-red-500 border ":""} border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500 dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full hover:cursor-pointer`}
+                <select className={`${props.error2 ? "border-red-500 border " : ""} 
+            border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500
+             dark:text-white dark:bg-slate-800 text-gray-700 appearance-none block w-full hover:cursor-pointer`}
              
             onChange={props.changeTerms}
             value={props.termValue}

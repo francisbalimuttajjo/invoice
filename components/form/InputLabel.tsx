@@ -1,4 +1,7 @@
-import React from "react";
+ import React from 'react';
+ import * as Yup from 'yup';
+ import { withFormik, FormikProps, FormikErrors, Form, Field } from 'formik';
+
 type PropsTypes = {
   description: string;
   inputValue: string;
@@ -12,8 +15,9 @@ type PropsTypes = {
 const InputLabel: React.FC<PropsTypes> = (props) => {
   return (
     <div className="w-full px-3  sm:w-11/12 md:w-9/12">
-      <label className="dark:text-white text-gray-700 block  tracking-wide  text-sm  mb-2">
+      <label  htmlFor={props.name} className="dark:text-white text-gray-700 block  tracking-wide  text-sm  mb-2">
         {props.description}
+
       </label>
       <input
         className="  border focus:border-gray-500 border-gray-200 rounded py-3 px-4 mb-3 leading-tight
@@ -22,8 +26,7 @@ const InputLabel: React.FC<PropsTypes> = (props) => {
         type={`${props.email ? "email" : "text"}`}
         onChange={props.handleInputChange}
         value={props.inputValue}
-        name={props.name}
-        required
+        name={props.name}        
         placeholder={props.placeholder}
       />
       {props.error && (
