@@ -36,7 +36,7 @@ const Footer: React.FC<Props> = (props) => {
         )}
         <button
             type='submit'
-          onClick={props.onSubmit}
+       
           disabled={props.loading}
           className={disableBtn()}
         >

@@ -2,7 +2,7 @@ import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 import Head from '../components/Head'
 import Sidebar from '../components/Sidebar'
-import Form from '../components/form/Form'
+ import Form from '../components/form/Form'
 //import Form from '../Form'
 import{categories} from '../data'
 import InvoiceList from '../components/InvoiceList'
@@ -50,7 +50,7 @@ import axios from 'axios'
  
  
   return (
-    // <Form />
+     //<Form  hideForm={hideForm} title=" Create Invoice" />
    <motion.div animate='animate' initial='initial' className={`${darkTheme? 'bg-slate-900 text-white': ""}  min-h-screen  sm:flex`}>
    
        
@@ -61,7 +61,9 @@ import axios from 'axios'
          { displayForm &&
           <div className='   '>
             <Head title='New Invoice' />
-                       < Form hideForm={hideForm} />
+            < Form
+              hideForm={hideForm}
+              title=" Create Invoice" />
            </div> 
          }
           <Head title={`invoices (${data.length}) `}/>
