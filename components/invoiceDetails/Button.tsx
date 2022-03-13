@@ -1,8 +1,6 @@
-type Props={
-    handleEditing:()=>void
-    status:string
-}
-const Buttons:React.FC<Props>=(props)=>{
+import {ButtonProps} from './types/details'
+
+const Buttons:React.FC<ButtonProps>=(props)=>{
     return(
         <>
         <button

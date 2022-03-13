@@ -1,10 +1,8 @@
 import React from "react";
 import { TiTick } from "react-icons/ti";
+import {Props} from './types/others'
 
-type Props = {
-  msg: string;
-  handleClick: () => void;
-};
+
 const Alert: React.FC<Props> = (props) => {
   return (
     <div

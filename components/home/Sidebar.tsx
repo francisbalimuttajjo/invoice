@@ -2,7 +2,7 @@ import React from 'react'
 import { FaPiedPiper } from "react-icons/fa";
 import { BsBrightnessHighFill } from "react-icons/bs";
 import { MdBrightness2} from "react-icons/md";
-import {useContextProvider} from '../context/context'
+import {useContextProvider} from '../../context/context'
 
  type PropTypes={
      displayForm?:boolean

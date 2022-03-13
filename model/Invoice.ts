@@ -1,6 +1,6 @@
 // import { Schema, model } from 'mongoose';
 import mongoose from 'mongoose';
-import{AddressFormat} from '../types/types'
+import{AddressFormat} from '../components/home/types/home'
 
 
 interface Invoice {
@@ -37,7 +37,7 @@ const InvoiceSchema = new mongoose.Schema<Invoice>({
   issuingAddress:{
     street:{type: String, required: true},
     city:{type: String, required: true},
-    postalAddress: { type: String, required: true},
+    postalAddress: { type: Number, required: true},
     country: { type: String, required: true},
 },
 items:[{qty:Number, price:Number,name:String}]

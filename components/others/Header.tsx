@@ -1,6 +1,6 @@
 import React from "react";
-import { HeadingProps } from "../types/types";
-import { useContextProvider } from "../context/context";
+import { HeadingProps } from "./types/others";
+import { useContextProvider } from "../../context/context";
 
 const Sidebar: React.FC<HeadingProps> = (props) => {
   const [darkTheme] = useContextProvider();

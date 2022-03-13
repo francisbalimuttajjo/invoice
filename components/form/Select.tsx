@@ -1,5 +1,5 @@
 import {  Field } from "formik";
-import { termsArray as terms } from "../utils/fns";
+import { termsArray as terms } from "../../utils/fns";
 
 interface Props{
   name:string

@@ -1,14 +1,7 @@
-type Props = {
-  onSubmit?: () => void;
-  hideForm: () => void;
-  handleDraft?: () => void;
-  save: string;
-  discard?: string;
-  loading: boolean;
-  draft?: string;
-};
+import {FooterProps} from './types/form'
 
-const Footer: React.FC<Props> = (props) => {
+
+const Footer: React.FC<FooterProps> = (props) => {
   const disableBtn = () => {
     if (props.loading) {
       return "cursor-not-allowed bg-blue-700 ml-1 text-white opacity-70  text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600";
@@ -26,7 +19,8 @@ const Footer: React.FC<Props> = (props) => {
       <div className="flex right-0  absolute">
         {props.draft  && (
           <button
-            onClick={props.handleDraft}
+            
+                        onClick={props.handleDraft}
             disabled={props.loading}
             className="dark:hover:bg-opacity-30 hover:bg-opacity-90 p-2 sm:px-4 py-3 text-sm  sm:text-sm text-gray-500 font-bold rounded-3xl bg-black bg-opacity-80 "
           >

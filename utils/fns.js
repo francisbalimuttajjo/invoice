@@ -12,95 +12,13 @@ const termsArray = [
   { desc: "14 Days", value: 14 },
   { desc: " 30 Days", value: 30 },
 ];
-const initialValues = {
-  issuerStreet: "",
-  receiverStreet: "",
-  receiverName: "",
-  issuerCountry: "",
-  receiverEmail: "",
-  description: "",
-  issuerCity: "",
-  receiverCity: "",
-  receiverCountry: "",
-  receiverPostalAddress: "",
-  issuerPostalAddress: "",
-};
-const initialErrorValues = {
-  completed: false,
-  errors: {
-    date: "",
-    paymentTerms: "",
-    issuerStreet: "",
-    receiverStreet: "",
-    receiverName: "",
-    issuerCountry: "",
-    receiverEmail: "",
-    description: "",
-    issuerCity: "",
-    receiverCity: "",
-    receiverCountry: "",
-    receiverPostalAddress: "",
-    issuerPostalAddress: "",
-  },
-};
-export function useValidate(values, date, terms) {
-    return function () {
-        const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-        const errors = {};
 
-        if (!values.issuerStreet) {
-            errors.issuerStreet = "field is required";
-        }
-        if (!values.receiverStreet) {
-            errors.receiverStreet = "field is required";
-        }
-        if (!values.receiverName) {
-            errors.receiverName = "field is required";
-        }
-        if (!values.issuerCountry) {
-            errors.issuerCountry = "field is required";
-        }
-        if (!values.receiverCountry) {
-            errors.receiverCountry = "field is required";
-        }
-        if (!values.description) {
-            errors.description = "field is required";
-        }
-        if (!values.issuerCity) {
-            errors.issuerCity = " required";
-        }
-        if (!values.issuerPostalAddress) {
-            errors.issuerPostalAddress = " required";
-        }
-        if (!date) {
-            errors.date = " required";
-        }
-        if (!values.receiverCity) {
-            errors.receiverCity = " required";
-        }
-        if (!values.receiverPostalAddress) {
-            errors.receiverPostalAddress = " required";
-        }
-        if (!regex.test(values.receiverEmail)) {
-            errors.receiverEmail = "invalid email";
-        }
-        if (!values.receiverEmail) {
-            errors.receiverEmail = "email is  required";
-        }
-        if (!terms) {
-            errors.paymentTerms = "choose one";
-        }
-        console.log({ errors: Object.values(errors) });
-        if (Object.values(errors).length === 0) {
-            return { completed: true, errors };
-        }
-        return { completed: false, errors };
-    }
-}
+
 export function addDays(date, days) {
   var result = new Date(date);
-  result.setDate(result.getDate() + days);
+ 
+  result.setDate(result.getDate() + parseInt(days));
   return result;
 }
 
@@ -110,19 +28,7 @@ export function getSum(arr) {
   return arrayOfNumbers.reduce((acc, cv) => acc + cv, 0);
 }
 
-//function
-export function checkForEmptyFields(inputArray) {
-  let arr = [];
-  inputArray.map((el) => {
-    if (!el.name || el.qty < 1 || el.price < 1) {
-      arr.push(el);
-    }
-  });
-  if (arr.length < 1) {
-    return true;
-  }
-  return false;
-}
+
 export function stringifyDate(str) {
   const monthNames = [
     "Jan",
@@ -153,11 +59,7 @@ function getRandom(min, max) {
 }
 
 export function sendData(
-  formValues,
-  inputArray,
-  startDate,
-  paymentDate,
-  terms,
+  formValues, 
   status
 ) {
   const data = {
@@ -173,11 +75,11 @@ export function sendData(
       postalAddress: formValues.receiverPostalAddress,
       country: formValues.receiverCountry,
     },
-    items: inputArray,
-    paymentDate,
+    items: formValues.items,
+    paymentDate:addDays(formValues.startDate,formValues.terms),
     email: formValues.receiverEmail,
-    issuingDate: startDate,
-    terms,
+    issuingDate: formValues.startDate,
+    terms:formValues.terms,
     invoiceNumber: getRandom(10000, 20000),
     debtor: formValues.receiverName,
     status,
@@ -185,4 +87,22 @@ export function sendData(
   };
   return data;
 }
-export { termsArray, initialValues, validateNo, initialErrorValues };
+ const initialValues = {
+  items: [{ name: "", qty: 0, price: 0 }],
+  issuerStreet: "" ,
+  issuerCity: "",
+  receiverCity: "",
+  issuerCountry: "",
+  receiverCountry: "",
+  issuerPostalAddress: 0,
+  receiverPostalAddress: 0,
+  receiverName: "",
+  receiverEmail: "",
+  receiverStreet: "",
+  description: "",
+  startDate: new Date(),
+  terms: 0,
+};
+
+ const categories = ["all", "pending", "paid", "draft"];
+export { termsArray,  validateNo,categories,initialValues };

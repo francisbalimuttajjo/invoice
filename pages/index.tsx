@@ -1,15 +1,15 @@
 import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
-import Head from '../components/Head'
-import Sidebar from '../components/Sidebar'
- import Form from '../components/form/Form'
-//import Form from '../Form'
-import{categories} from '../data'
-import InvoiceList from '../components/InvoiceList'
-import Header from '../components/Header'
-import { InvoiceFormat} from '../types/types'
+import Head from '../components/others/Head'
+import Sidebar from '../components/home/Sidebar'
+import Form from '../components/form/Form'
+import{categories} from '../utils/fns'
+import InvoiceList from '../components/home/InvoiceList'
+import Header from '../components/others/Header'
+import { InvoiceFormat} from '../components/home/types/home'
 import { motion} from "framer-motion";
-import {useContextProvider} from  '../context/context'
+import { useContextProvider } from '../context/context'
+import { initialValues } from '../utils/fns'
 import axios from 'axios'
 
 
@@ -59,12 +59,14 @@ import axios from 'axios'
          displayForm={displayForm}
           /> 
          { displayForm &&
-          <div className='   '>
+          <>
             <Head title='New Invoice' />
             < Form
+              url='/api/invoice'
+            initialValues={initialValues}
               hideForm={hideForm}
               title=" Create Invoice" />
-           </div> 
+           </> 
          }
           <Head title={`invoices (${data.length}) `}/>
             

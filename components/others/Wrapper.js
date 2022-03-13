@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
- import { fadeIn } from "../animation/animation";
+ import { fadeIn } from "../../animation/animation";
 
 
 const Wrapper = (props) => {

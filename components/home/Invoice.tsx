@@ -1,33 +1,14 @@
 import React from 'react'
 import {useRouter} from 'next/router'
 import { motion } from "framer-motion";
-import {fadeIn} from '../animation/animation'
-import {useContextProvider} from '../context/context'
-import {AddressFormat} from '../types/types'
-import {stringifyDate} from '../utils/fns'
-
+import {fadeIn} from '../../animation/animation'
+import {useContextProvider} from '../../context/context'
+import {InvoicePropsHome} from './types/home'
+import {stringifyDate} from '../../utils/fns'
 import { FaCircle } from "react-icons/fa";
 
 
-type InvoicePropsHome = {
-    amount: number
-  invoice: {
-    invoiceNumber: number,
-    email: string,
-    status: string,
-    description?: string,
-    debtor: string,
-    paymentDate: string,
-    terms?: number,
-    issuingDate: string,
-    _id: string,
-    issuingAddress?: AddressFormat,
-    debtorsAddress?: AddressFormat
-    items: { name: string, qty: number, price: number }[],
-  
-  }
-  
-}
+
 const Invoice:React.FC<InvoicePropsHome>=(props)=>{
     const router =useRouter()   
    const [darkTheme]=useContextProvider()

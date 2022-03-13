@@ -1,9 +1,9 @@
 import React from 'react'
 import {useRouter} from 'next/router'
 import { IoIosArrowBack } from "react-icons/io";
-import  Wrapper from '../Wrapper'
+import  Wrapper from '../others/Wrapper'
 import {useContextProvider} from '../../context/context'
-import {Props} from '../../types/types'
+import {Props} from './types/details'
 import { FaCircle } from "react-icons/fa";
 import {getSum,validateNo,stringifyDate} from '../../utils/fns'
 import Address from './Address'

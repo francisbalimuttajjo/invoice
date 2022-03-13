@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import React from 'react'
+import {HeadProps} from './types/others'
 
-type Props={
-    title:string
-}
-const HeadComponent:React.FC<Props>=(props)=>{
+
+const HeadComponent:React.FC<HeadProps>=(props)=>{
     return (
         <Head>
         <title>{props.title}</title>
