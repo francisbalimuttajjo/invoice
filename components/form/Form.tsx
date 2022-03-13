@@ -95,9 +95,9 @@ const FormComponent: React.FC<Props> = (props) => {
                     <Items items={values.items} />
                   </section>
                   <Footer
-                    save="Save & Send"
-                    draft="Save as Draft"
-                    discard="Discard"
+                   
+                    
+                   editing={props.editing}
                     loading={loading}
                     hideForm={props.hideForm}
                       handleDraft={handleDraft}

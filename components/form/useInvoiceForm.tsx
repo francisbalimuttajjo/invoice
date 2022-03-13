@@ -1,8 +1,21 @@
 import React from "react";
 import axios from "axios";
+// import axios,{ AxiosRequestConfig } from 'axios';
 import { sendData } from "../../utils/fns";
 import { useInvoiceFormProps,Props } from "./types/form";
+  
 
+// async function makeRequest() {
+
+//     const config = {
+//         method: 'get',
+//         url: 'http://webcode.me'
+//     }
+
+//     let res = await axios(config)
+
+//     console.log(res.status);
+// }
 
 const useInvoiceForm = (url:string):useInvoiceFormProps => {
   const [loading, setLoading] = React.useState(false);
@@ -16,7 +29,7 @@ const useInvoiceForm = (url:string):useInvoiceFormProps => {
     console.log({data})
     
      setLoading((prev) => !prev);
-      axios
+      axios 
         .post(url,data)
         .then((res) => {
           if (res.data.status === "success") {

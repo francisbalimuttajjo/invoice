@@ -59,23 +59,7 @@ const DetailsPage: React.FC<Invoice> = (props) => {
   //
 
   return (
-    //   <motion.div animate='animate' initial='initial' >
-    //       <Head title={`${editing ? 'edit |': ""} UGX ${props.invoice.invoiceNumber}`}/>
-    //       <div className={`${editing ? 'fixed  overflow-hidden md:full ' : "" } ${darkTheme? 'bg-slate-900 text-white ': ""} w-full min-h-screen  sm:flex`}
-
-    //       >
-
-    //           <Sidebar />
-    //           <InvoiceDetails handleEditing={()=>setEditing(true)}   invoice={props.invoice}  />
-    //           {editing &&  < Form
-    //       url='/api/invoice'
-    //       initialValues={initialValues}
-    //       hideForm={() => setEditing(false)}
-    //       title={` Edit UGX ${props.invoice.invoiceNumber}`} />}
-
-    //       </div>
-
-    // </motion.div>
+   
     <motion.div
       animate="animate"
       initial="initial"
@@ -92,9 +76,10 @@ const DetailsPage: React.FC<Invoice> = (props) => {
           />
           <Sidebar />
           {editing && (
-            <div className='flex z-50'>
+            <div className=''>
               {/* <Sidebar /> */}
               <Form
+                editing={true}
                 url="/api/invoice"
                 initialValues={initialValues}
                 hideForm={() => setEditing(false)}
@@ -105,7 +90,7 @@ const DetailsPage: React.FC<Invoice> = (props) => {
           <div
             className={`${
               editing
-                ? "fixed sm:ml-24 md:ml-48 overflow-hidden md:w-11/12 "
+                ? "fixed   overflow-hidden  "
                 : ""
             }  mx-auto  w-full`}
           >

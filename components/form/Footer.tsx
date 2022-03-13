@@ -14,10 +14,10 @@ const Footer: React.FC<FooterProps> = (props) => {
         onClick={props.hideForm}
         className="bg-gray-200 text-sm  sm:text-sm font-bold text-gray-400 hover:text-gray-500 hover:bg-gray-300 rounded-3xl px-2 py-3  sm:px-4 sm:py-3 "
       >
-        {props.discard}
+        {props.editing ? 'Cancel' :"Discard"}
       </button>
       <div className="flex right-0  absolute">
-        {props.draft  && (
+        {!props.editing  && (
           <button
             
                         onClick={props.handleDraft}
@@ -25,7 +25,7 @@ const Footer: React.FC<FooterProps> = (props) => {
             className="dark:hover:bg-opacity-30 hover:bg-opacity-90 p-2 sm:px-4 py-3 text-sm  sm:text-sm text-gray-500 font-bold rounded-3xl bg-black bg-opacity-80 "
           >
          
-            { props.draft}
+            Save As Draft
           </button>
         )}
         <button
@@ -34,7 +34,7 @@ const Footer: React.FC<FooterProps> = (props) => {
           disabled={props.loading}
           className={disableBtn()}
         >
-          {props.save}
+          {props.editing? "Save Changes" : "Save & Send" }
         </button>
       </div>
     </div>

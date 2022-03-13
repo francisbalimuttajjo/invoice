@@ -1,4 +1,5 @@
 export interface Props {
+  editing:boolean
   title: string;
   url:string
   hideForm: () => void;
@@ -17,6 +18,7 @@ export interface Props {
     description: string;
     startDate: Date;
     terms: number;
+    edit?:boolean
     
   };
 }
@@ -44,10 +46,11 @@ export type FooterProps = {
   onSubmit?: () => void;
   hideForm: () => void;
   handleDraft?: () => void;
-  save: string;
-  discard?: string;
+  
+  
   loading: boolean;
-  draft?: string;
+  
+  editing:boolean
 };
 
 //input label props
