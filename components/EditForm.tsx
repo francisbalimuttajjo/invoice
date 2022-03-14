@@ -9,7 +9,7 @@ import Sidebar from './Sidebar'
 import Footer from './form/Footer'
 import {useContextProvider} from '../context/context'
 import {InvoiceProps} from '../types/types'
-import{getValues } from '../data'
+import{getValues } from '../utils/data'
 import {addDays,validate,termsArray,initialValues,initialErrorValues} from '../utils/fns'
 
 

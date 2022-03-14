@@ -3,13 +3,12 @@ import { InferGetServerSidePropsType } from 'next'
 import Head from '../components/others/Head'
 import Sidebar from '../components/home/Sidebar'
 import Form from '../components/form/Form'
-import{categories} from '../utils/fns'
+import{categories, initialValues} from '../utils/fns'
 import InvoiceList from '../components/home/InvoiceList'
 import Header from '../components/others/Header'
 import { InvoiceFormat} from '../components/home/types/home'
 import { motion} from "framer-motion";
 import { useContextProvider } from '../context/context'
-import { initialValues } from '../utils/fns'
 import axios from 'axios'
 
 
@@ -106,8 +105,8 @@ type Data =  InvoiceFormat[]
 
 export const getServerSideProps = async () => {
   const res = await axios.get(
-    //"https://invoicebafra.vercel.app/api/invoices"
-    "http://localhost:3000/api/invoices"
+    "https://invoicebafra.vercel.app/api/invoices"
+    //"http://localhost:3000/api/invoices"
                      
   );
   const data1: Data = res.data.invoices

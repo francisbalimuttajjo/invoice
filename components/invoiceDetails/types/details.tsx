@@ -2,6 +2,7 @@ import {InvoiceFormat,AddressFormat}  from '../../home/types/home'
 
 //table .tsx
 export interface TableProps{
+    sum:number
     items:   { 
         qty: number,
          price: number, 
@@ -9,11 +10,7 @@ export interface TableProps{
           }[]
 }
 
-//invoice details
-// export interface Props{
-//    handleEditing:()=>void
-//    invoice:InvoiceFormat
-// }
+
 //isuuing details
 export interface InvoiceProps{
    invoice:InvoiceFormat
@@ -32,7 +29,6 @@ export interface InvoiceProps{
  export interface ButtonProps {
     handleEditing:()=>void
      status: string
-    //  handleDelete:(() => void)
-    //  handleMakePaid: () => void
+    
      id:string
 }

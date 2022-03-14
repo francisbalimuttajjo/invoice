@@ -4,19 +4,25 @@ import FullInput from "./InputLabel";
 import CityComponent from "./CityComponent";
 import Items from "./ItemsComponent";
 import Wrapper from "../others/Wrapper";
-import useInvoiceForm from './useInvoiceForm'
+import useInvoiceForm from "./useInvoiceForm";
 import { useContextProvider } from "../../context/context";
 import Footer from "./Footer";
 import { Formik, Form } from "formik";
 import { Props } from "./types/form";
-import { Alert,AlertDanger } from "../others/Alert";
-import { validationSchema } from "../../validation";
-
-
+import { Alert, AlertDanger } from "../others/Alert";
+import { validationSchema } from "../../utils/Validation";
 
 const FormComponent: React.FC<Props> = (props) => {
   const [darkTheme] = useContextProvider();
-  const {handleSubmit, handleDraft, loading, error, successMessage,setSuccessMessage,setError} = useInvoiceForm(props.url,props.method);
+  const {
+    handleSubmit,
+    handleDraft,
+    loading,
+    error,
+    successMessage,
+    setSuccessMessage,
+    setError,
+  } = useInvoiceForm(props.url, props.method);
 
   return (
     <>
@@ -44,9 +50,12 @@ const FormComponent: React.FC<Props> = (props) => {
                         handleClick={() => setSuccessMessage("")}
                       />
                     )}
-                      {error && (
-                <AlertDanger msg={error} handleClick={() => setError("")} />
-              )}
+                    {error && (
+                      <AlertDanger
+                        msg={error}
+                        handleClick={() => setError("")}
+                      />
+                    )}
                   </header>
                   <section className="h-96  mt-8 overflow-auto mb-8   ">
                     {/* invoice from */}
@@ -95,12 +104,10 @@ const FormComponent: React.FC<Props> = (props) => {
                     <Items items={values.items} />
                   </section>
                   <Footer
-                   
-                    
-                   editing={props.editing}
+                    editing={props.editing}
                     loading={loading}
                     hideForm={props.hideForm}
-                      handleDraft={handleDraft}
+                    handleDraft={handleDraft}
                   />
                 </div>
               </Form>
@@ -113,4 +120,3 @@ const FormComponent: React.FC<Props> = (props) => {
 };
 
 export default FormComponent;
-

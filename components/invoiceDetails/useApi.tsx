@@ -7,7 +7,7 @@ const UseApi = (id: string) => {
 
   //api calls
   const handleDelete = () => {
-      console.log('clicked')
+      
     setLoading(true);
     axios
       .delete(`/api/delete/${id}`)
@@ -41,7 +41,7 @@ const UseApi = (id: string) => {
         return;
       });
     };
-    return[handlePaid,handleDelete,loading,error] as const
+    return[handlePaid,handleDelete,loading,error,setError] as const
 };
 
 export default UseApi;
