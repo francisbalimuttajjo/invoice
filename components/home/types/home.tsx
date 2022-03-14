@@ -12,14 +12,14 @@ export interface InvoicePropsHome {
     invoiceNumber: number;
     email: string;
     status: string;
-    description?: string;
+    description: string;
     debtor: string;
     paymentDate: string;
-    terms?: number;
-    issuingDate: string;
+    terms: number;
+    issuingDate: Date;
     _id: string;
-    issuingAddress?: AddressFormat;
-    debtorsAddress?: AddressFormat;
+    issuingAddress: AddressFormat;
+    debtorsAddress: AddressFormat;
     items: { name: string; qty: number; price: number }[];
   };
 }
