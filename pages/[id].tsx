@@ -9,14 +9,13 @@ import { useContextProvider } from "../context/context";
 import Form from "../components/form/Form";
 import { returnInitialValues } from "../utils/fns";
 
-type Invoice = {
+interface Invoice {
   invoice: InvoiceFormat;
 };
 // Layout: React.FC<OwnProps>
 const DetailsPage: React.FC<Invoice> = (props) => {
   const [darkTheme] = useContextProvider();
   const [editing, setEditing] = React.useState(false);
-
   const initialValues = returnInitialValues(props);
 
   return (

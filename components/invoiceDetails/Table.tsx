@@ -8,11 +8,9 @@ const Table: React.FC<TableProps> = (props) => {
       <table className="table-fixed mx-auto w-10/12 my-4    ">
         <thead className="  text-xs  text-slate-400 md:text-base  ">
           <tr>
-            <th className="mt-4 text-left">Item Name</th>
+            <th className="mt-4 text-left">Item </th>
             <th className="text-left">Qty</th>
-            <th className="text-left">
-              Price<span className="text-xs"> (Ugx)</span>
-            </th>
+            <th className="text-left">Price</th>
             <th className="text-left">Total</th>
           </tr>
         </thead>
