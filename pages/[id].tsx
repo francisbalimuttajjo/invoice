@@ -69,8 +69,8 @@ type Data = InvoiceFormat;
 
 export const getServerSideProps = async (req: { query: { id: string } }) => {
   const res = await axios.get(
-    //`https://invoicebafra.vercel.app/api/${req.query.id}`
-    `http://localhost:3000/api/${req.query.id}`
+    `https://invoicebafra.vercel.app/api/${req.query.id}`
+    //`http://localhost:3000/api/${req.query.id}`
   );
   console.log("res", res.data.invoice);
   const invoice: Data = res.data.invoice;
