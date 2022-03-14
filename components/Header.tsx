@@ -1,8 +1,16 @@
 import React from 'react'
-import{HeadingProps} from '../types/types'
+// import{HeadingProps} from '../types/types'
 import {useContextProvider} from '../context/context'
 
-
+export type HeadingProps={
+  InvoiceTotal:Number 
+  darkTheme:boolean
+  categories:string[]   
+  description:string
+  handleCategorizingInvoices:(a:string)=>void
+  displayNewInvoiceForm:()=>void
+ 
+}
 
 
 const Sidebar:React.FC<HeadingProps>=(props)=>{

@@ -1,12 +1,20 @@
 import React from 'react'
 import {useRouter} from 'next/router'
 import { motion } from "framer-motion";
-import {fadeIn} from '../animations/animation'
+import {fadeIn} from '../animation/animation'
 import {useContextProvider} from '../context/context'
-import {AddressFormat} from '../types/types'
-
+// import {AddressFormat} from './home/types/home'
 import { FaCircle } from "react-icons/fa";
 
+
+
+  export interface AddressFormat{
+       street:string,
+       country:string,
+     postalAddress:string,
+      city:string
+
+ }
 // {status:'pending',debtor:'bafra mayanja',amount:5000,number:64564,InvoiceDueDate:"2 Aug 2022" },
 type InvoicePropsHome={
    invoiceNumber:number,
