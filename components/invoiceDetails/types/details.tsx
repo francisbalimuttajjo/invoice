@@ -10,11 +10,19 @@ export interface TableProps{
 }
 
 //invoice details
-export interface Props{
-   handleEditing:()=>void
+// export interface Props{
+//    handleEditing:()=>void
+//    invoice:InvoiceFormat
+// }
+//isuuing details
+export interface InvoiceProps{
    invoice:InvoiceFormat
+} 
+
+ export interface Props extends InvoiceProps{
+     handleEditing:()=>void
 }
- 
+
 //address.tsx
   export interface Address{
      address:AddressFormat

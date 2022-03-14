@@ -7,43 +7,19 @@ import { motion } from "framer-motion";
 import { InvoiceFormat } from "../components/home/types/home";
 import { useContextProvider } from "../context/context";
 import Form from "../components/form/Form";
+import { returnInitialValues } from "../utils/fns";
 
 type Invoice = {
   invoice: InvoiceFormat;
 };
 // Layout: React.FC<OwnProps>
 const DetailsPage: React.FC<Invoice> = (props) => {
-  
-  console.log("data", props.invoice);
   const [darkTheme] = useContextProvider();
   const [editing, setEditing] = React.useState(false);
 
-
-
-  const initialValues = {
-    items: props.invoice.items,
-    issuerStreet: props.invoice.issuingAddress.street,
-    receiverStreet: props.invoice.debtorsAddress.street,
-    issuerCity: props.invoice.issuingAddress.city,
-    receiverCity: props.invoice.debtorsAddress.city,
-    issuerCountry: props.invoice.issuingAddress.country,
-    receiverCountry: props.invoice.debtorsAddress.country,
-    issuerPostalAddress: props.invoice.issuingAddress.postalAddress,
-    receiverPostalAddress: props.invoice.debtorsAddress.postalAddress,
-    description: props.invoice.description,
-    startDate: props.invoice.issuingDate,
-    terms: props.invoice.terms,
-    receiverName: props.invoice.debtor,
-    receiverEmail: props.invoice.email,
-  };
-
-  //
-  const handleDeleteInvoice = (id:string) => {
-    
-  }
+  const initialValues = returnInitialValues(props);
 
   return (
-   
     <motion.div
       animate="animate"
       initial="initial"
@@ -60,10 +36,9 @@ const DetailsPage: React.FC<Invoice> = (props) => {
           />
           <Sidebar />
           {editing && (
-            <div className=''>
-              {/* <Sidebar /> */}
+            <div className="">
               <Form
-                method='patch'
+                method="patch"
                 editing={true}
                 url={`/api/edit/${props.invoice._id}`}
                 initialValues={initialValues}
@@ -74,46 +49,17 @@ const DetailsPage: React.FC<Invoice> = (props) => {
           )}
           <div
             className={`${
-              editing
-                ? "fixed   overflow-hidden  "
-                : ""
+              editing ? "fixed   overflow-hidden  " : ""
             }  mx-auto  w-full`}
           >
             <InvoiceDetails
               handleEditing={() => setEditing(true)}
               invoice={props.invoice}
-           
             />
           </div>
         </>
       </>
     </motion.div>
-
-    //   <>
-    //  <Sidebar
-    //  displayForm={displayForm}
-    //   />
-    //  { displayForm &&
-    //   <>
-    //     <Head title='New Invoice' />
-    //     < Form
-    //       url='/api/invoice'
-    //     initialValues={initialValues}
-    //       hideForm={hideForm}
-    //       title=" Create Invoice" />
-    //    </>
-    //  }
-    //   <Head title={`invoices (${data.length}) `}/>
-
-    // <div className={`${displayForm ? 'fixed sm:ml-24 md:ml-48 overflow-hidden md:w-11/12 ' : "" }  mx-auto  md:w-9/12`}>
-    //     <Header displayNewInvoiceForm={displayNewInvoiceForm}
-    //      description={description} handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={data.length}/>
-
-    //   <InvoiceList invoices={data} />
-    //   {data.length < 1 &&<h1>There no invoices currently, click on add button to add one</h1>}
-
-    // </div>
-    // </>
   );
 };
 

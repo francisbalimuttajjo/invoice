@@ -98,21 +98,29 @@ const initialValues = {
   startDate: new Date(),
   terms: 0,
 };
-function handleColor(props) {
-  if (props.invoice.status === "pending") {
-    return "text-orange-400";
-  } else if (props.invoice.status === "paid") {
-    return "text-green-500";
-  } else {
-    return "text-black dark:text-white";
-  }
+
+function returnInitialValues(props) {
+    const initialValues = {
+      items: props.invoice.items,
+      issuerStreet: props.invoice.issuingAddress.street,
+      receiverStreet: props.invoice.debtorsAddress.street,
+      issuerCity: props.invoice.issuingAddress.city,
+      receiverCity: props.invoice.debtorsAddress.city,
+      issuerCountry: props.invoice.issuingAddress.country,
+      receiverCountry: props.invoice.debtorsAddress.country,
+      issuerPostalAddress: props.invoice.issuingAddress.postalAddress,
+      receiverPostalAddress: props.invoice.debtorsAddress.postalAddress,
+      description: props.invoice.description,
+      startDate: props.invoice.issuingDate,
+      terms: props.invoice.terms,
+      receiverName: props.invoice.debtor,
+      receiverEmail: props.invoice.email,
+  };
+  
+  return initialValues
+
 }
 
-function handleBackgroundColor(props) {
-  if (props.invoice.status === "pending") return "bg-orange-100";
-  if (props.invoice.status === "paid") return "bg-green-100";
-  if (props.invoice.status === "draft") return "bg-gray-100";
-}
 
 
 const categories = ["all", "pending", "paid", "draft"];
@@ -121,6 +129,6 @@ export {
   validateNo,
   categories,
   initialValues,
-  handleColor,
-  handleBackgroundColor,
+  returnInitialValues,
+  
 };

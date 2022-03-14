@@ -91,75 +91,7 @@ import axios from 'axios'
         </>
       </>
     </motion.div>
-    //      <motion.div
-    //   animate="animate"
-    //   initial="initial"
-    //   className={`${
-    //     darkTheme ? "bg-slate-900 text-white" : ""
-    //   }  min-h-screen  sm:flex`}
-    // > <>
-    //     <div className='flex'>
-    //       <Head  title={displayForm ? "New invoice " : `invoices (${data.length})` }/>
-    //       <Sidebar/> 
-    //       {displayForm &&   < Form
-    //         editing={false}
-    //           url='/api/invoice'
-    //         initialValues={initialValues}
-    //           hideForm={hideForm}
-    //           title=" Create Invoice" />}
-    //        <div
-    //         className={`${
-    //           displayForm
-    //             ? "fixed   overflow-hidden  "
-    //             : ""
-    //         }   w-full`}
-    //       >
-    //         <Header displayNewInvoiceForm={displayNewInvoiceForm}
-    //          description={description} handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={data.length}/>
-           
-    //       <InvoiceList invoices={data} />
-    //       {data.length < 1 &&<h1>There no invoices currently, click on add button to add one</h1>}
-    //         </div>
-    //     </div>
-    // </>
-    //   </motion.div>
-  //  <motion.div animate='animate' initial='initial' className={`${darkTheme? 'bg-slate-900 text-white': ""}  min-h-screen  sm:flex`}>
-   
-       
-  //        <>
-  //        {/* <Sidebar 
-  //        displayForm={displayForm}
-  //         />  */}
-  //        { displayForm &&
-  //         <>
-  //         <Head title='New Invoice' />
-  //          <Sidebar 
-  //        displayForm={displayForm}
-  //         /> 
-  //         < Form
-  //           editing={false}
-  //             url='/api/invoice'
-  //           initialValues={initialValues}
-  //             hideForm={hideForm}
-  //             title=" Create Invoice" />
-  //          </> 
-  //        }
-  //         <Head title={`invoices (${data.length}) `}/>
-            
-         
-  //       <div className={`${displayForm ? 'fixed sm:ml-24 md:ml-48 overflow-hidden md:w-11/12 ' : "" }  mx-auto  md:w-9/12`}>
-  //           <Header displayNewInvoiceForm={displayNewInvoiceForm}
-  //            description={description} handleCategorizingInvoices={handleCategorizingInvoices}  categories={categories} darkTheme={darkTheme} InvoiceTotal={data.length}/>
-           
-  //         <InvoiceList invoices={data} />
-  //         {data.length < 1 &&<h1>There no invoices currently, click on add button to add one</h1>}
-         
-  //       </div> 
-  //       </>
       
-      
-       
-  //   </motion.div>   
   )
 }
 
