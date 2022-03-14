@@ -23,5 +23,8 @@ export interface Props{
  //button t.sx
  export interface ButtonProps {
     handleEditing:()=>void
-    status:string
+     status: string
+    //  handleDelete:(() => void)
+    //  handleMakePaid: () => void
+     id:string
 }

@@ -67,7 +67,8 @@ import axios from 'axios'
             <div className=''>
              
               <Form
-                editing={false}
+                  editing={false}
+                  method ='post'
                 url="/api/invoice"
                 initialValues={initialValues}
                 hideForm={hideForm}

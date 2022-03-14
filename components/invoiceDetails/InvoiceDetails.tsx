@@ -5,8 +5,10 @@ import  Wrapper from '../others/Wrapper'
 import {useContextProvider} from '../../context/context'
 import {Props} from './types/details'
 import { FaCircle } from "react-icons/fa";
-import {getSum,validateNo,stringifyDate} from '../../utils/fns'
+import {getSum,validateNo,stringifyDate, handleColor,
+  handleBackgroundColor} from '../../utils/fns'
 import Address from './Address'
+import useApi from './useApi'
 import Buttons from './Button'
 import Table from './Table'
 
@@ -14,31 +16,33 @@ import Table from './Table'
 
 
 const InvoiceDetails:React.FC<Props>=(props)=>{
-
+       const [handlePaid, handleDelete, loading, error] = useApi(props.invoice._id)
     const router=useRouter()
     const handleRouterBack=()=>router.back()
+   
     const [darkTheme]=useContextProvider()
-     
+
       
      
   
-    function handleColor() {
-        if (props.invoice.status === "pending") {
-          return "text-orange-400";
-        } else if (props.invoice.status === "paid") {
-          return "text-green-500";
-        } else {
-          return "text-black dark:text-white";
-        }
-      }
+    // function handleColor() {
+    //     if (props.invoice.status === "pending") {
+    //       return "text-orange-400";
+    //     } else if (props.invoice.status === "paid") {
+    //       return "text-green-500";
+    //     } else {
+    //       return "text-black dark:text-white";
+    //     }
+    //   }
     
      
      
-        function handleBackgroundColor() {
-        if (props.invoice.status === "pending") return "bg-orange-100";
-        if (props.invoice.status === "paid") return "bg-green-100";
-        if (props.invoice.status === "draft") return "bg-gray-100";
-      }
+    //     function handleBackgroundColor() {
+    //     if (props.invoice.status === "pending") return "bg-orange-100";
+    //     if (props.invoice.status === "paid") return "bg-green-100";
+    //     if (props.invoice.status === "draft") return "bg-gray-100";
+    //   }
+
 
     return (
        <div className={`${darkTheme ? 'dark' : ''} sm:w-10/12 md:w-7/12 sm:mx-auto  sm:pb-8`}
@@ -57,14 +61,19 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                <div className='dark:bg-slate-800 bg-white relative w-11/12   h-20 sm:justify-start sm:h-24 mt-8 mx-auto rounded-md flex justify-around items-center '>
                 
                  <p className= ' dark:opacity-90 opacity-50 absolute left-3 text-sm '>Status</p>
-                 <div className={`${handleBackgroundColor()} dark:bg-slate-700   bg-opacity-50  absolute right-5 sm:static sm:ml-16   px-4 rounded-md py-2  `}>
+                 <div className={`${handleBackgroundColor(props)} dark:bg-slate-700   bg-opacity-50  absolute right-5 sm:static sm:ml-16   px-4 rounded-md py-2  `}>
                        
-                       <p className={`${handleColor()}    capitalize font-semibold text-sm`}><FaCircle className='h-2 w-2 inline' /> {props.invoice.status}</p> 
+                       <p className={`${handleColor(props)}    capitalize font-semibold text-sm`}><FaCircle className='h-2 w-2 inline' /> {props.invoice.status}</p> 
            
                    </div>
                  
                  <div className='right-0 absolute hidden sm:block '>
-                   <Buttons handleEditing={props.handleEditing} status={props.invoice.status} /> 
+              <Buttons handleEditing={props.handleEditing}
+          
+                status={props.invoice.status}
+                id={props.invoice._id}
+             
+              /> 
                </div>
                  
                </div>
@@ -130,7 +139,9 @@ const InvoiceDetails:React.FC<Props>=(props)=>{
                   
                </div>
                <div className= 'dark:bg-slate-800 bg-white sm:hidden flex justify-end mt-8 p-4'>
-                    <Buttons handleEditing={props.handleEditing} status={props.invoice.status} />
+            <Buttons handleEditing={props.handleEditing} status={props.invoice.status}
+                id={props.invoice._id}
+            />
                </div>
               
             

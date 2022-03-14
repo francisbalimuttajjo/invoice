@@ -1,7 +1,5 @@
 import React from "react";
 import axios from "axios";
-import type { NextPage } from "next";
-import { InferGetServerSidePropsType } from "next";
 import Sidebar from "../components/home/Sidebar";
 import Head from "../components/others/Head";
 import InvoiceDetails from "../components/invoiceDetails/InvoiceDetails";
@@ -15,29 +13,12 @@ type Invoice = {
 };
 // Layout: React.FC<OwnProps>
 const DetailsPage: React.FC<Invoice> = (props) => {
-  // NextPage = (props: Invoice)
-  // => {
-  // function DetailsPage({ invoice }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  
   console.log("data", props.invoice);
   const [darkTheme] = useContextProvider();
   const [editing, setEditing] = React.useState(false);
 
-  //  const initialValues = {
-  //   items: [{ name: "", qty: 0, price: 0 }],
-  //   issuerStreet: "" ,
-  //   issuerCity: "",
-  //   receiverCity: "",
-  //   issuerCountry: "",
-  //   receiverCountry: "",
-  //   issuerPostalAddress: 0,
-  //   receiverPostalAddress: 0,
-  //   receiverName: "",
-  //   receiverEmail: "",
-  //   receiverStreet: "",
-  //   description: "",
-  //   startDate: new Date(),
-  //   terms: 0,
-  // };
+
 
   const initialValues = {
     items: props.invoice.items,
@@ -57,6 +38,9 @@ const DetailsPage: React.FC<Invoice> = (props) => {
   };
 
   //
+  const handleDeleteInvoice = (id:string) => {
+    
+  }
 
   return (
    
@@ -79,8 +63,9 @@ const DetailsPage: React.FC<Invoice> = (props) => {
             <div className=''>
               {/* <Sidebar /> */}
               <Form
+                method='patch'
                 editing={true}
-                url="/api/invoice"
+                url={`/api/edit/${props.invoice._id}`}
                 initialValues={initialValues}
                 hideForm={() => setEditing(false)}
                 title={` Edit UGX ${props.invoice.invoiceNumber}`}
@@ -97,6 +82,7 @@ const DetailsPage: React.FC<Invoice> = (props) => {
             <InvoiceDetails
               handleEditing={() => setEditing(true)}
               invoice={props.invoice}
+           
             />
           </div>
         </>

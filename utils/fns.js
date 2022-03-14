@@ -1,3 +1,4 @@
+import axios from "axios";
 const validateNo = (no) => {
   if (isNaN(no)) {
     return 0;
@@ -13,11 +14,9 @@ const termsArray = [
   { desc: " 30 Days", value: 30 },
 ];
 
-
-
 export function addDays(date, days) {
   var result = new Date(date);
- 
+
   result.setDate(result.getDate() + parseInt(days));
   return result;
 }
@@ -27,7 +26,6 @@ export function getSum(arr) {
 
   return arrayOfNumbers.reduce((acc, cv) => acc + cv, 0);
 }
-
 
 export function stringifyDate(str) {
   const monthNames = [
@@ -58,10 +56,7 @@ function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-export function sendData(
-  formValues, 
-  status
-) {
+export function sendData(formValues, status) {
   const data = {
     issuingAddress: {
       street: formValues.issuerStreet,
@@ -76,10 +71,10 @@ export function sendData(
       country: formValues.receiverCountry,
     },
     items: formValues.items,
-    paymentDate:addDays(formValues.startDate,formValues.terms),
+    paymentDate: addDays(formValues.startDate, formValues.terms),
     email: formValues.receiverEmail,
     issuingDate: formValues.startDate,
-    terms:formValues.terms,
+    terms: formValues.terms,
     invoiceNumber: getRandom(10000, 20000),
     debtor: formValues.receiverName,
     status,
@@ -87,9 +82,9 @@ export function sendData(
   };
   return data;
 }
- const initialValues = {
+const initialValues = {
   items: [{ name: "", qty: 0, price: 0 }],
-  issuerStreet: "" ,
+  issuerStreet: "",
   issuerCity: "",
   receiverCity: "",
   issuerCountry: "",
@@ -103,6 +98,29 @@ export function sendData(
   startDate: new Date(),
   terms: 0,
 };
+function handleColor(props) {
+  if (props.invoice.status === "pending") {
+    return "text-orange-400";
+  } else if (props.invoice.status === "paid") {
+    return "text-green-500";
+  } else {
+    return "text-black dark:text-white";
+  }
+}
 
- const categories = ["all", "pending", "paid", "draft"];
-export { termsArray,  validateNo,categories,initialValues };
+function handleBackgroundColor(props) {
+  if (props.invoice.status === "pending") return "bg-orange-100";
+  if (props.invoice.status === "paid") return "bg-green-100";
+  if (props.invoice.status === "draft") return "bg-gray-100";
+}
+
+
+const categories = ["all", "pending", "paid", "draft"];
+export {
+  termsArray,
+  validateNo,
+  categories,
+  initialValues,
+  handleColor,
+  handleBackgroundColor,
+};

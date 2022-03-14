@@ -16,7 +16,7 @@ import { validationSchema } from "../../validation";
 
 const FormComponent: React.FC<Props> = (props) => {
   const [darkTheme] = useContextProvider();
-  const {handleSubmit, handleDraft, loading, error, successMessage,setSuccessMessage,setError} = useInvoiceForm(props.url);
+  const {handleSubmit, handleDraft, loading, error, successMessage,setSuccessMessage,setError} = useInvoiceForm(props.url,props.method);
 
   return (
     <>

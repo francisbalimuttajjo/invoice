@@ -2,6 +2,7 @@ export interface Props {
   editing:boolean
   title: string;
   url:string
+  method:string
   hideForm: () => void;
   initialValues: {
     items: { name: string; qty: number; price: number }[];
@@ -18,7 +19,8 @@ export interface Props {
     description: string;
     startDate: Date;
     terms: number;
-    edit?:boolean
+    edit?: boolean
+    
     
   };
 }
