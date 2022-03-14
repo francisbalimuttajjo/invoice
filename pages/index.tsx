@@ -72,9 +72,9 @@ function Home({
           <div
             className={`${
               displayForm
-                ? "fixed    sm:ml-24 md:ml-48 overflow-hidden md:w-11/12  "
+                ? "fixed    sm:ml-24 md:ml-48 overflow-hidden md:w-9/12  "
                 : ""
-            }   mx-auto  md:w-9/12`}
+            }   mx-auto  md:w-8/12`}
           >
             <Header
               displayNewInvoiceForm={displayNewInvoiceForm}

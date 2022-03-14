@@ -2,7 +2,6 @@ import React from "react";
 import Head from "next/head";
 import Nprogress from "nprogress";
 import { AppWrapper } from "../context/context";
-//import 'tailwindcss/tailwind.css'
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Router } from "next/router";
