@@ -1,19 +1,18 @@
 import React from "react";
 import axios from "axios";
-import Sidebar from "../components/home/Sidebar";
-import Head from "../components/others/Head";
-import InvoiceDetails from "../components/invoiceDetails/InvoiceDetails";
+import Sidebar from "../../components/home/Sidebar";
+import Head from "../../components/others/Head";
+import InvoiceDetails from "../../components/invoiceDetails/InvoiceDetails";
 import { motion } from "framer-motion";
-import { InvoiceFormat } from "../components/home/types/home";
-import Form from "../components/form/Form";
-import { returnInitialValues } from "../utils/fns";
+import { InvoiceFormat } from "../../components/home/types/home";
+import Form from "../../components/form/Form";
+import { returnInitialValues } from "../../utils/fns";
 
 interface Invoice {
   invoice: InvoiceFormat;
 }
 // Layout: React.FC<OwnProps>
 const DetailsPage: React.FC<Invoice> = (props) => {
-
   const [editing, setEditing] = React.useState(false);
   const initialValues = returnInitialValues(props);
 
@@ -21,7 +20,6 @@ const DetailsPage: React.FC<Invoice> = (props) => {
     <motion.div
       animate="animate"
       initial="initial"
-    
       className="  min-h-screen  sm:flex"
     >
       <>

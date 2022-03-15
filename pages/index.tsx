@@ -71,21 +71,16 @@ function Home({
                 : ""
             }   mx-auto  md:w-8/12`}
           >
-            {data.length > 0 ? (
-              <>
-                {" "}
-                <Header
-                  displayNewInvoiceForm={displayNewInvoiceForm}
-                  description={description}
-                  handleCategorizingInvoices={handleCategorizingInvoices}
-                  categories={categories}
-                  InvoiceTotal={data.length}
-                />
-                <InvoiceList invoices={data} />
-              </>
-            ) : (
-              <h1>no invoices currently</h1>
-            )}
+            <>
+              <Header
+                displayNewInvoiceForm={displayNewInvoiceForm}
+                description={description}
+                handleCategorizingInvoices={handleCategorizingInvoices}
+                categories={categories}
+                InvoiceTotal={data.length}
+              />
+              <InvoiceList invoices={data} />
+            </>
           </div>
         </>
       </>
@@ -106,7 +101,8 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      data1: data1.length < 1 ? [] : data1,
+      data1: data1.length < 1  || undefined ? [] : data1,
+     
     },
   };
 };

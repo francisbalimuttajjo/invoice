@@ -16,7 +16,7 @@ const Invoice: React.FC<InvoicePropsHome> = (props) => {
   return (
     <motion.div
       variants={fadeIn}
-      onClick={() => router.push(`/${props.invoice._id}`)}
+      onClick={() => router.push(`/invoices/${props.invoice._id}`)}
       className={`
            dark:bg-slate-800 bg-white
               hover:cursor-pointer hover:border-solid hover:border    hover:border-gray-500
