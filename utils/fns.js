@@ -120,7 +120,21 @@ function returnInitialValues(props) {
   return initialValues
 
 }
+    export function handleColor(props) {
+    if (props.invoice.status === "pending") {
+      return "text-orange-400 ";
+    } else if (props.invoice.status === "paid") {
+      return "text-green-500";
+    } else {
+      return "text-black dark:text-white ";
+    }
+  }
 
+  export function handleBackgroundColor(props) {
+    if (props.invoice.status === "pending") return "  bg-orange-100  ";
+    if (props.invoice.status === "paid") return "bg-green-100   ";
+    if (props.invoice.status === "draft") return "bg-gray-100   ";
+  }
 
 
 const categories = ["all", "pending", "paid", "draft"];
