@@ -7,7 +7,6 @@ import { useTheme } from "next-themes";
 const UseTheme = () => {
   const [isMounted, setIsMounted] = React.useState(false);
   const { theme, setTheme } = useTheme();
-  console.log({theme})
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -25,23 +24,16 @@ const UseTheme = () => {
   };
 
   function displayTheme() {
-    if (theme === "light") {
+    if (theme === "light" || theme === "system") {
       return (
         <button onClick={changeToDarkTheme}>
           <MdBrightness2 className="text-white text-2xl opacity-70" />
         </button>
       );
-    }
-    if (theme === "dark") {
+    } else if (theme === "dark") {
       return (
         <button onClick={changeToLightTheme}>
           <MdLightMode className="text-white text-2xl  opacity-70" />
-        </button>
-      );
-    } else {
-      return (
-        <button onClick={changeToDarkTheme}>
-          <MdBrightness2 className="text-white text-2xl opacity-70" />
         </button>
       );
     }
