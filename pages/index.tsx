@@ -18,8 +18,6 @@ function Home({
   const [description, setDescription] = React.useState("total ");
   const [displayForm, setDisplayForm] = React.useState(false);
 
- 
-
   ///displaying form
   const displayNewInvoiceForm = () => setDisplayForm(true);
 
@@ -44,7 +42,7 @@ function Home({
     <motion.div
       animate="animate"
       initial="initial"
-      className='min-h-screen  sm:flex'
+      className="min-h-screen  sm:flex"
     >
       <>
         <>
@@ -73,15 +71,21 @@ function Home({
                 : ""
             }   mx-auto  md:w-8/12`}
           >
-            <Header
-              displayNewInvoiceForm={displayNewInvoiceForm}
-              description={description}
-              handleCategorizingInvoices={handleCategorizingInvoices}
-              categories={categories}
-              InvoiceTotal={data.length}
-            />
-
-            <InvoiceList invoices={data} />
+            {data.length > 0 ? (
+              <>
+                {" "}
+                <Header
+                  displayNewInvoiceForm={displayNewInvoiceForm}
+                  description={description}
+                  handleCategorizingInvoices={handleCategorizingInvoices}
+                  categories={categories}
+                  InvoiceTotal={data.length}
+                />
+                <InvoiceList invoices={data} />
+              </>
+            ) : (
+              <h1>no invoices currently</h1>
+            )}
           </div>
         </>
       </>
@@ -102,7 +106,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      data1,
+      data1: data1.length < 1 ? [] : data1,
     },
   };
 };

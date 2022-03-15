@@ -1,18 +1,17 @@
 import React from "react";
 import { BsBrightnessHighFill } from "react-icons/bs";
 import { MdBrightness2 } from "react-icons/md";
+import { MdLightMode } from "react-icons/md";
 import { useTheme } from "next-themes";
 
 const UseTheme = () => {
   const [isMounted, setIsMounted] = React.useState(false);
   const { theme, setTheme } = useTheme();
-  
+  console.log({theme})
 
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
-
- 
 
   const changeToDarkTheme = () => {
     if (isMounted) {
@@ -36,15 +35,16 @@ const UseTheme = () => {
     if (theme === "dark") {
       return (
         <button onClick={changeToLightTheme}>
-          <BsBrightnessHighFill className="text-white text-2xl  opacity-70" />
+          <MdLightMode className="text-white text-2xl  opacity-70" />
+        </button>
+      );
+    } else {
+      return (
+        <button onClick={changeToDarkTheme}>
+          <MdBrightness2 className="text-white text-2xl opacity-70" />
         </button>
       );
     }
-    return (
-      <button onClick={changeToDarkTheme}>
-        <MdBrightness2 className="text-white text-2xl opacity-70" />
-      </button>
-    );
   }
   return displayTheme;
 };
