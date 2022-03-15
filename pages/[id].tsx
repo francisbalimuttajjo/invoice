@@ -5,16 +5,15 @@ import Head from "../components/others/Head";
 import InvoiceDetails from "../components/invoiceDetails/InvoiceDetails";
 import { motion } from "framer-motion";
 import { InvoiceFormat } from "../components/home/types/home";
-import { useContextProvider } from "../context/context";
 import Form from "../components/form/Form";
 import { returnInitialValues } from "../utils/fns";
 
 interface Invoice {
   invoice: InvoiceFormat;
-};
+}
 // Layout: React.FC<OwnProps>
 const DetailsPage: React.FC<Invoice> = (props) => {
-  const [darkTheme] = useContextProvider();
+
   const [editing, setEditing] = React.useState(false);
   const initialValues = returnInitialValues(props);
 
@@ -22,9 +21,8 @@ const DetailsPage: React.FC<Invoice> = (props) => {
     <motion.div
       animate="animate"
       initial="initial"
-      className={`${
-        darkTheme ? "bg-slate-900 text-white" : ""
-      }  min-h-screen  sm:flex`}
+    
+      className="  min-h-screen  sm:flex"
     >
       <>
         <>
@@ -71,7 +69,7 @@ export const getServerSideProps = async (req: { query: { id: string } }) => {
     `https://invoicebafra.vercel.app/api/${req.query.id}`
     //`http://localhost:3000/api/${req.query.id}`
   );
-  console.log("res", res.data.invoice);
+  // console.log("res", res.data.invoice);
   const invoice: Data = res.data.invoice;
   if (!invoice) {
     return {

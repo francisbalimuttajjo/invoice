@@ -2,35 +2,23 @@ import React from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../animation/animation";
-import { useContextProvider } from "../../context/context";
 import { InvoicePropsHome } from "./types/home";
-import { stringifyDate,handleColor,handleBackgroundColor } from "../../utils/fns";
+import {
+  stringifyDate,
+  handleColor,
+  handleBackgroundColor,
+} from "../../utils/fns";
 import { FaCircle } from "react-icons/fa";
 
 const Invoice: React.FC<InvoicePropsHome> = (props) => {
   const router = useRouter();
-  const [darkTheme] = useContextProvider();
 
-  // function handleColor(props) {
-  //   if (props.invoice.status === "pending") {
-  //     return "text-orange-400 ";
-  //   } else if (props.invoice.status === "paid") {
-  //     return "text-green-500";
-  //   } else {
-  //     return "text-black dark:text-white ";
-  //   }
-  // }
-
-  // function handleBackgroundColor(props) {
-  //   if (props.invoice.status === "pending") return "  bg-orange-100  ";
-  //   if (props.invoice.status === "paid") return "bg-green-100   ";
-  //   if (props.invoice.status === "draft") return "bg-gray-100   ";
-  // }
   return (
     <motion.div
       variants={fadeIn}
       onClick={() => router.push(`/${props.invoice._id}`)}
-      className={` ${darkTheme ? "bg-slate-800 dark" : "bg-white"}  
+      className={`
+           dark:bg-slate-800 bg-white
               hover:cursor-pointer hover:border-solid hover:border    hover:border-gray-500
               mx-auto px-5 flex justify-between  py-3 my-2 h-28 sm:h-20 rounded-md sm:w-full md:w-9/12 w-10/12 `}
     >
@@ -58,9 +46,15 @@ const Invoice: React.FC<InvoicePropsHome> = (props) => {
           UGX <span className=" font-bold">{props.amount}</span>
         </p>
         <div
-          className={`${handleBackgroundColor(props)} dark:bg-slate-700 px-3  bg-opacity-50   rounded-md py-2 w-24 `}
+          className={`${handleBackgroundColor(
+            props
+          )} dark:bg-slate-700 px-3  bg-opacity-50   rounded-md py-2 w-24 `}
         >
-          <p className={`${handleColor(props)} text-sm   capitalize font-semibold`}>
+          <p
+            className={`${handleColor(
+              props
+            )} text-sm   capitalize font-semibold`}
+          >
             <FaCircle className="h-2 w-2 m-1 inline" /> {props.invoice.status}
           </p>
         </div>

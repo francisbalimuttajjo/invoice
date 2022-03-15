@@ -8,7 +8,6 @@ import InvoiceList from "../components/home/InvoiceList";
 import Header from "../components/others/Header";
 import { InvoiceFormat } from "../components/home/types/home";
 import { motion } from "framer-motion";
-import { useContextProvider } from "../context/context";
 import axios from "axios";
 
 function Home({
@@ -19,7 +18,7 @@ function Home({
   const [description, setDescription] = React.useState("total ");
   const [displayForm, setDisplayForm] = React.useState(false);
 
-  const [darkTheme] = useContextProvider();
+ 
 
   ///displaying form
   const displayNewInvoiceForm = () => setDisplayForm(true);
@@ -45,9 +44,7 @@ function Home({
     <motion.div
       animate="animate"
       initial="initial"
-      className={`${
-        darkTheme ? "bg-slate-900 text-white" : ""
-      }  min-h-screen  sm:flex`}
+      className='min-h-screen  sm:flex'
     >
       <>
         <>
@@ -81,7 +78,6 @@ function Home({
               description={description}
               handleCategorizingInvoices={handleCategorizingInvoices}
               categories={categories}
-              darkTheme={darkTheme}
               InvoiceTotal={data.length}
             />
 

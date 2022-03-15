@@ -1,10 +1,7 @@
 import React from "react";
 import { HeadingProps } from "./types/others";
-import { useContextProvider } from "../../context/context";
 
 const Sidebar: React.FC<HeadingProps> = (props) => {
-  const [darkTheme] = useContextProvider();
-
   const [category, setCategory] = React.useState(props.categories[0]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -13,11 +10,7 @@ const Sidebar: React.FC<HeadingProps> = (props) => {
   };
 
   return (
-    <div
-      className={`${
-        darkTheme ? "dark " : ""
-      } flex  mt-7  mx-auto justify-around`}
-    >
+    <div className="  flex  mt-7  mx-auto justify-around">
       <div className="flex flex-col  ">
         <h1 className="font-semibold text-3xl ">Invoices</h1>
         {props.InvoiceTotal > 0 && (

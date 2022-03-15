@@ -2,15 +2,25 @@ import React from "react";
 import { FaPiedPiper } from "react-icons/fa";
 import { BsBrightnessHighFill } from "react-icons/bs";
 import { MdBrightness2 } from "react-icons/md";
-import { useContextProvider } from "../../context/context";
+import { useTheme } from "next-themes";
 
 type PropTypes = {
   displayForm?: boolean;
 };
 
 const Sidebar: React.FC<PropTypes> = (props) => {
-  const [darkTheme, setDarkTheme] = useContextProvider();
+  const [isMounted, setIsMounted] = React.useState(false);
+  const { theme, setTheme } = useTheme();
 
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const switchTheme = () => {
+    if (isMounted) {
+      setTheme(theme === "light" ? "dark" : "light");
+    }
+  };
   return (
     <aside
       className={` ${props.displayForm ? "sm:rounded-none" : ""} 
@@ -20,13 +30,14 @@ const Sidebar: React.FC<PropTypes> = (props) => {
         <FaPiedPiper className="text-white mx-auto   text-5xl " />
       </div>
       <div className="flex  sm:justify-center my-6  right-2  absolute  sm:bottom-6  sm:w-24 sm:left-0     sm:px-auto   ">
-        {darkTheme && (
-          <button onClick={setDarkTheme}>
+        {theme === "dark" && (
+          <button onClick={switchTheme}>
             <BsBrightnessHighFill className="text-white text-2xl  opacity-70" />
           </button>
         )}
-        {!darkTheme && (
-          <button onClick={setDarkTheme}>
+
+        {theme === "light" && (
+          <button onClick={switchTheme}>
             <MdBrightness2 className="text-white text-2xl opacity-70" />
           </button>
         )}

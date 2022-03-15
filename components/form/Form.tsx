@@ -5,7 +5,6 @@ import CityComponent from "./CityComponent";
 import Items from "./ItemsComponent";
 import Wrapper from "../others/Wrapper";
 import useInvoiceForm from "./useInvoiceForm";
-import { useContextProvider } from "../../context/context";
 import Footer from "./Footer";
 import { Formik, Form } from "formik";
 import { Props } from "./types/form";
@@ -13,7 +12,6 @@ import { Alert, AlertDanger } from "../others/Alert";
 import { validationSchema } from "../../utils/Validation";
 
 const FormComponent: React.FC<Props> = (props) => {
-  const [darkTheme] = useContextProvider();
   const {
     handleSubmit,
     handleDraft,
@@ -27,11 +25,8 @@ const FormComponent: React.FC<Props> = (props) => {
   return (
     <>
       <div className=" overlay"></div>
-      <div
-        className={`${
-          darkTheme ? "dark" : ""
-        } z-20 w-full  h-screen fixed   sm:flex`}
-      >
+
+      <div className="   z-20 w-full  h-screen fixed   sm:flex">
         <Wrapper>
           <Formik
             initialValues={props.initialValues}
@@ -39,7 +34,7 @@ const FormComponent: React.FC<Props> = (props) => {
             onSubmit={handleSubmit}
             render={({ values }) => (
               <Form>
-                <div className="dark:bg-slate-900 px-3 bg-white w-full sm:w-9/12    h-screen sm:rounded-r-3xl    ">
+                <div className=" px-3 dark:bg-slate-900 bg-white w-full sm:w-9/12    h-screen sm:rounded-r-3xl    ">
                   <header>
                     <h1 className=" font-bold opacity-80 text-2xl pt-12  ">
                       {props.title}

@@ -1,18 +1,7 @@
 import React from "react";
-import { useContextProvider } from "../context/context";
+import { HeadingProps } from "./others/types/others";
 
-interface HeadingProps {
-  InvoiceTotal: Number;
-  darkTheme: boolean;
-  categories: string[];
-  description: string;
-  handleCategorizingInvoices: (a: string) => void;
-  displayNewInvoiceForm: () => void;
-}
-
-const Sidebar: React.FC<HeadingProps> = (props) => {
-  const [darkTheme] = useContextProvider();
-
+const Header: React.FC<HeadingProps> = (props) => {
   const [category, setCategory] = React.useState(props.categories[0]);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -21,11 +10,7 @@ const Sidebar: React.FC<HeadingProps> = (props) => {
   };
 
   return (
-    <div
-      className={`${
-        darkTheme ? "dark " : ""
-      } flex  mt-7  mx-auto justify-around`}
-    >
+    <div className=" flex  mt-7  mx-auto justify-around">
       <div className="flex flex-col  ">
         <h1 className="font-semibold text-3xl ">Invoices</h1>
         <p className=" text-sm opacity-50 mt-1 ">
@@ -67,4 +52,4 @@ const Sidebar: React.FC<HeadingProps> = (props) => {
   );
 };
 
-export default Sidebar;
+export default Header;
