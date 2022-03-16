@@ -9,8 +9,7 @@ const options = [
   { value: "paid", label: "Paid" },
 ];
 
-
-const Header: React.FC<HeadingProps> = (props) => {  
+const Header: React.FC<HeadingProps> = (props) => {
   const handleChange = (e: any) => {
     props.handleCategorizingInvoices(e.value);
   };
