@@ -25,12 +25,12 @@ const Header: React.FC<HeadingProps> = (props) => {
           {props.InvoiceTotal > 1 ? " Invoices" : " Invoice"}{" "}
         </p>
       </div>
-      <div className="flex  sm:justify-end     ">
+      <div className="flex  sm:justify-end  -ml-10    ">
         <label className="mt-3 hidden  text-xs xs:text-base xs:flex justify-center align-center text-blue-">
           Filter
           <span className="hidden xs:inline">by status</span>
         </label>
-        <div className="m-2 dark:bg-slate-900 flex dark:text-purple-700 ">
+        <div className="mr-2 my-2 sm:ml-2 dark:bg-slate-900 flex dark:text-purple-700 ">
           <Select
             placeholder="Filter"
             onChange={handleChange}
