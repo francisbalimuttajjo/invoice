@@ -15,8 +15,7 @@ export interface HeadProps{
 //header.tsx
 export type HeadingProps={
   InvoiceTotal:Number 
-  // darkTheme:boolean
-  categories:string[]   
+    
   description:string
   handleCategorizingInvoices:(a:string)=>void
   displayNewInvoiceForm:()=>void
