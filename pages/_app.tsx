@@ -5,7 +5,7 @@ import { ThemeProvider } from "next-themes";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Router } from "next/router";
-import LoadingComponent from "../components/loading";
+import LoadingComponent from "../components/others/loading";
 
 Nprogress.configure({ showSpinner: false });
 function MyApp({ Component, pageProps }: AppProps) {

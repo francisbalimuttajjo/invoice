@@ -3,7 +3,7 @@ import { InferGetServerSidePropsType } from "next";
 import Head from "../components/others/Head";
 import Sidebar from "../components/home/Sidebar";
 import Form from "../components/form/Form";
-import { categories, initialValues } from "../utils/fns";
+import {  initialValues } from "../utils/fns";
 import InvoiceList from "../components/home/InvoiceList";
 import Header from "../components/others/Header";
 import { InvoiceFormat } from "../components/home/types/home";
@@ -76,7 +76,7 @@ function Home({
                 displayNewInvoiceForm={displayNewInvoiceForm}
                 description={description}
                 handleCategorizingInvoices={handleCategorizingInvoices}
-                categories={categories}
+                
                 InvoiceTotal={data.length}
               />
               <InvoiceList invoices={data} />
