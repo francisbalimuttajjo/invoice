@@ -12,16 +12,11 @@ import Buttons from "./Button";
 import Table from "./Table";
 
 const InvoiceDetails: React.FC<Props> = (props) => {
-  const [handlePaid, handleDelete, loading, error, setError,handleRouterBack] = useApi(
-    props.invoice._id
-  );
-
-  
+  const [handlePaid, handleDelete, loading, error, setError, handleRouterBack] =
+    useApi(props.invoice._id);
 
   return (
-    <div
-      className=' sm:w-10/12 md:w-7/12 sm:mx-auto  sm:pb-8'
-    >
+    <div className=" sm:w-10/12 md:w-7/12 sm:mx-auto  sm:pb-8">
       <div className="mt-8 ml-4  flex ">
         <IoIosArrowBack
           className="font-light cursor-pointer mt-1 opacity-50  "

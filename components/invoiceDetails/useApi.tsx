@@ -5,11 +5,10 @@ import { useRouter } from "next/router";
 const UseApi = (id: string) => {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState("");
-    const router = useRouter();
+  const router = useRouter();
   const handleRouterBack = () => router.back();
   //api calls
   const handleDelete = () => {
-      
     setLoading(true);
     axios
       .delete(`/api/delete/${id}`)
@@ -42,8 +41,15 @@ const UseApi = (id: string) => {
         setError("operation failed, try again");
         return;
       });
-    };
-    return[handlePaid,handleDelete,loading,error,setError,handleRouterBack] as const
+  };
+  return [
+    handlePaid,
+    handleDelete,
+    loading,
+    error,
+    setError,
+    handleRouterBack,
+  ] as const;
 };
 
 export default UseApi;

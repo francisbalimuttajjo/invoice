@@ -1,13 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import { HeadingProps } from "../../types/others";
-
-const options = [
-  { value: "all", label: "all" },
-  { value: "draft", label: "Draft" },
-  { value: "pending", label: "Pending" },
-  { value: "paid", label: "Paid" },
-];
+import { options } from "../../utils/fns";
 
 const Header: React.FC<HeadingProps> = (props) => {
   const handleChange = (e: any) => {

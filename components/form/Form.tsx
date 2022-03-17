@@ -34,7 +34,7 @@ const FormComponent: React.FC<Props> = (props) => {
             onSubmit={handleSubmit}
             render={({ values }) => (
               <Form>
-                <div className=" px-3 dark:bg-slate-900 bg-white w-full sm:w-9/12    h-screen sm:rounded-r-3xl    ">
+                <div className=" sm:-ml-10 px-3 sm:pl-12  dark:bg-slate-900 bg-white w-full sm:w-9/12    h-screen sm:rounded-r-3xl    ">
                   <header>
                     <h1 className=" font-bold opacity-80 text-2xl pt-12  ">
                       {props.title}

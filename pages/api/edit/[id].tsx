@@ -1,10 +1,10 @@
 import connect from "../../../db/db";
 import Invoice from "../../../model/Invoice";
 import { sendResponse } from "../../../utils/pagesFns";
-
+import { Data } from "../../../types/apiTypes";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type Data = { msg: string; status: string };
+
 
 export default async function handler(
   req: NextApiRequest,

@@ -1,13 +1,12 @@
 //
 
-
 const validateNo = (no) => {
   if (isNaN(no)) {
     return 0;
   }
   return no;
 };
- // 
+//
 
 const termsArray = [
   { desc: " Choose ", value: 0 },
@@ -17,7 +16,6 @@ const termsArray = [
   { desc: " 30 Days", value: 30 },
 ];
 
-
 //
 export function addDays(date, days) {
   var result = new Date(date);
@@ -25,7 +23,6 @@ export function addDays(date, days) {
   result.setDate(result.getDate() + parseInt(days));
   return result;
 }
-
 
 //
 export function getSum(arr) {
@@ -90,8 +87,9 @@ export function sendData(formValues, status) {
   };
   return data;
 }
+const item = { name: "", qty: 0, price: 0 };
 const initialValues = {
-  items: [{ name: "", qty: 0, price: 0 }],
+  items: [item],
   issuerStreet: "",
   issuerCity: "",
   receiverCity: "",
@@ -107,50 +105,67 @@ const initialValues = {
   terms: 0,
 };
 
+//pages index && id
 function returnInitialValues(props) {
-    const initialValues = {
-      items: props.invoice.items,
-      issuerStreet: props.invoice.issuingAddress.street,
-      receiverStreet: props.invoice.debtorsAddress.street,
-      issuerCity: props.invoice.issuingAddress.city,
-      receiverCity: props.invoice.debtorsAddress.city,
-      issuerCountry: props.invoice.issuingAddress.country,
-      receiverCountry: props.invoice.debtorsAddress.country,
-      issuerPostalAddress: props.invoice.issuingAddress.postalAddress,
-      receiverPostalAddress: props.invoice.debtorsAddress.postalAddress,
-      description: props.invoice.description,
-      startDate:new Date( props.invoice.issuingDate),
-      terms: props.invoice.terms,
-      receiverName: props.invoice.debtor,
-      receiverEmail: props.invoice.email,
+  const initialValues = {
+    items: props.invoice.items,
+    issuerStreet: props.invoice.issuingAddress.street,
+    receiverStreet: props.invoice.debtorsAddress.street,
+    issuerCity: props.invoice.issuingAddress.city,
+    receiverCity: props.invoice.debtorsAddress.city,
+    issuerCountry: props.invoice.issuingAddress.country,
+    receiverCountry: props.invoice.debtorsAddress.country,
+    issuerPostalAddress: props.invoice.issuingAddress.postalAddress,
+    receiverPostalAddress: props.invoice.debtorsAddress.postalAddress,
+    description: props.invoice.description,
+    startDate: new Date(props.invoice.issuingDate),
+    terms: props.invoice.terms,
+    receiverName: props.invoice.debtor,
+    receiverEmail: props.invoice.email,
   };
-  
-  return initialValues
 
+  return initialValues;
 }
-    export function handleColor(props) {
-    if (props.invoice.status === "pending") {
-      return "text-orange-400 ";
-    } else if (props.invoice.status === "paid") {
-      return "text-green-500";
-    } else {
-      return "text-black dark:text-white ";
-    }
+
+//invoice details.y\tsx
+export function handleColor(props) {
+  if (props.invoice.status === "pending") {
+    return "text-orange-400 ";
+  } else if (props.invoice.status === "paid") {
+    return "text-green-500";
+  } else {
+    return "text-black dark:text-white ";
   }
+}
 
-  export function handleBackgroundColor(props) {
-    if (props.invoice.status === "pending") return "  bg-orange-100  ";
-    if (props.invoice.status === "paid") return "bg-green-100   ";
-    if (props.invoice.status === "draft") return "bg-gray-100   ";
+export function handleBackgroundColor(props) {
+  if (props.invoice.status === "pending") return "  bg-orange-100  ";
+  if (props.invoice.status === "paid") return "bg-green-100   ";
+  if (props.invoice.status === "draft") return "bg-gray-100   ";
+}
+//footer .tsx /form 
+const disableBtn = (props) => {
+  if (props.loading) {
+    return "cursor-not-allowed bg-blue-700 ml-1 text-white opacity-70  text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600";
   }
+  return "bg-blue-700 ml-1 text-white opacity-70  text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600";
+};
+ 
+ //heading tsx
+ const options = [
+  { value: "all", label: "all" },
+  { value: "draft", label: "Draft" },
+  { value: "pending", label: "Pending" },
+  { value: "paid", label: "Paid" },
+];
 
-
-const categories = ["all", "pending", "paid", "draft"];
+//
 export {
   termsArray,
+  options,
   validateNo,
-  categories,
+  disableBtn,
   initialValues,
   returnInitialValues,
-  
+  item
 };

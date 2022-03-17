@@ -5,30 +5,12 @@ export interface AddressFormat {
   city: string;
 }
 
-//invoice
-export interface InvoicePropsHome {
-  amount: number;
-  invoice: {
-    invoiceNumber: number;
-    email: string;
-    status: string;
-    description: string;
-    debtor: string;
-    paymentDate: string;
-    terms: number;
-    issuingDate: Date;
-    _id: string;
-    issuingAddress: AddressFormat;
-    debtorsAddress: AddressFormat;
-    items: { name: string; qty: number; price: number }[];
-  };
-}
 
 //invoice list
 export interface InvoiceFormat  {
   invoiceNumber: number;
   email: string;
-  status: string;
+  status: 'paid'|'draft'|'pending';
   description: string;
   debtor: string;
   paymentDate: string;
@@ -39,6 +21,15 @@ export interface InvoiceFormat  {
   debtorsAddress: AddressFormat;
   items: { name: string; qty: number; price: number }[];
 };
+
+//invoice
+export interface InvoicePropsHome   {
+  amount: number;
+   invoice:InvoiceFormat
+
+}
+
+//invoice List
 export interface Props {
   invoices: InvoiceFormat[];
 };

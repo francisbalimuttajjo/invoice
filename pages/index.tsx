@@ -36,7 +36,7 @@ function Home({
               displayForm ? "New invoice " : `invoices (${data.length})`
             }`}
           />
-          <Sidebar />
+          <Sidebar  />
           {displayForm && (
             <div className="">
               <Form

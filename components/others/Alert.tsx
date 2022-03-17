@@ -1,7 +1,6 @@
 import React from "react";
 import { TiTick } from "react-icons/ti";
-import {Props} from '../../types/others'
-
+import { Props } from "../../types/others";
 
 const Alert: React.FC<Props> = (props) => {
   return (
@@ -57,10 +56,10 @@ const AlertDanger: React.FC<Props> = (props) => {
         ></path>
       </svg>
       <div className="ml-3 text-sm font-medium capitalize text-red-700 dark:text-red-800">
-      {props.msg}
+        {props.msg}
       </div>
-          <button
-            onClick={props.handleClick}
+      <button
+        onClick={props.handleClick}
         type="button"
         className="ml-auto -mx-1.5 -my-1.5 bg-red-100 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex h-8 w-8 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300"
         data-collapse-toggle="alert-2"

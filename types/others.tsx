@@ -6,16 +6,14 @@ export interface Props{
 };
 
 //head.tsx
-export interface HeadProps{
-    
+export interface HeadProps{    
     title:string
 }
 
 
 //header.tsx
 export type HeadingProps={
-  InvoiceTotal:Number 
-    
+  InvoiceTotal:Number     
   description:string
   handleCategorizingInvoices:(a:string)=>void
   displayNewInvoiceForm:()=>void

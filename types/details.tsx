@@ -28,7 +28,6 @@ export interface InvoiceProps{
  //button t.sx
  export interface ButtonProps {
     handleEditing:()=>void
-     status: string
-    
+     status: string    
      id:string
 }

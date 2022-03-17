@@ -1,16 +1,14 @@
 import { sendResponse } from "../../utils/pagesFns";
 import connect from "../../db/db";
 import Invoice from "../../model/Invoice";
+import {Data} from "../../types/apiTypes";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type Response = {
-  msg: string;
-  status: string;
-};
+
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Response>
+  res: NextApiResponse<Data>
 ) {
   if (req.method === "POST") {
     try {

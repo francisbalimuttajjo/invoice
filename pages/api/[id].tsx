@@ -1,23 +1,9 @@
 import connect from "../../db/db";
 import Invoice from "../../model/Invoice";
-import { AddressFormat } from "../../types/home";
 import { sendResponse } from "../../utils/pagesFns";
+import {Data } from "../../types/apiTypes";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type Invoice = {
-  debtor: string;
-  status: string;
-  description: string;
-  issuingDate: string;
-  paymentDate: string;
-  email: string;
-  invoiceNumber: number;
-  terms: number;
-  debtorsAddress: AddressFormat;
-  issuingAddress: AddressFormat;
-  items: { qty: number; price: number; name: string }[];
-};
-type Data = { invoice?: Invoice; msg?: string; status: string };
 
 export default async function handler(
   req: NextApiRequest,

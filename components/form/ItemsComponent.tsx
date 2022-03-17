@@ -1,11 +1,11 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
-import { validateNo } from "../../utils/fns";
+import { validateNo,item } from "../../utils/fns";
 import { ErrorMessage, Field, FieldArray } from "formik";
 import {ItemsProps} from '../../types/form'
 
 
-const item = { name: "", qty: 0, price: 0 };
+
 const Items: React.FC<ItemsProps> = (props) => {
   return (
     <div className="w-full py-3 px-4  ">
