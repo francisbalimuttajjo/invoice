@@ -1,7 +1,19 @@
 import { FooterProps } from "../../types/form";
-import { disableBtn } from "../../utils/fns";
+
+
+
+
 
 const Footer: React.FC<FooterProps> = (props) => {
+
+  const disableBtn = () => {
+  if (props.loading) 
+    return "cursor-not-allowed bg-blue-700 ml-1 text-white opacity-70  text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600";
+  
+    return "bg-blue-700 ml-1 text-white opacity-70  text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600";
+  }
+
+
   return (
     <div className=" sticky  flex ">
       <button
@@ -23,7 +35,7 @@ const Footer: React.FC<FooterProps> = (props) => {
         <button
           type="submit"
           disabled={props.loading}
-          className={disableBtn(props)}
+          className={disableBtn()}
         >
           {props.editing ? "Save Changes" : "Save & Send"}
         </button>
