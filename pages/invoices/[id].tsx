@@ -67,8 +67,9 @@ export const getServerSideProps = async (req: { query: { id: string } }) => {
     `https://invoicebafra.vercel.app/api/${req.query.id}`
     //`http://localhost:3000/api/${req.query.id}`
   );
+  // console.log('res',res)
   // console.log("res", res.data.invoice);
-  const invoice: Data = res.data.invoice;
+  const invoice: Data = res.data.data;
   if (!invoice) {
     return {
       notFound: true,

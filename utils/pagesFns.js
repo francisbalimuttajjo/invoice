@@ -1,8 +1,8 @@
-const sendResponse = (req, res, statusCode, msg, status) => {
+const sendResponse = (req, res, statusCode, data, status) => {
 
   return res.status(statusCode).json({
     status: status ? status : "success",
-    msg,
+    data,
   });
 };
 

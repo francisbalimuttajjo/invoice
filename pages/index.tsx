@@ -81,7 +81,9 @@ export const getServerSideProps = async () => {
     "https://invoicebafra.vercel.app/api/invoices"
     //"http://localhost:3000/api/invoices"
   );
-  const invoices: Data = res.data.invoices;
+ 
+  const invoices: Data = res.data.data;
+  
 
   return {
     props: {
