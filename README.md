@@ -22,3 +22,7 @@ You can save the invoice as a draft or pending, You can edit,delete and even  ma
 
 <h1>Getting Started</h1>
 Locally, u just need to clone the project to your local machine and run npm install to install all the dependencies; Then run npm run dev to start your development environment,You can then view the project at http://localhost:3000
+
+![invoice](https://user-images.githubusercontent.com/63359032/158875135-78e75f9d-ba27-4491-805c-bee7de5f706f.jpg)
+![invoice2](https://user-images.githubusercontent.com/63359032/158875549-31317bec-518f-4d7a-aa89-2fc490e2c8f1.jpg)
+![invoice3](https://user-images.githubusercontent.com/63359032/158875779-d9b03b94-aa73-4fa2-b4f7-d240cddc771d.jpg)
