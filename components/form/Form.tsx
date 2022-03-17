@@ -26,7 +26,7 @@ const FormComponent: React.FC<Props> = (props) => {
     <>
       <div className=" overlay"></div>
 
-      <div className="   z-20 w-full  h-screen fixed   sm:flex">
+      <div className="   z-20  min-w-full max-w-full  h-screen fixed sm:px-6  sm:flex">
         <Wrapper>
           <Formik
             initialValues={props.initialValues}
@@ -34,7 +34,7 @@ const FormComponent: React.FC<Props> = (props) => {
             onSubmit={handleSubmit}
             render={({ values }) => (
               <Form>
-                <div className=" sm:-ml-10 px-3 sm:pl-12  dark:bg-slate-900 bg-white w-full sm:w-9/12    h-screen sm:rounded-r-3xl    ">
+                <div className=" sm:-ml-10 px-3 sm:pl-12 sm:pr-12 dark:bg-slate-900 bg-white w-full    h-screen sm:rounded-r-3xl    ">
                   <header>
                     <h1 className=" font-bold opacity-80 text-2xl pt-12  ">
                       {props.title}

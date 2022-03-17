@@ -8,7 +8,7 @@ import {ItemsProps} from '../../types/form'
 
 const Items: React.FC<ItemsProps> = (props) => {
   return (
-    <div className="w-full py-3 px-4  ">
+    <div className=" py-3 px-4 min-w-full max-w-full ">
       <label className=" font-bold  opacity-90 text-blue-500">Item List</label>
       <FieldArray
         name="items"
@@ -17,16 +17,16 @@ const Items: React.FC<ItemsProps> = (props) => {
             {props.items &&
               props.items.length > 0 &&
               props.items.map((item, index) => (
-                <div key={index} className="w-full   sm:flex">
-                  <div className="sm:w-5/12">
+                <div key={index} className=" w-full  ">
+                  <div className="w-full">
                     <label className="ml-2 label  text-sm  ">Name</label>
                     <Field className="field" name={`items.${index}.name`}  />
                     <div className="error-msg">
                       <ErrorMessage name={`items.${index}.name`} />
                     </div>
                   </div>
-                  <div className="flex justify-around sm:ml-2 sm:w-7/12 ">
-                    <div className="w-1/4">
+                  <div className="flex justify-around  w-full ">
+                    <div className="w-36 m-1">
                       <label className="ml-2 label  text-sm ">Qty</label>
                       <Field
                         type="number"
@@ -38,7 +38,7 @@ const Items: React.FC<ItemsProps> = (props) => {
                         <ErrorMessage name={`items.${index}.qty`} />
                       </div>
                     </div>
-                    <div className="w-1/4">
+                    <div className="w-36 m-1">
                       <label className="ml-2 label  text-sm ">Price</label>
                       <Field
                         type="number"
@@ -50,8 +50,8 @@ const Items: React.FC<ItemsProps> = (props) => {
                         <ErrorMessage name={`items.${index}.price`} />
                       </div>
                     </div>
-                    <div className="w-5/12    mb-6 flex ">
-                      <div className="w-1/2">
+                    <div className="w-36 ml-1   mb-6 flex ">
+                      <div className="w-9/12 ">
                         <label className=" label  text-sm ">Total</label>
                         <p className="dark:text-white text-gray-700 font-semibold    px-2   py-4   ">
                           {validateNo(item.qty * item.price)}

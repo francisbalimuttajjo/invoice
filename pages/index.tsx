@@ -38,7 +38,7 @@ function Home({
           />
           <Sidebar  />
           {displayForm && (
-            <div className="">
+            <div className="w-full">
               <Form
                 editing={false}
                 method="post"
