@@ -7,7 +7,7 @@ import { ErrorMessage } from "formik";
 const DateComponent = () => {
   return (
     <div className="flex  w-full  relative  py-3">
-      <div className="w-1/3 px-3 ">
+      <div className="w-5/12 sm:w-1/3 px-3 ">
         <label className="input-Label">Invoice Date</label>
         <DatePicker name="startDate" />
       </div>
