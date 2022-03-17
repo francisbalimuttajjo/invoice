@@ -1,4 +1,4 @@
-import {FooterProps} from './types/form'
+import {FooterProps} from '../../types/form'
 
 
 const Footer: React.FC<FooterProps> = (props) => {

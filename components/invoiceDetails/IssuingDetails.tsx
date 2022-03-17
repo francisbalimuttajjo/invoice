@@ -1,5 +1,5 @@
 import React from "react";
-import { InvoiceProps } from "./types/details";
+import { InvoiceProps } from "../../types/details";
 import Address from "./Address";
 
 const IssuingDetails: React.FC<InvoiceProps> = (props) => {

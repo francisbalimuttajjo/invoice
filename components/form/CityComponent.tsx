@@ -1,7 +1,6 @@
 import React from "react";
 import { ErrorMessage, Field } from "formik";
-import { CityComponentProps } from "./types/form";
-
+import { CityComponentProps } from "../../types/form";
 
 const Input: React.FC<CityComponentProps> = (props) => {
   return (

@@ -1,38 +1,35 @@
 import connect from "../../db/db";
 import Invoice from "../../model/Invoice";
-import { AddressFormat } from "../../components/home/types/home";
+import { Data } from "../../types/apiTypes";
+import { sendResponse } from "../../utils/pagesFns";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type Invoices = {
-  debtor: string;
-  status: string;
-  description: string;
-  issuingDate: string;
-  paymentDate: string;
-  email: string;
-  invoiceNumber: number;
-  terms: number;
-  debtorsAddress: AddressFormat;
-  issuingAddress: AddressFormat;
-  items: { qty: number; price: number; name: string }[];
-};
-type Data = { invoices?: Invoices[]; msg?: string; status: string };
+
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
   if (req.method === "GET") {
-    connect();
+    try {
+      connect();
 
-    const invoices = await Invoice.find();
-    if (invoices.length < 1) {
-      return res
-        .status(204)
-        .json({ status: "success", msg: "no invoices currently" });
+      const invoices = await Invoice.find();
+      if (invoices.length < 1) {
+        return sendResponse(req, res, 204, "no invoices currently");
+      }
+
+      return sendResponse(req, res, 200, invoices);
+    } catch (err: unknown) {
+      return sendResponse(
+        req,
+        res,
+        400,
+        "something went wrong,try again",
+        "fail"
+      );
     }
-
-    return res.status(200).json({ status: "success", invoices });
   }
-  return res.status(405).json({ status: "fail", msg: "invalid method" });
+
+  return sendResponse(req, res, 405, "invalid method", "fail");
 }

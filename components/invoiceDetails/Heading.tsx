@@ -1,6 +1,6 @@
 import React from "react";
 import { FaCircle } from "react-icons/fa";
-import { Props } from './types/details'
+import { Props } from '../../types/details'
 import Buttons from './Button'
 // 
 //

@@ -1,4 +1,4 @@
-import { ButtonProps } from "./types/details";
+import { ButtonProps } from "../../types/details";
 import useApi from "./useApi";
 const Buttons: React.FC<ButtonProps> = (props) => {
   const [handlePaid, handleDelete, loading, error] = useApi(props.id);

@@ -1,5 +1,5 @@
 import React from "react";
-import {InputLabelProps} from './types/form'
+import {InputLabelProps} from '../../types/form'
 import { ErrorMessage, Field } from "formik";
 
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { InvoiceProps } from "./types/details";
+import { InvoiceProps } from "../../types/details";
 import { stringifyDate } from "../../utils/fns";
 import Address from "./Address";
 

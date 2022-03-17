@@ -1,10 +1,13 @@
-import axios from "axios";
+//
+
+
 const validateNo = (no) => {
   if (isNaN(no)) {
     return 0;
   }
   return no;
 };
+ // 
 
 const termsArray = [
   { desc: " Choose ", value: 0 },
@@ -14,6 +17,8 @@ const termsArray = [
   { desc: " 30 Days", value: 30 },
 ];
 
+
+//
 export function addDays(date, days) {
   var result = new Date(date);
 
@@ -21,12 +26,15 @@ export function addDays(date, days) {
   return result;
 }
 
+
+//
 export function getSum(arr) {
   const arrayOfNumbers = arr.map((el) => el.price * el.qty);
 
   return arrayOfNumbers.reduce((acc, cv) => acc + cv, 0);
 }
 
+//
 export function stringifyDate(str) {
   const monthNames = [
     "Jan",
@@ -111,7 +119,7 @@ function returnInitialValues(props) {
       issuerPostalAddress: props.invoice.issuingAddress.postalAddress,
       receiverPostalAddress: props.invoice.debtorsAddress.postalAddress,
       description: props.invoice.description,
-      startDate: props.invoice.issuingDate,
+      startDate:new Date( props.invoice.issuingDate),
       terms: props.invoice.terms,
       receiverName: props.invoice.debtor,
       receiverEmail: props.invoice.email,

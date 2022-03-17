@@ -1,7 +1,7 @@
 import React from "react";
 import Invoice from "./Invoice";
 import NoInvoice from "./NotFound";
-import { Props } from "./types/home";
+import { Props } from "../../types/home";
 import { getSum } from "../../utils/fns";
 
 const InvoiceList: React.FC<Props> = (props) => {

@@ -1,6 +1,6 @@
-// import { Schema, model } from 'mongoose';
+
 import mongoose from 'mongoose';
-import{AddressFormat} from '../components/home/types/home'
+import{AddressFormat} from '../types/home'
 
 
 interface Invoice {

@@ -1,4 +1,4 @@
-import {InvoiceFormat,AddressFormat}  from '../../home/types/home'
+import {InvoiceFormat,AddressFormat}  from './home'
 
 //table .tsx
 export interface TableProps{

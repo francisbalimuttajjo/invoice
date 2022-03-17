@@ -3,40 +3,25 @@ import { InferGetServerSidePropsType } from "next";
 import Head from "../components/others/Head";
 import Sidebar from "../components/home/Sidebar";
 import Form from "../components/form/Form";
-import {  initialValues } from "../utils/fns";
+import { initialValues } from "../utils/fns";
 import InvoiceList from "../components/home/InvoiceList";
+import useData from "../components/home/useData";
 import Header from "../components/others/Header";
-import { InvoiceFormat } from "../components/home/types/home";
+import { InvoiceFormat } from "../types/home";
 import { motion } from "framer-motion";
 import axios from "axios";
 
 function Home({
-  data1,
+  invoices,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const store = data1;
-  const [data, setData] = React.useState<any>(store);
-  const [description, setDescription] = React.useState("total ");
-  const [displayForm, setDisplayForm] = React.useState(false);
-
-  ///displaying form
-  const displayNewInvoiceForm = () => setDisplayForm(true);
-
-  //hiding form
-  const hideForm = () => setDisplayForm(false);
-
-  //categorizing forms
-  const handleCategorizingInvoices = (value: string) => {
-    // setData(invoice)
-
-    if (value === "all") {
-      setData(store);
-      setDescription("total ");
-    } else {
-      const newData = store.filter((el: InvoiceFormat) => el.status === value);
-      setData(newData);
-      setDescription(value);
-    }
-  };
+  const {
+    data,
+    description,
+    displayForm,
+    displayNewInvoiceForm,
+    hideForm,
+    handleCategorizingInvoices,
+  } = useData(invoices);
 
   return (
     <motion.div
@@ -76,7 +61,6 @@ function Home({
                 displayNewInvoiceForm={displayNewInvoiceForm}
                 description={description}
                 handleCategorizingInvoices={handleCategorizingInvoices}
-                
                 InvoiceTotal={data.length}
               />
               <InvoiceList invoices={data} />
@@ -97,12 +81,11 @@ export const getServerSideProps = async () => {
     "https://invoicebafra.vercel.app/api/invoices"
     //"http://localhost:3000/api/invoices"
   );
-  const data1: Data = res.data.invoices;
+  const invoices: Data = res.data.invoices;
 
   return {
     props: {
-      data1: data1.length < 1  || undefined ? [] : data1,
-     
+      invoices: invoices.length < 1 || undefined ? [] : invoices,
     },
   };
 };

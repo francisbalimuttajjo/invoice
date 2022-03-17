@@ -1,10 +1,12 @@
 import React from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const UseApi = (id: string) => {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState("");
-
+    const router = useRouter();
+  const handleRouterBack = () => router.back();
   //api calls
   const handleDelete = () => {
       
@@ -41,7 +43,7 @@ const UseApi = (id: string) => {
         return;
       });
     };
-    return[handlePaid,handleDelete,loading,error,setError] as const
+    return[handlePaid,handleDelete,loading,error,setError,handleRouterBack] as const
 };
 
 export default UseApi;

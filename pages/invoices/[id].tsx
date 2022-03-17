@@ -4,7 +4,7 @@ import Sidebar from "../../components/home/Sidebar";
 import Head from "../../components/others/Head";
 import InvoiceDetails from "../../components/invoiceDetails/InvoiceDetails";
 import { motion } from "framer-motion";
-import { InvoiceFormat } from "../../components/home/types/home";
+import { InvoiceFormat } from "../../types/home";
 import Form from "../../components/form/Form";
 import { returnInitialValues } from "../../utils/fns";
 

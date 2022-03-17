@@ -1,6 +1,7 @@
 import connect from "../../db/db";
 import Invoice from "../../model/Invoice";
-import { AddressFormat } from "../../components/home/types/home";
+import { AddressFormat } from "../../types/home";
+import { sendResponse } from "../../utils/pagesFns";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Invoice = {
@@ -15,31 +16,39 @@ type Invoice = {
   debtorsAddress: AddressFormat;
   issuingAddress: AddressFormat;
   items: { qty: number; price: number; name: string }[];
-  
- 
 };
-type Data = { invoice?: Invoice; msg?: string , status:string};
-
-
+type Data = { invoice?: Invoice; msg?: string; status: string };
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-    if (req.method === "GET") {
-      
-    connect();
+  if (req.method === "GET") {
+    try {
+      connect();
 
-     
-      const invoice = await Invoice.findOne({ _id: req.query.id }); 
-     
-    if (!invoice) {
-      return res.status(404).json({status:'fail', msg: "invoice not available,check details" });
+      const invoice = await Invoice.findOne({ _id: req.query.id });
+
+      if (!invoice) {
+        return sendResponse(
+          req,
+          res,
+          404,
+          "invoice not available,check details",
+          "fail"
+        );
+      }
+      return sendResponse(req, res, 200, invoice);
+    } catch (err: unknown) {
+      return sendResponse(
+        req,
+        res,
+        400,
+        "something went wrong,try again",
+        "fail"
+      );
     }
-
-    return res.status(200).json({status:'success', invoice });
   }
-  return res.status(405).json({status:'fail', msg: "invalid method" });
 
- 
+  return sendResponse(req, res, 405, "invalid method", "fail");
 }

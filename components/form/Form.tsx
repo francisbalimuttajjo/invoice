@@ -7,7 +7,7 @@ import Wrapper from "../others/Wrapper";
 import useInvoiceForm from "./useInvoiceForm";
 import Footer from "./Footer";
 import { Formik, Form } from "formik";
-import { Props } from "./types/form";
+import { Props } from "../../types/form";
 import { Alert, AlertDanger } from "../others/Alert";
 import { validationSchema } from "../../utils/Validation";
 

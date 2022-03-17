@@ -1,6 +1,6 @@
 import React from "react";
 import Select from "react-select";
-import { HeadingProps } from "./types/others";
+import { HeadingProps } from "../../types/others";
 
 const options = [
   { value: "all", label: "all" },
@@ -18,7 +18,7 @@ const Header: React.FC<HeadingProps> = (props) => {
     <div className=" flex  mt-7  mx-auto justify-around">
       <div className="flex flex-col  ">
         <h1 className="font-semibold text-3xl ">Invoices</h1>
-        <p className=" text-sm opacity-50 mt-1 ">
+        <p className=" text-sm opacity-50 mt-3 ">
           There {props.InvoiceTotal > 1 ? " are" : "is"} {props.InvoiceTotal}{" "}
           {props.description}{" "}
           {props.InvoiceTotal > 1 ? " Invoices" : " Invoice"}{" "}

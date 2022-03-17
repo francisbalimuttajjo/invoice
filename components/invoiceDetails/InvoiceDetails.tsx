@@ -1,8 +1,7 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { IoIosArrowBack } from "react-icons/io";
 import Wrapper from "../others/Wrapper";
-import { Props } from "./types/details";
+import { Props } from "../../types/details";
 import IssuingDetails from "./IssuingDetails";
 import ReceiversDetails from "./ReceiversDetails";
 import { getSum, validateNo } from "../../utils/fns";
@@ -13,18 +12,15 @@ import Buttons from "./Button";
 import Table from "./Table";
 
 const InvoiceDetails: React.FC<Props> = (props) => {
-  const [handlePaid, handleDelete, loading, error, setError] = useApi(
+  const [handlePaid, handleDelete, loading, error, setError,handleRouterBack] = useApi(
     props.invoice._id
   );
 
-  const router = useRouter();
-  const handleRouterBack = () => router.back();
+  
 
   return (
     <div
-      className={`
-      
-        sm:w-10/12 md:w-7/12 sm:mx-auto  sm:pb-8`}
+      className=' sm:w-10/12 md:w-7/12 sm:mx-auto  sm:pb-8'
     >
       <div className="mt-8 ml-4  flex ">
         <IoIosArrowBack

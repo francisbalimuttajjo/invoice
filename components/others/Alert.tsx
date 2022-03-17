@@ -1,6 +1,6 @@
 import React from "react";
 import { TiTick } from "react-icons/ti";
-import {Props} from './types/others'
+import {Props} from '../../types/others'
 
 
 const Alert: React.FC<Props> = (props) => {

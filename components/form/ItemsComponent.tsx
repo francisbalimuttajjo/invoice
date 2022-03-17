@@ -2,7 +2,7 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 import { validateNo } from "../../utils/fns";
 import { ErrorMessage, Field, FieldArray } from "formik";
-import {ItemsProps} from './types/form'
+import {ItemsProps} from '../../types/form'
 
 
 const item = { name: "", qty: 0, price: 0 };
@@ -20,7 +20,7 @@ const Items: React.FC<ItemsProps> = (props) => {
                 <div key={index} className="w-full   sm:flex">
                   <div className="sm:w-5/12">
                     <label className="ml-2 label  text-sm  ">Name</label>
-                    <Field className="field" name={`items.${index}.name`} />
+                    <Field className="field" name={`items.${index}.name`}  />
                     <div className="error-msg">
                       <ErrorMessage name={`items.${index}.name`} />
                     </div>
@@ -32,6 +32,7 @@ const Items: React.FC<ItemsProps> = (props) => {
                         type="number"
                         className=" field"
                         name={`items.${index}.qty`}
+                        min='0'
                       />
                       <div className="error-msg">
                         <ErrorMessage name={`items.${index}.qty`} />
@@ -43,6 +44,7 @@ const Items: React.FC<ItemsProps> = (props) => {
                         type="number"
                         className="field"
                         name={`items.${index}.price`}
+                         min='0'
                       />
                       <div className="error-msg">
                         <ErrorMessage name={`items.${index}.price`} />

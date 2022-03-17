@@ -1,6 +1,6 @@
 import React from "react";
 import { validateNo } from "../../utils/fns";
-import { TableProps } from "./types/details";
+import { TableProps } from "../../types/details";
 
 const Table: React.FC<TableProps> = (props) => {
   return (
