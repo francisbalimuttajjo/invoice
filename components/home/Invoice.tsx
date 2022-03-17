@@ -3,15 +3,26 @@ import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../animation/animation";
 import { InvoicePropsHome } from "../../types/home";
-import {
-  stringifyDate,
-  handleColor,
-  handleBackgroundColor,
-} from "../../utils/fns";
+import { stringifyDate } from "../../utils/fns";
 import { FaCircle } from "react-icons/fa";
 
 const Invoice: React.FC<InvoicePropsHome> = (props) => {
   const router = useRouter();
+  function handleColor() {
+    if (props.invoice.status === "pending") {
+      return "text-orange-400 ";
+    } else if (props.invoice.status === "paid") {
+      return "text-green-500";
+    } else {
+      return "text-black dark:text-white ";
+    }
+  }
+
+  function handleBackgroundColor() {
+    if (props.invoice.status === "pending") return "  bg-orange-100  ";
+    if (props.invoice.status === "paid") return "bg-green-100   ";
+    if (props.invoice.status === "draft") return "bg-gray-100   ";
+  }
 
   return (
     <motion.div
@@ -46,15 +57,9 @@ const Invoice: React.FC<InvoicePropsHome> = (props) => {
           UGX <span className=" font-bold">{props.amount}</span>
         </p>
         <div
-          className={`${handleBackgroundColor(
-            props
-          )} dark:bg-slate-700 px-3  bg-opacity-50   rounded-md py-2 w-24 `}
+          className={`${handleBackgroundColor()} dark:bg-slate-700 px-3  bg-opacity-50   rounded-md py-2 w-24 `}
         >
-          <p
-            className={`${handleColor(
-              props
-            )} text-sm   capitalize font-semibold`}
-          >
+          <p className={`${handleColor()} text-sm   capitalize font-semibold`}>
             <FaCircle className="h-2 w-2 m-1 inline" /> {props.invoice.status}
           </p>
         </div>
