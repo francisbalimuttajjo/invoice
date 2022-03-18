@@ -14,8 +14,8 @@ const UseApi = (id: string) => {
       .delete(`/api/delete/${id}`)
       .then((res) => {
         if (res.data.status === "success") {
-          setLoading(false);
           setTimeout(() => window.location.replace("/"), 1000);
+          setLoading(false);
         }
       })
       .catch((err) => {
@@ -32,8 +32,8 @@ const UseApi = (id: string) => {
       .patch(`/api/paid/${id}`)
       .then((res) => {
         if (res.data.status === "success") {
-          setLoading(false);
           setTimeout(() => window.location.replace("/"), 1000);
+          setLoading(false);
         }
       })
       .catch((err) => {

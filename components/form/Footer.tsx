@@ -3,8 +3,8 @@ import { FooterProps } from "../../types/form";
 const Footer: React.FC<FooterProps> = (props) => {
   const disableBtn = () => {
     const vals =
-      "bg-blue-700 ml-1 text-white opacity-70  text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600";
-    if (props.loading) return vals + "cursor-not-allowed ";
+      "bg-blue-700 ml-1 text-white opacity-70  text-sm  sm:text-sm font-bold px-4 py-3 rounded-3xl hover:bg-blue-600 ";
+    if (props.loading) return vals + "cursor-not-allowed  ";
 
     return vals;
   };
@@ -24,11 +24,13 @@ const Footer: React.FC<FooterProps> = (props) => {
             disabled={props.loading}
             className="dark:hover:bg-opacity-30 hover:bg-opacity-90 p-2 sm:px-4 py-3 text-sm  sm:text-sm text-gray-500 font-bold rounded-3xl bg-black bg-opacity-80 "
           >
-            Save As Draft
+            {!props.loading && 'Save As Draft'}
+            {props.loading && 'Saving....' }
           </button>
         )}
         <button type="submit" disabled={props.loading} className={disableBtn()}>
-          {props.editing ? "Save Changes" : "Save & Send"}
+          { !props.loading ? (props.editing  ? "Save Changes" : "Save & Send") : "Saving...."}
+        
         </button>
       </div>
     </div>

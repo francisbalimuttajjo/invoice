@@ -47,7 +47,6 @@ const useInvoiceForm = (url: string, method: string): useInvoiceFormProps => {
 
   const handleDraft = () => {
     setStatus("draft");
-    
   };
   return {
     handleSubmit,
