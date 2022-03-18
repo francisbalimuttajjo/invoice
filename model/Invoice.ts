@@ -16,6 +16,7 @@ const InvoiceSchema = new mongoose.Schema<InvoiceFormat>({
     postalAddress: { type: String, required: true },
     country: { type: String, required: true },
   },
+
   issuingAddress: {
     street: { type: String, required: true },
     city: { type: String, required: true },

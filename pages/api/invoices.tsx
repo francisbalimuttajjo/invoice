@@ -4,8 +4,6 @@ import { Data } from "../../types/apiTypes";
 import { sendResponse } from "../../utils/pagesFns";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
@@ -14,8 +12,8 @@ export default async function handler(
     try {
       connect();
 
-      const invoices = await Invoice.find();
-    
+      const invoices = await Invoice.find().sort({ paymentDate: 1 });
+
       if (invoices.length < 1) {
         return sendResponse(req, res, 204, "no invoices currently");
       }
