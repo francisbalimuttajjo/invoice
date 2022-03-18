@@ -12,7 +12,7 @@ export default async function handler(
     try {
       connect();
 
-      const invoices = await Invoice.find().sort({ paymentDate: 1 });
+      const invoices = await Invoice.find()
 
       if (invoices.length < 1) {
         return sendResponse(req, res, 204, "no invoices currently");
