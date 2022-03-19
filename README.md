@@ -15,9 +15,9 @@ You can save the invoice as a draft or pending, You can edit,delete and even  ma
     Tailwind Css
     </li><li>
   Mongoose</li><li>
-    MongoDb</li><li>
-  </li>
-  </li>
+    MongoDb</li>
+  
+  
 </ul>
 
 <h1>Getting Started</h1>
