@@ -1,10 +1,10 @@
 //form tsx
 
 export interface Props {
-  editing:boolean
+  editing: boolean;
   title: string;
-  url:string
-  method:string
+  url: string;
+  method: string;
   hideForm: () => void;
   initialValues: {
     items: { name: string; qty: number; price: number }[];
@@ -21,12 +21,10 @@ export interface Props {
     description: string;
     startDate: Date;
     terms: number;
-    edit?: boolean
-    
-    
+    edit?: boolean;
   };
 }
- //city component
+//city component
 export interface CityComponentProps {
   label1: string;
   label2: string;
@@ -36,25 +34,23 @@ export interface CityComponentProps {
 
 //useInvoiceFormProps
 export type useInvoiceFormProps = {
-  handleDraft: () => void,
-  handleSubmit: (values:  Props["initialValues"]) => void,
-  loading: boolean,
-  error: string,
-  successMessage: string,
-  setSuccessMessage: React.Dispatch<React.SetStateAction<string>>,
-  setError: React.Dispatch<React.SetStateAction<string>>
-}
+  handleDraft: () => void;
+  //handleSubmit: (values: Props["initialValues"]) => void;
+  handleSubmit: (values: Pick<Props ,"initialValues">) => void;
+  loading: boolean;
+  error: string;
+  successMessage: string;
+  setSuccessMessage: React.Dispatch<React.SetStateAction<string>>;
+  setError: React.Dispatch<React.SetStateAction<string>>;
+};
 
 //footer propsTypesexport
 export type FooterProps = {
   onSubmit?: () => void;
   hideForm: () => void;
   handleDraft?: () => void;
-  
-  
   loading: boolean;
-  
-  editing:boolean
+  editing: boolean;
 };
 
 //input label props
@@ -66,5 +62,5 @@ export interface InputLabelProps {
 }
 //items props//items components
 export interface ItemsProps {
-  items: { name: string; qty: number; price: number }[];
+  items: Array<{ name: string; qty: number; price: number }>;
 }
