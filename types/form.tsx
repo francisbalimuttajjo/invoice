@@ -35,8 +35,8 @@ export interface CityComponentProps {
 //useInvoiceFormProps
 export type useInvoiceFormProps = {
   handleDraft: () => void;
-  //handleSubmit: (values: Props["initialValues"]) => void;
-  handleSubmit: (values: Pick<Props ,"initialValues">) => void;
+  handleSubmit: (values: Props["initialValues"]) => void;
+  
   loading: boolean;
   error: string;
   successMessage: string;
