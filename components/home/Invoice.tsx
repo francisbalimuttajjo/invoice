@@ -8,7 +8,7 @@ import { FaCircle } from "react-icons/fa";
 
 const Invoice: React.FC<InvoicePropsHome> = (props) => {
   const router = useRouter();
-  function handleColor() {
+  function handleTextColor() {
     if (props.invoice.status === "pending") {
       return "text-orange-400 ";
     } else if (props.invoice.status === "paid") {
@@ -59,7 +59,7 @@ const Invoice: React.FC<InvoicePropsHome> = (props) => {
         <div
           className={`${handleBackgroundColor()} dark:bg-slate-700 px-3  bg-opacity-50   rounded-md py-2 w-24 `}
         >
-          <p className={`${handleColor()} text-sm   capitalize font-semibold`}>
+          <p className={`${handleTextColor()} text-sm   capitalize font-semibold`}>
             <FaCircle className="h-2 w-2 m-1 inline" /> {props.invoice.status}
           </p>
         </div>

@@ -12,11 +12,9 @@ const DateComponent = () => {
         <DatePicker name="startDate" />
       </div>
       <div className="w-1/2 sm:w-1/3 px-3 right-0 absolute">
-        <label className="input-Label">
-          {" "}
-          <span className="hidden sm:inline">Payment</span> Terms{" "}
+        <label className="input-Label">        
+          <span className="hidden sm:inline">Payment</span> Terms
         </label>
-
         <Select name="terms" />
         <div className="error-msg">
           <ErrorMessage name={`terms`} />

@@ -13,7 +13,6 @@ const ReceiverDetails: React.FC<InvoiceProps> = (props) => {
               Invoice Date
             </p>
             <time className="text-xs xs:text-base">
-              {" "}
               <strong>{stringifyDate(props.invoice.issuingDate)} </strong>
             </time>
           </div>
@@ -22,7 +21,6 @@ const ReceiverDetails: React.FC<InvoiceProps> = (props) => {
               Payment Due
             </p>
             <time className="text-xs xs:text-base">
-              {" "}
               <strong>{stringifyDate(props.invoice.paymentDate)} </strong>
             </time>
           </div>

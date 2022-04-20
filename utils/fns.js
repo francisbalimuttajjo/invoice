@@ -8,7 +8,7 @@ const validateNo = (no) => {
 };
 //
 
-const termsArray = [
+const paymentTerms = [
   { desc: " Choose ", value: 0 },
   { desc: " 1 Day", value: 1 },
   { desc: " 7 Days", value: 7 },
@@ -27,7 +27,6 @@ export function addDays(date, days) {
 //
 export function getSum(arr) {
   const arrayOfNumbers = arr.map((el) => el.price * el.qty);
-
   return arrayOfNumbers.reduce((acc, cv) => acc + cv, 0);
 }
 
@@ -127,22 +126,7 @@ function returnInitialValues(props) {
   return initialValues;
 }
 
-//invoice details.y\tsx
-export function handleColor(props) {
-  if (props.invoice.status === "pending") {
-    return "text-orange-400 ";
-  } else if (props.invoice.status === "paid") {
-    return "text-green-500";
-  } else {
-    return "text-black dark:text-white ";
-  }
-}
 
-export function handleBackgroundColor(props) {
-  if (props.invoice.status === "pending") return "  bg-orange-100  ";
-  if (props.invoice.status === "paid") return "bg-green-100   ";
-  if (props.invoice.status === "draft") return "bg-gray-100   ";
-}
 
  
  //heading tsx
@@ -155,11 +139,10 @@ export function handleBackgroundColor(props) {
 
 //
 export {
-  termsArray,
+  paymentTerms,
   options,
   validateNo,
- 
   initialValues,
   returnInitialValues,
-  item
+  item,
 };

@@ -4,7 +4,7 @@ import NotFound from "../components/home/NotFound";
 
 const NoInvoice = () => {
   const router = useRouter();
-  const handleRouter =()=> router.replace("/");
+  const handleRouter = () => router.replace("/");
   return (
     <div className="flex flex-col justify-center  mt-60 w-10/12 mx-auto">
       <NotFound title="oops !!! Page is not available" />

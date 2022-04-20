@@ -4,10 +4,12 @@ import { sendData } from "../../utils/fns";
 import { useInvoiceFormProps, Props } from "../../types/form";
 
 const useInvoiceForm = (url: string, method: string): useInvoiceFormProps => {
+
   const [loading, setLoading] = React.useState(false);
   const [status, setStatus] = React.useState("pending");
   const [error, setError] = React.useState("");
   const [successMessage, setSuccessMessage] = React.useState("");
+
   const handleSubmit = async (values: Props["initialValues"]) => {
     const data = sendData(values, status);
 
@@ -31,7 +33,6 @@ const useInvoiceForm = (url: string, method: string): useInvoiceFormProps => {
 
     axios
       .patch(url, data)
-
       .then((res) => {
         if (res.data.status === "success") {
           setSuccessMessage("changes saved");
@@ -48,6 +49,7 @@ const useInvoiceForm = (url: string, method: string): useInvoiceFormProps => {
   const handleDraft = () => {
     setStatus("draft");
   };
+  
   return {
     handleSubmit,
     handleDraft,

@@ -1,7 +1,7 @@
 import { Field } from "formik";
-import { termsArray as terms } from "../../utils/fns";
+import { paymentTerms as terms } from "../../utils/fns";
 
-const FieldComponent: React.FC<{ name: string }> = (props) => {
+const SelectComponent: React.FC<{ name: string }> = (props) => {
   return (
     <Field
       type="number"
@@ -19,4 +19,4 @@ const FieldComponent: React.FC<{ name: string }> = (props) => {
   );
 };
 
-export default FieldComponent;
+export default SelectComponent;

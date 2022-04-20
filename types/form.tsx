@@ -35,8 +35,7 @@ export interface CityComponentProps {
 //useInvoiceFormProps
 export type useInvoiceFormProps = {
   handleDraft: () => void;
-  handleSubmit: (values: Props["initialValues"]) => void;
-  
+  handleSubmit: (values: Props["initialValues"]) => void;  
   loading: boolean;
   error: string;
   successMessage: string;
@@ -44,7 +43,7 @@ export type useInvoiceFormProps = {
   setError: React.Dispatch<React.SetStateAction<string>>;
 };
 
-//footer propsTypesexport
+//footer propsTypes 
 export type FooterProps = {
   onSubmit?: () => void;
   hideForm: () => void;

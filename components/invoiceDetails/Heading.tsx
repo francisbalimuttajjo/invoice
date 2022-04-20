@@ -6,7 +6,7 @@ import Buttons from "./Button";
 //
 //
 const InvoiceHeading: React.FC<Props> = (props) => {
-   function handleColor() {
+   function handleTextColor() {
     if (props.invoice.status === "pending") {
       return "text-orange-400 ";
     } else if (props.invoice.status === "paid") {
@@ -30,7 +30,7 @@ const InvoiceHeading: React.FC<Props> = (props) => {
       <div
         className={`${handleBackgroundColor()} dark:bg-slate-700   bg-opacity-50  absolute right-5 sm:static sm:ml-16   px-4 rounded-md py-2  `}
       >
-        <p className={`${handleColor()}    capitalize font-semibold text-sm`}>
+        <p className={`${handleTextColor()}    capitalize font-semibold text-sm`}>
           <FaCircle className="h-2 w-2 inline" /> {props.invoice.status}
         </p>
       </div>
